@@ -1,112 +1,250 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Biopixel - Agricultura de Precisión</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f9f9f9;
-      color: #222;
-    }
-    .hero {
-      background: linear-gradient(135deg, #1b6ca8, #4b9cd3);
-      color: white;
-      padding: 100px 15px 70px;
-      text-align: center;
-    }
-    .hero h1 {
-      font-weight: 700;
-      font-size: 2.8rem;
-      margin-bottom: 20px;
-    }
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: auto;
-    }
-    .btn-primary {
-      background-color: #1b6ca8;
-      border: none;
-    }
-    .btn-primary:hover {
-      background-color: #155a8a;
-    }
-    section {
-      padding: 60px 15px;
-      max-width: 900px;
-      margin: auto;
-    }
-    footer {
-      background-color: #222;
-      color: #ccc;
-      padding: 20px 15px;
-      text-align: center;
-    }
-    @media (min-width: 768px) {
-      .hero h1 {
-        font-size: 3.8rem;
-      }
-      .hero p {
-        font-size: 1.4rem;
-      }
-    }
-  </style>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Biopixel - Agricultura de Precisión</title>
+    <link rel="stylesheet" href="assets/fontawesome-5.5/css/all.min.css" />
+    <link rel="stylesheet" href="assets/slick/slick.css">
+    <link rel="stylesheet" href="assets/slick/slick-theme.css">
+    <link rel="stylesheet" href="assets/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/tooplate-infinite-loop.css" />
+<!--
+Tooplate 2117 Infinite Loop
+https://www.tooplate.com/view/2117-infinite-loop
+-->
 
-  <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-    <div class="container">
-      <a class="navbar-brand fw-bold" href="#">Biopixel</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navMenu">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="#home">Inicio</a></li>
-          <li class="nav-item"><a class="nav-link" href="#quienes-somos">Quiénes Somos</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
-        </ul>
+  </head>
+  <body>
+    <!-- Hero section -->
+    <section id="home" class="text-white tm-font-big tm-parallax">
+      <!-- Navigation -->
+      <nav class="navbar navbar-expand-md tm-navbar" id="tmNav">
+        <div class="container">
+          <div class="tm-next">
+              <a href="#home" class="navbar-brand">Biopixel</a>
+          </div>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars navbar-toggler-icon"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                  <a class="nav-link tm-nav-link" href="#home">Home</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link tm-nav-link" href="#quienes-somos">Quiénes Somos</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link tm-nav-link" href="#contacto">Contacto</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div class="text-center tm-hero-text-container">
+        <div class="tm-hero-text-container-inner">
+            <h2 class="tm-hero-title">Biopixel</h2>
+            <p class="tm-hero-subtitle">Transformando la agricultura a través de datos y tecnología.</p>
+            <p class="tm-hero-subtitle" style="font-size: 1rem; max-width: 700px; margin: 20px auto 0;">La agricultura a gran escala enfrenta hoy desafíos complejos: optimizar recursos, anticipar riesgos y tomar decisiones precisas en tiempo real. Biopixel nace para integrar toda la información relevante en una plataforma unificada.</p>
+        </div>
       </div>
-    </div>
-  </nav>
 
-  <section id="home" class="hero">
-    <h1>Transformando la agricultura a través de datos y tecnología</h1>
-    <p>
-      La agricultura a gran escala enfrenta hoy desafíos complejos: optimizar recursos, anticipar riesgos y tomar decisiones precisas en tiempo real. Biopixel nace para integrar toda la información relevante en una plataforma unificada, facilitando la planificación y gestión eficiente de cultivos y cosechas.
-    </p>
-    <p>
-      Mediante modelos avanzados, mapeo espacial y monitoreo continuo, ofrecemos herramientas que permiten maximizar la productividad y reducir incertidumbres en cada etapa del proceso agrícola.
-    </p>
-    <p>
-      Nuestra misión es acercar la agricultura de precisión a cualquier realidad productiva, entregando soluciones confiables, accesibles y diseñadas para quienes viven el campo día a día.
-    </p>
-    <a href="#quienes-somos" class="btn btn-primary btn-lg mt-4">Conócenos</a>
-  </section>
+      <div class="tm-next tm-intro-next">
+        <a href="#quienes-somos" class="text-center tm-down-arrow-link">
+          <i class="fas fa-2x fa-arrow-down tm-down-arrow"></i>
+        </a>
+      </div>
+    </section>
 
-  <section id="quienes-somos" class="bg-white rounded shadow-sm">
-    <h2 class="mb-4 text-center">Quiénes somos</h2>
-    <p>
-      Biopixel es una empresa orientada a transformar la forma en que se planifica y gestiona la agricultura a gran escala. Buscamos integrar datos provenientes de diversas fuentes en un único sistema, capaz de ofrecer modelos, simulaciones y herramientas de apoyo para la toma de decisiones en terreno.
-    </p>
-    <p>
-      Nacemos con la convicción de que el valor está en entender el espacio y el tiempo de forma coordinada, y de que la productividad agrícola puede optimizarse si se cuenta con información confiable, accesible y accionable.
-    </p>
-    <p>
-      Nuestro enfoque combina conocimiento técnico, visión operativa y experiencia en manejo de datos espaciales. Queremos acercar soluciones de agricultura de precisión que permitan mejorar la eficiencia, anticipar problemas y ordenar los procesos desde la base.
-    </p>
-    <p>
-      Biopixel no solo entrega tecnología: propone una nueva forma de entender el campo, con una mirada estratégica y conectada a la realidad de quienes lo trabajan.
-    </p>
-  </section>
+    <section id="quienes-somos" class="tm-section-pad-top">
+      <div class="container">
+        <div class="row tm-content-box">
+            <div class="col-lg-12">
+                <h2 class="tm-text-primary mb-4 tm-section-title">Quiénes Somos</h2>
+                <p class="mb-4 tm-intro-text">Biopixel es una empresa orientada a transformar la forma en que se planifica y gestiona la agricultura a gran escala. Buscamos integrar datos provenientes de diversas fuentes en un único sistema, capaz de ofrecer modelos, simulaciones y herramientas de apoyo para la toma de decisiones en terreno.</p>
+                <p class="mb-4 tm-intro-text">Nacemos con la convicción de que el valor está en entender el espacio y el tiempo de forma coordinada, y de que la productividad agrícola puede optimizarse si se cuenta con información confiable, accesible y accionable.</p>
+                <p class="mb-4 tm-intro-text">Nuestro enfoque combina conocimiento técnico, visión operativa y experiencia en manejo de datos espaciales. Queremos acercar soluciones de agricultura de precisión que permitan mejorar la eficiencia, anticipar problemas y ordenar los procesos desde la base.</p>
+                <p class="mb-4 tm-intro-text">Biopixel no solo entrega tecnología: propone una nueva forma de entender el campo, con una mirada estratégica y conectada a la realidad de quienes lo trabajan.</p>
+            </div>
+        </div>
+      </div>
+    </section>
 
-  <footer id="contacto">
-    <p>© 2025 Biopixel. Todos los derechos reservados.</p>
-  </footer>
+    <!-- Contact -->
+    <section id="contacto" class="tm-section-pad-top tm-parallax-2">
+      <div class="container tm-container-contact">
+        <div class="row">
+            <div class="text-center col-12">
+                <h2 class="tm-section-title mb-4">Contacto</h2>
+            </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+            <div class="col-sm-12 col-md-6">
+              <form action="" method="get">
+                <input id="name" name="name" type="text" placeholder="Tu Nombre" class="tm-input" required />
+                <input id="email" name="email" type="email" placeholder="Tu Email" class="tm-input" required />
+                <textarea id="message" name="message" rows="8" placeholder="Mensaje" class="tm-input" required></textarea>
+                <button type="submit" class="btn tm-btn-submit">Enviar</button>
+              </form>
+            </div>
+
+            <div class="col-sm-12 col-md-6">
+                <div class="contact-item">
+                  <a rel="nofollow" href="mailto:contacto@biopixel.cl" class="item-link">
+                      <i class="far fa-2x fa-envelope mr-4"></i>
+                      <span class="mb-0">contacto@biopixel.cl</span>
+                  </a>
+                </div>
+
+                <div class="contact-item">
+                  <a rel="nofollow" href="https://www.google.com/maps" class="item-link">
+                      <i class="fas fa-2x fa-map-marker-alt mr-4"></i>
+                      <span class="mb-0">Nuestra Ubicación (Santiago, Chile)</span>
+                  </a>
+                </div>
+
+                <div class="contact-item">
+                  <a rel="nofollow" href="tel:0100200340" class="item-link">
+                      <i class="fas fa-2x fa-phone-square mr-4"></i>
+                      <span class="mb-0">+56 9 XXXX XXXX</span> <!-- Placeholder phone -->
+                  </a>
+                </div>
+
+                <div class="contact-item mt-4"> <!-- Added margin for spacing -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d425907.6496903967!2d-70.91001909099378!3d-33.47247283929951!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5410425af2f%3A0x8475d53c400f0931!2sSantiago%2C%20Santiago%20Metropolitan%20Region%2C%20Chile!5e0!3m2!1sen!2s!4v1699978513128!5m2!1sen!2s" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div><!-- row ending -->
+      </div>
+
+      <footer class="text-center small tm-footer">
+          <p class="mb-0">
+          © 2024 Biopixel. Todos los derechos reservados.
+
+          . <a rel="nofollow" href="https://www.tooplate.com" title="HTML templates">Designed by TOOPLATE</a></p>
+        </footer>
+    </section>
+
+    <script src="assets/js/jquery-1.9.1.min.js"></script>
+    <script src="assets/slick/slick.min.js"></script>
+    <script src="assets/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/easing.min.js"></script>
+    <script src="assets/js/jquery.singlePageNav.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script>
+
+      function getOffSet(){
+        var _offset = 450;
+        var windowHeight = window.innerHeight;
+
+        if(windowHeight > 500) {
+          _offset = 400;
+        }
+        if(windowHeight > 680) {
+          _offset = 300
+        }
+        if(windowHeight > 830) {
+          _offset = 210;
+        }
+
+        return _offset;
+      }
+
+      function setParallaxPosition($doc, multiplier, $object){
+        var offset = getOffSet();
+        var from_top = $doc.scrollTop(),
+          bg_css = 'center ' +(multiplier * from_top - offset) + 'px';
+        $object.css({"background-position" : bg_css });
+      }
+
+      // Parallax function
+      // Adapted based on https://codepen.io/roborich/pen/wpAsm
+      var background_image_parallax = function($object, multiplier, forceSet){
+        multiplier = typeof multiplier !== 'undefined' ? multiplier : 0.5;
+        multiplier = 1 - multiplier;
+        var $doc = $(document);
+        // $object.css({"background-attatchment" : "fixed"}); // Typo in original: "background-attatchment"
+
+        if(forceSet) {
+          setParallaxPosition($doc, multiplier, $object);
+        } else {
+          $(window).scroll(function(){
+            setParallaxPosition($doc, multiplier, $object);
+          });
+        }
+      };
+
+      var background_image_parallax_2 = function($object, multiplier){
+        multiplier = typeof multiplier !== 'undefined' ? multiplier : 0.5;
+        multiplier = 1 - multiplier;
+        var $doc = $(document);
+        $object.css({"background-attachment" : "fixed"});
+
+        $(window).scroll(function(){
+          if($(window).width() > 768) {
+            var firstTop = $object.offset().top,
+                pos = $(window).scrollTop(),
+                yPos = Math.round((multiplier * (firstTop - pos)) - 186);
+
+            var bg_css = 'center ' + yPos + 'px';
+
+            $object.css({"background-position" : bg_css });
+          } else {
+            $object.css({"background-position" : "center" });
+          }
+        });
+      };
+
+      // HTML document is ready
+      $(document).ready(function(){
+
+        // Testimonials carousel (REMOVED as section is deleted)
+        // $('.tm-testimonials-carousel').slick({ ... });
+
+        // Gallery (REMOVED as section is deleted)
+        // $('.tm-gallery').magnificPopup({ ... });
+
+        // Pop up (REMOVED - was duplicate of gallery popup)
+        // $('.tm-gallery').magnificPopup({ ... });
+
+
+        // Single Page Nav
+        $('#tmNav').singlePageNav({
+          offset: getOffSet()
+        });
+
+        // Navbar sticky fix
+        // var navbar = $(".tm-navbar"); // This line existed but wasn't used by Tooplate script.
+
+        // Parallax effect
+        background_image_parallax($(".tm-parallax"), 0.40, false);
+        background_image_parallax_2($("#contacto"), 0.80);   // Changed from #contact
+        // background_image_parallax_2($("#testimonials"), 0.80); // Removed as section is deleted
+
+        // Handle click on "Continue" button (smooth scroll)
+        $('a[href^="#"]').on('click', function(event) {
+            var target = $(this.getAttribute('href'));
+            if( target.length ) {
+                event.preventDefault();
+                $('html, body').stop().animate({
+                    scrollTop: target.offset().top - getOffSet() + 70 // Adjusted for navbar height
+                }, 1000, 'easeInOutExpo'); // Added easing
+            }
+        });
+
+        // Update offset when window resize
+        $(window).resize(function(){
+          $('#tmNav').singlePageNav({
+            offset: getOffSet()
+          });
+        });
+
+      });
+
+    </script>
+  </body>
 </html>
