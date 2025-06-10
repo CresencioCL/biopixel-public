@@ -1,22 +1,112 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Biopixel - Agricultura de Precisión</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #222;
+    }
+    .hero {
+      background: linear-gradient(135deg, #1b6ca8, #4b9cd3);
+      color: white;
+      padding: 100px 15px 70px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-weight: 700;
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: auto;
+    }
+    .btn-primary {
+      background-color: #1b6ca8;
+      border: none;
+    }
+    .btn-primary:hover {
+      background-color: #155a8a;
+    }
+    section {
+      padding: 60px 15px;
+      max-width: 900px;
+      margin: auto;
+    }
+    footer {
+      background-color: #222;
+      color: #ccc;
+      padding: 20px 15px;
+      text-align: center;
+    }
+    @media (min-width: 768px) {
+      .hero h1 {
+        font-size: 3.8rem;
+      }
+      .hero p {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-        </ul>
-    </nav>
+
+  <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
     <div class="container">
-        <h1>Welcome to my website!</h1>
-        <p>This is a placeholder page.</p>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d425907.6496903967!2d-70.91001909099378!3d-33.47247283929951!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5410425af2f%3A0x8475d53c400f0931!2sSantiago%2C%20Santiago%20Metropolitan%20Region%2C%20Chile!5e0!3m2!1sen!2s!4v1699978513128!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <a class="navbar-brand fw-bold" href="#">Biopixel</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#home">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#quienes-somos">Quiénes Somos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
     </div>
+  </nav>
+
+  <section id="home" class="hero">
+    <h1>Transformando la agricultura a través de datos y tecnología</h1>
+    <p>
+      La agricultura a gran escala enfrenta hoy desafíos complejos: optimizar recursos, anticipar riesgos y tomar decisiones precisas en tiempo real. Biopixel nace para integrar toda la información relevante en una plataforma unificada, facilitando la planificación y gestión eficiente de cultivos y cosechas.
+    </p>
+    <p>
+      Mediante modelos avanzados, mapeo espacial y monitoreo continuo, ofrecemos herramientas que permiten maximizar la productividad y reducir incertidumbres en cada etapa del proceso agrícola.
+    </p>
+    <p>
+      Nuestra misión es acercar la agricultura de precisión a cualquier realidad productiva, entregando soluciones confiables, accesibles y diseñadas para quienes viven el campo día a día.
+    </p>
+    <a href="#quienes-somos" class="btn btn-primary btn-lg mt-4">Conócenos</a>
+  </section>
+
+  <section id="quienes-somos" class="bg-white rounded shadow-sm">
+    <h2 class="mb-4 text-center">Quiénes somos</h2>
+    <p>
+      Biopixel es una empresa orientada a transformar la forma en que se planifica y gestiona la agricultura a gran escala. Buscamos integrar datos provenientes de diversas fuentes en un único sistema, capaz de ofrecer modelos, simulaciones y herramientas de apoyo para la toma de decisiones en terreno.
+    </p>
+    <p>
+      Nacemos con la convicción de que el valor está en entender el espacio y el tiempo de forma coordinada, y de que la productividad agrícola puede optimizarse si se cuenta con información confiable, accesible y accionable.
+    </p>
+    <p>
+      Nuestro enfoque combina conocimiento técnico, visión operativa y experiencia en manejo de datos espaciales. Queremos acercar soluciones de agricultura de precisión que permitan mejorar la eficiencia, anticipar problemas y ordenar los procesos desde la base.
+    </p>
+    <p>
+      Biopixel no solo entrega tecnología: propone una nueva forma de entender el campo, con una mirada estratégica y conectada a la realidad de quienes lo trabajan.
+    </p>
+  </section>
+
+  <footer id="contacto">
+    <p>© 2025 Biopixel. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
