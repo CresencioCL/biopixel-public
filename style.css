@@ -13,7 +13,7 @@ body {
     background-color: #440154; /* Dark Purple */
     color: #fde725; /* Bright Yellow */
     line-height: 1.6;
-    padding: 20px; /* Add some padding around the content */
+    /* padding: 20px; Removed to avoid conflict with full-width elements */
 }
 
 h1, h2, h3 {
@@ -44,50 +44,113 @@ a:hover {
     color: #35b7b4; /* Slightly lighter teal for hover */
 }
 
-/* Navigation Styles */
-nav {
-    padding: 10px 0;
+/* Bootstrap Navbar Styling */
+.navbar {
+    background-color: #3b0147; /* Slightly different purple for navbar */
+    padding: 1rem 0; /* Consistent padding */
     margin-bottom: 30px;
-    border-bottom: 1px solid #21908d; /* Teal border */
 }
 
-nav ul {
-    list-style-type: none;
-    padding: 0;
-    text-align: center; /* Center the navigation items */
+.navbar-brand {
+    color: #fde725 !important; /* Bright Yellow */
+    font-weight: 700;
 }
 
-nav ul li {
-    display: inline-block; /* Align items horizontally */
-    margin-right: 20px;
+.navbar-brand:hover {
+    color: #fff !important; /* White on hover */
 }
 
-nav ul li:last-child {
-    margin-right: 0;
-}
-
-nav ul li a {
-    font-size: 1.1em;
-    font-weight: 700; /* Bolder navigation links */
-    color: #fde725; /* Bright Yellow for nav links, to stand out on purple */
-    text-decoration: none;
-    padding: 5px 10px;
-    border-radius: 4px; /* Slightly rounded corners for links */
+.nav-link {
+    color: #fde725 !important; /* Bright Yellow for nav links */
+    font-weight: 700;
+    margin-right: 15px;
+    padding: 0.5rem 1rem !important;
+    border-radius: 4px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-nav ul li a:hover,
-nav ul li a.active { /* Style for active page link if we add that later */
-    color: #440154; /* Dark Purple text on hover */
-    background-color: #21908d; /* Teal background on hover */
+.nav-link:hover,
+.nav-link.active {
+    color: #440154 !important; /* Dark Purple text on hover/active */
+    background-color: #21908d !important; /* Teal background on hover/active */
     text-decoration: none;
 }
 
-/* Main Content Area Styling */
-.container { /* We'll need to wrap main content in a div with this class in HTML later */
-    max-width: 960px; /* Max width for content */
-    margin: 0 auto; /* Center the content */
-    padding: 0 20px; /* Padding inside the container */
+.navbar-toggler {
+    border-color: rgba(253, 231, 37, 0.5) !important; /* Yellowish border for toggler */
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28253, 231, 37, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+
+/* Hero Section Styling */
+.hero {
+    background-color: #440154; /* Dark Purple, same as body or slightly different if preferred */
+    color: #fde725; /* Bright Yellow text */
+    padding: 80px 15px 60px; /* Adjusted padding */
+    text-align: center;
+    margin-bottom: 30px; /* Space after hero */
+}
+
+.hero h1 {
+    font-weight: 700;
+    font-size: 2.8rem; /* Original size */
+    margin-bottom: 20px;
+    color: #fde725; /* Ensure yellow color */
+}
+
+.hero p {
+    font-size: 1.2rem; /* Original size */
+    max-width: 700px;
+    margin: auto auto 1em auto; /* Center and add bottom margin */
+    color: #fde725; /* Ensure yellow color */
+}
+
+@media (min-width: 768px) {
+    .hero h1 {
+        font-size: 3.8rem; /* Original size */
+    }
+    .hero p {
+        font-size: 1.4rem; /* Original size */
+    }
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: #21908d !important; /* Teal background */
+    border: none !important;
+    color: #fde725 !important; /* Bright Yellow text */
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #1a7975 !important; /* Darker Teal on hover */
+    color: #fff !important; /* White text on hover */
+}
+
+/* Content Sections */
+section {
+    padding: 40px 15px; /* Adjusted padding */
+}
+
+/* Specific styling for sections that were previously bg-white */
+.content-section { /* You'll need to add this class to the "Quiénes Somos" section in index.html */
+    background-color: #4a0e5e; /* A slightly lighter purple or a contrasting dark shade */
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 30px; /* Space between sections */
+    color: #fde725; /* Ensure text is yellow */
+}
+
+.content-section h2 {
+    color: #fde725; /* Ensure heading is yellow */
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 /* Responsive Google Map */
@@ -100,34 +163,16 @@ iframe {
     margin-top: 20px; /* Space above the map */
 }
 
-/* Optional: If you want a fixed aspect ratio for the map, e.g., 16:9 */
-/*
-.map-container {
-    position: relative;
-    overflow: hidden;
-    padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
-/*    margin-top: 20px;
-/*    border: 2px solid #21908d;
-/*    border-radius: 4px;
-/* }
-
-/* .map-container iframe {
-/*    position: absolute;
-/*    top: 0;
-/*    left: 0;
-/*    width: 100%;
-/*    height: 100%;
-/*    border: none; /* Remove border from iframe if container has it */
-/* }
-*/
-
-/* Footer (if we add one later) */
-/*
+/* Footer Styling */
 footer {
+    background-color: #3b0147; /* Same as navbar or body purple */
+    color: #fde725; /* Bright Yellow text */
+    padding: 30px 15px;
     text-align: center;
-    padding: 20px 0;
-    margin-top: 40px;
-    border-top: 1px solid #21908d;
-    font-size: 0.9em;
+    margin-top: 40px; /* Space above footer */
+    border-top: 1px solid #21908d; /* Teal border */
 }
-*/
+
+footer p {
+    margin-bottom: 0; /* Remove default paragraph margin in footer */
+}
