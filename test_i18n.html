@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es"> <!-- Default to Spanish for initial state -->
+<head>
+    <meta charset="UTF-8">
+    <title>i18n Test</title>
+    <!-- Assuming bootstrap CSS is not strictly needed for this text content test -->
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <div class="container">
+          <a class="navbar-brand fw-bold" href="#">Biopixel Test</a>
+          <div class="collapse navbar-collapse" id="navMenu">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item"><a class="nav-link active" href="#home" data-i18n="navbar_home">Inicio</a></li>
+              <li class="nav-item"><a class="nav-link" href="#quienes-somos" data-i18n="navbar_about">Quiénes Somos</a></li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Idioma/Language
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                  <li><a class="dropdown-item" href="#" onclick="setLanguage('es')">Español</a></li>
+                  <li><a class="dropdown-item" href="#" onclick="setLanguage('en')">English</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <h1 data-i18n="hero_title">Título Inicial</h1>
+        <p data-i18n="hero_subtitle1">Subtítulo inicial.</p>
+        <a href="#quienes-somos" class="btn btn-primary btn-lg mt-4" data-i18n="hero_button">Botón Inicial</a>
+    </section>
+
+    <footer id="contacto">
+        <p data-i18n="footer_copyright">© 2025 Biopixel Test. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="i18n.js"></script>
+    <script>
+        async function runTests() {
+            console.log('--- Starting i18n tests ---');
+
+            // Fetch expected values for comparison
+            let enTranslations, esTranslations;
+            try {
+                const enResponse = await fetch('en.json');
+                enTranslations = await enResponse.json();
+                const esResponse = await fetch('es.json');
+                esTranslations = await esResponse.json();
+            } catch (error) {
+                console.error('Failed to load translation files for testing:', error);
+                return;
+            }
+
+            // Initial state check (should be Spanish due to html lang="es" and i18n.js default logic)
+            console.log('Initial document lang:', document.documentElement.lang);
+            let initialHeroTitle = document.querySelector('[data-i18n="hero_title"]').textContent;
+            console.log('Initial Hero title (should be Spanish via initLanguage):', initialHeroTitle);
+            if (initialHeroTitle !== esTranslations.hero_title) {
+                 console.error(`ERROR: Initial hero title mismatch. Expected: "${esTranslations.hero_title}", Got: "${initialHeroTitle}"`);
+            } else {
+                 console.log("SUCCESS: Initial hero title matches Spanish version.");
+            }
+            let initialNavHome = document.querySelector('[data-i18n="navbar_home"]').textContent;
+             console.log('Initial Navbar Home (should be Spanish):', initialNavHome);
+            if (initialNavHome !== esTranslations.navbar_home) {
+                console.error(`ERROR: Initial navbar_home mismatch. Expected: "${esTranslations.navbar_home}", Got: "${initialNavHome}"`);
+            } else {
+                console.log("SUCCESS: Initial navbar_home matches Spanish version.");
+            }
+
+
+            // Test setting to English
+            console.log('\n--- Setting language to English ---');
+            await window.setLanguage('en'); // Ensure global setLanguage is used
+            console.log('Document lang after setLanguage("en"):', document.documentElement.lang);
+            if (document.documentElement.lang !== 'en') console.error("ERROR: HTML lang attribute not updated to 'en'");
+            else console.log("SUCCESS: HTML lang attribute updated to 'en'");
+
+            const heroTitleEn = document.querySelector('[data-i18n="hero_title"]').textContent;
+            console.log('Hero title in English:', heroTitleEn);
+            if (heroTitleEn !== enTranslations.hero_title) {
+                console.error(`ERROR: English hero_title mismatch. Expected: "${enTranslations.hero_title}", Got: "${heroTitleEn}"`);
+            } else {
+                console.log("SUCCESS: English hero_title matches.");
+            }
+
+            const navHomeEn = document.querySelector('[data-i18n="navbar_home"]').textContent;
+            console.log('Navbar Home in English:', navHomeEn);
+             if (navHomeEn !== enTranslations.navbar_home) {
+                console.error(`ERROR: English navbar_home mismatch. Expected: "${enTranslations.navbar_home}", Got: "${navHomeEn}"`);
+            } else {
+                console.log("SUCCESS: English navbar_home matches.");
+            }
+
+            const heroButtonEn = document.querySelector('[data-i18n="hero_button"]').textContent;
+            console.log('Hero button in English:', heroButtonEn);
+            if (heroButtonEn !== enTranslations.hero_button) {
+                console.error(`ERROR: English hero_button mismatch. Expected: "${enTranslations.hero_button}", Got: "${heroButtonEn}"`);
+            } else {
+                console.log("SUCCESS: English hero_button matches.");
+            }
+
+            // Test setting back to Spanish
+            console.log('\n--- Setting language to Spanish ---');
+            await window.setLanguage('es');
+            console.log('Document lang after setLanguage("es"):', document.documentElement.lang);
+            if (document.documentElement.lang !== 'es') console.error("ERROR: HTML lang attribute not updated to 'es'");
+            else console.log("SUCCESS: HTML lang attribute updated to 'es'");
+
+            const heroTitleEs = document.querySelector('[data-i18n="hero_title"]').textContent;
+            console.log('Hero title in Spanish:', heroTitleEs);
+            if (heroTitleEs !== esTranslations.hero_title) {
+                console.error(`ERROR: Spanish hero_title mismatch. Expected: "${esTranslations.hero_title}", Got: "${heroTitleEs}"`);
+            } else {
+                console.log("SUCCESS: Spanish hero_title matches.");
+            }
+
+            const navHomeEs = document.querySelector('[data-i18n="navbar_home"]').textContent;
+            console.log('Navbar Home in Spanish:', navHomeEs);
+            if (navHomeEs !== esTranslations.navbar_home) {
+                console.error(`ERROR: Spanish navbar_home mismatch. Expected: "${esTranslations.navbar_home}", Got: "${navHomeEs}"`);
+            } else {
+                console.log("SUCCESS: Spanish navbar_home matches.");
+            }
+
+            console.log('\n--- i18n tests finished ---');
+        }
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            console.log('Test script: DOMContentLoaded event fired.');
+            if (window.i18nInitialized) {
+                console.log('Test script: Waiting for i18nInitialized promise...');
+                try {
+                    await window.i18nInitialized;
+                    console.log('Test script: i18nInitialized promise resolved. Running tests.');
+                    await runTests();
+                } catch (error) {
+                    console.error('Test script: Error waiting for i18nInitialized or running tests:', error);
+                }
+            } else {
+                console.error('Test script: window.i18nInitialized promise not found. Cannot run tests.');
+                // Fallback to timeout if promise somehow isn't set, though it should be.
+                // setTimeout(runTests, 1000);
+            }
+        });
+    </script>
+</body>
+</html>
