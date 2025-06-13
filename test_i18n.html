@@ -43,19 +43,23 @@
             console.log('--- Starting i18n tests ---');
 
             // Fetch expected values for comparison
-            let enTranslations, esTranslations;
+            let enTranslations, esTranslations, nlTranslations; // Added nlTranslations
             try {
                 const enResponse = await fetch('en.json');
                 enTranslations = await enResponse.json();
                 const esResponse = await fetch('es.json');
                 esTranslations = await esResponse.json();
+                const nlResponse = await fetch('nl.json'); // Fetch nl.json
+                nlTranslations = await nlResponse.json();   // Parse nl.json
             } catch (error) {
                 console.error('Failed to load translation files for testing:', error);
                 return;
             }
 
             // Initial state check (should be Spanish due to html lang="es" and i18n.js default logic)
-            console.log('Initial document lang:', document.documentElement.lang);
+            // Note: i18n.js init logic runs on DOMContentLoaded and might update this before these specific lines run
+            // depending on exact timing. The await window.i18nInitialized in the event listener is key.
+            console.log('Initial document lang (after i18n init):', document.documentElement.lang);
             let initialHeroTitle = document.querySelector('[data-i18n="hero_title"]').textContent;
             console.log('Initial Hero title (should be Spanish via initLanguage):', initialHeroTitle);
             if (initialHeroTitle !== esTranslations.hero_title) {
@@ -126,6 +130,29 @@
                 console.log("SUCCESS: Spanish navbar_home matches.");
             }
 
+            // Test setting to Dutch
+            console.log('\n--- Setting language to Dutch ---');
+            await window.setLanguage('nl');
+            console.log('Document lang after setLanguage("nl"):', document.documentElement.lang);
+            if (document.documentElement.lang !== 'nl') console.error("ERROR: HTML lang attribute not updated to 'nl'");
+            else console.log("SUCCESS: HTML lang attribute updated to 'nl'");
+
+            const heroTitleNl = document.querySelector('[data-i18n="hero_title"]').textContent;
+            console.log('Hero title in Dutch:', heroTitleNl);
+            if (heroTitleNl !== nlTranslations.hero_title) {
+                console.error(`ERROR: Dutch hero_title mismatch. Expected: "${nlTranslations.hero_title}", Got: "${heroTitleNl}"`);
+            } else {
+                console.log("SUCCESS: Dutch hero_title matches.");
+            }
+
+            const navHomeNl = document.querySelector('[data-i18n="navbar_home"]').textContent;
+            console.log('Navbar Home in Dutch:', navHomeNl);
+            if (navHomeNl !== nlTranslations.navbar_home) {
+                console.error(`ERROR: Dutch navbar_home mismatch. Expected: "${nlTranslations.navbar_home}", Got: "${navHomeNl}"`);
+            } else {
+                console.log("SUCCESS: Dutch navbar_home matches.");
+            }
+
             console.log('\n--- i18n tests finished ---');
         }
 
@@ -134,16 +161,14 @@
             if (window.i18nInitialized) {
                 console.log('Test script: Waiting for i18nInitialized promise...');
                 try {
-                    await window.i18nInitialized;
+                    await window.i18nInitialized; // Ensure i18n.js has fully initialized
                     console.log('Test script: i18nInitialized promise resolved. Running tests.');
-                    await runTests();
+                    await runTests(); // Now run the actual tests
                 } catch (error) {
-                    console.error('Test script: Error waiting for i18nInitialized or running tests:', error);
+                    console.error('Test script: Error during i18n initialization or running tests:', error);
                 }
             } else {
                 console.error('Test script: window.i18nInitialized promise not found. Cannot run tests.');
-                // Fallback to timeout if promise somehow isn't set, though it should be.
-                // setTimeout(runTests, 1000);
             }
         });
     </script>
