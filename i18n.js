@@ -48,7 +48,7 @@ async function setLanguage(lang) {
     console.error('[i18n] Error after test await in setLanguage', e);
     throw e;
   }
-  if (!['en', 'es'].includes(lang)) {
+  if (!['en', 'es', 'nl'].includes(lang)) {
     console.warn(`[i18n] Language ${lang} not supported. Defaulting to 'es'.`);
     lang = 'es';
   }
@@ -83,7 +83,7 @@ async function initLanguage() {
   try {
     const htmlLang = document.documentElement.lang;
     console.log('[i18n] HTML lang attribute:', htmlLang);
-    if (htmlLang && ['en', 'es'].includes(htmlLang) && htmlLang !== preferredLanguage) {
+    if (htmlLang && ['en', 'es', 'nl'].includes(htmlLang) && htmlLang !== preferredLanguage) { // Also update here for consistency
       preferredLanguage = htmlLang;
       console.log('[i18n] Using HTML lang attribute as preferred language:', preferredLanguage);
     }
