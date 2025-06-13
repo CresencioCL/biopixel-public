@@ -1,10 +1,23 @@
 // Function to fetch translation files
 async function fetchTranslations(lang) {
-  const response = await fetch(`${lang}.json`);
-  if (!response.ok) {
-    throw new Error(`Failed to load ${lang}.json`);
+  console.log(`[i18n] Attempting to fetch ${lang}.json`); // Loguear intento
+  try {
+    const response = await fetch(`${lang}.json`);
+    console.log(`[i18n] Response status for ${lang}.json: ${response.status}`); // Loguear status
+    if (!response.ok) {
+      const errorText = await response.text(); // Intentar leer el texto del error
+      console.error(`[i18n] Failed to load ${lang}.json. Status: ${response.status}. Body: ${errorText}`);
+      alert(`Error: Could not load translation file for ${lang}. Server returned ${response.status}.`); // Alerta visible
+      throw new Error(`Failed to load ${lang}.json. Status: ${response.status}`);
+    }
+    const data = await response.json();
+    console.log(`[i18n] Successfully fetched and parsed ${lang}.json`); // Loguear éxito
+    return data;
+  } catch (error) {
+    console.error(`[i18n] Critical error fetching or parsing ${lang}.json:`, error);
+    alert(`Critical Error: Could not process translation file for ${lang}. See console for details.`); // Alerta visible
+    throw error; // Re-lanzar para que setLanguage falle
   }
-  return await response.json();
 }
 
 // Function to apply translations to the page
@@ -30,41 +43,53 @@ function applyTranslations(translations) {
       }
     });
     // Update the lang attribute of the HTML tag
-    document.documentElement.lang = currentLanguage;
+    document.documentElement.lang = currentLanguage; // currentLanguage should be set before this runs
     console.log('[i18n] Translations applied. HTML lang set to:', currentLanguage);
   } catch (e) {
     console.error('[i18n] Error in applyTranslations:', e);
-    throw e; // Re-throw to be caught by initLanguage promise
+    alert(`Error applying translations. Some text may not be updated. See console.`); // Alerta visible
+    throw e;
   }
 }
 
 // Function to set the language
 async function setLanguage(lang) {
-  console.log('[i18n] Setting language to:', lang);
-  try {
-    await Promise.resolve(); // Test await itself
-    console.log('[i18n] after test await in setLanguage');
-  } catch (e) {
-    console.error('[i18n] Error after test await in setLanguage', e);
-    throw e;
-  }
+  console.log(`[i18n] setLanguage called for: ${lang}`);
   if (!['en', 'es', 'nl'].includes(lang)) {
     console.warn(`[i18n] Language ${lang} not supported. Defaulting to 'es'.`);
     lang = 'es';
   }
+
+  // Guardar en localStorage
   try {
     localStorage.setItem('language', lang);
-    console.log('[i18n] localStorage.setItem attempted for', lang);
+    console.log(`[i18n] Language ${lang} saved to localStorage.`);
   } catch (e) {
     console.error('[i18n] Error during localStorage.setItem (continuing anyway):', e);
-    // Do not throw e, allow to continue
   }
-  currentLanguage = lang; // Update global current language
-  console.log('[i18n] Fetching translations for:', lang);
-  const translations = await fetchTranslations(lang);
-  console.log('[i18n] Translations fetched for:', lang);
-  applyTranslations(translations);
-  console.log('[i18n] Language set to:', lang);
+
+  currentLanguage = lang;
+  document.documentElement.lang = currentLanguage; // Actualizar lang HTML inmediatamente
+  console.log(`[i18n] currentLanguage set to: ${currentLanguage}. HTML lang attribute updated.`);
+
+  try {
+    console.log(`[i18n] Attempting to load translations for ${lang}...`);
+    const translations = await fetchTranslations(lang);
+    if (translations) { // Solo aplicar si fetchTranslations tuvo éxito
+        console.log(`[i18n] Translations successfully loaded for ${lang}. Applying...`);
+        applyTranslations(translations); // applyTranslations ya tiene sus propios logs y try/catch
+        console.log(`[i18n] Translations applied for ${lang}.`);
+    } else {
+        // Esto no debería ocurrir si fetchTranslations lanza error en caso de fallo.
+        console.error(`[i18n] Translations object for ${lang} is null or undefined after fetch. Cannot apply.`);
+        alert(`Error: Translation data for ${lang} could not be loaded. Check console.`);
+    }
+  } catch (error) {
+    // Si fetchTranslations falla y lanza un error, se atrapará aquí.
+    // La alerta ya se habrá mostrado en fetchTranslations.
+    console.error(`[i18n] Failed to set language ${lang} due to error in fetching/applying translations:`, error);
+    // Opcionalmente, revertir al idioma anterior o a uno por defecto si falla la carga.
+  }
 }
 
 // Function to initialize language settings
