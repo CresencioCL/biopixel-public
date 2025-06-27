@@ -1,16 +1,38 @@
 {
-  "navbar_home": "Inicio",
-  "navbar_about": "Nuestra Misión",
-  "navbar_contact": "Contacto",
-  "hero_title": "Asegurando la alimentación del mañana, hoy.",
-  "hero_subtitle1": "El crecimiento demográfico mundial desafía el futuro de la agricultura. Nuestra misión es garantizar que el mundo tendrá alimento disponible, transformando los procesos agrícolas para una nueva era.",
-  "hero_subtitle2": "Desarrollamos e implementamos tecnologías de vanguardia, adaptando las prácticas del campo a la realidad de cada instante. No solo observamos la evolución, la lideramos junto a nuestros socios.",
-  "hero_subtitle3": "Los desafíos del futuro son complejos, pero no tienes que enfrentarlos solo. Estamos aquí para ser tu aliado estratégico en esta gran transición, asegurando que tu producción no solo sobreviva, sino que prospere.",
-  "hero_button": "Únete a la transición",
-  "about_title": "Impulsando la Próxima Revolución Agrícola",
-  "about_p1": "El futuro de la alimentación depende de nuestra capacidad para evolucionar. En Biopixel, aceptamos este deber como nuestra razón de ser. Somos un equipo de científicos y estrategas dedicados a optimizar cada recurso y cada proceso en la cadena productiva.",
-  "about_p2": "Entendemos que la verdadera innovación no está en tener más sensores, sino en tomar decisiones más inteligentes con los datos que ya existen. Integramos y damos sentido a información compleja, desde satélites hasta el tractor en el campo, para que sea útil y accionable para ti.",
-  "about_p3": "Sabemos que cada campo tiene su propia realidad. Por eso, co-creamos soluciones a medida, mejorando procesos e implementando tecnologías que se ajustan a tus necesidades, no al revés. Somos tus socios en la adaptación continua que el presente exige.",
-  "about_p4": "Más que una empresa de tecnología, somos tus compañeros de equipo en la misión más importante de todas: alimentar al mundo. Juntos, llevaremos la producción agrícola al siguiente nivel.",
-  "footer_copyright": "© 2025 Biopixel. Todos los derechos reservados."
+  "new_page_title": "Biopixel - Agricultura Sostenible",
+  "new_header_logo_text": "Biopixel",
+  "nav_home": "Inicio",
+  "nav_challenge": "Desafío",
+  "nav_mission": "Misión",
+  "nav_approach": "Enfoque",
+  "nav_stay_updated": "Mantente Actualizado",
+  "header_join_button": "Únete a la Transición",
+
+  "hero1_title": "Asegurando la alimentación del mañana, hoy.",
+  "hero1_subtitle": "Biopixel está a la vanguardia de la agricultura sostenible, desarrollando soluciones innovadoras para satisfacer la creciente demanda mundial de alimentos.",
+  "hero1_button": "Únete a la Transición",
+
+  "hero2_title": "El Desafío de una Población Creciente",
+  "hero2_subtitle": "Con una población mundial que se proyecta alcanzará casi 10 mil millones para 2050, la necesidad de una producción de alimentos sostenible y eficiente nunca ha sido mayor. Los métodos agrícolas tradicionales están luchando por mantener el ritmo, lo que genera preocupaciones ambientales e inseguridad alimentaria.",
+  "hero2_button": "Aprende Más",
+
+  "hero3_title": "Nuestra Misión",
+  "hero3_subtitle": "En Biopixel, nuestra misión es revolucionar la agricultura a través de la tecnología. Estamos comprometidos a desarrollar soluciones que mejoren los rendimientos de los cultivos, reduzcan el impacto ambiental y aseguren un suministro de alimentos sostenible para las generaciones futuras.",
+  "hero3_button": "Explora Nuestras Soluciones",
+
+  "hero4_title": "Nuestro Enfoque y Soluciones",
+  "hero4_subtitle": "Aprovechamos tecnologías de vanguardia, incluida la agricultura de precisión, la agricultura vertical y el análisis de datos, para optimizar la producción de cultivos. Nuestras soluciones se centran en maximizar la eficiencia, minimizar el uso de recursos y promover prácticas sostenibles.",
+  "hero4_button": "Contáctanos",
+
+  "stay_updated_title": "Mantente Actualizado",
+  "stay_updated_subtitle": "Suscríbete a nuestro boletín para recibir las últimas noticias y conocimientos sobre agricultura sostenible.",
+  "stay_updated_placeholder_email": "Tu Email",
+  "stay_updated_sr_email_label": "Tu Email",
+  "stay_updated_button": "Enviar",
+
+  "footer_about_us": "Sobre Nosotros",
+  "footer_our_solutions": "Nuestras Soluciones",
+  "footer_contact": "Contacto",
+  "footer_careers": "Carreras",
+  "footer_copyright_new": "© 2023 Biopixel. Todos los derechos reservados."
 }

@@ -1,16 +1,38 @@
 {
-  "navbar_home": "Home",
-  "navbar_about": "Onze Missie",
-  "navbar_contact": "Contact",
-  "hero_title": "Vandaag de voeding van morgen verzekeren.",
-  "hero_subtitle1": "De wereldwijde bevolkingsgroei daagt de toekomst van de landbouw uit. Onze missie is om te garanderen dat de wereld over voedsel kan beschikken, door landbouwprocessen te transformeren voor een nieuw tijdperk.",
-  "hero_subtitle2": "We ontwikkelen en implementeren geavanceerde technologieën, waarbij we de praktijken in het veld aanpassen aan de realiteit van elk moment. We observeren de evolutie niet alleen, we leiden haar samen met onze partners.",
-  "hero_subtitle3": "De uitdagingen van de toekomst zijn complex, maar u staat er niet alleen voor. Wij zijn hier om uw strategische bondgenoot te zijn in deze grote transitie, en ervoor te zorgen dat uw productie niet alleen overleeft, maar bloeit.",
-  "hero_button": "Sluit je aan bij de transitie",
-  "about_title": "De drijvende kracht achter de volgende landbouwrevolutie",
-  "about_p1": "De toekomst van voedsel hangt af van ons vermogen om te evolueren. Bij Biopixel aanvaarden we deze plicht als onze bestaansreden. Wij zijn een team van wetenschappers en strategen, toegewijd aan het optimaliseren van elke hulpbron en elk proces in de productieketen.",
-  "about_p2": "Wij begrijpen dat ware innovatie niet ligt in het hebben van meer sensoren, maar in het nemen van slimmere beslissingen met de data die al bestaat. We integreren en geven betekenis aan complexe informatie, van satellieten tot de tractor op het veld, om deze bruikbaar en actiegericht voor u te maken.",
-  "about_p3": "We weten dat elk veld zijn eigen realiteit heeft. Daarom co-creëren we oplossingen op maat, verbeteren we processen en implementeren we technologieën die aansluiten bij uw behoeften, en niet andersom. Wij zijn uw partners in de continue aanpassing die het heden vereist.",
-  "about_p4": "Meer dan een technologiebedrijf, zijn wij uw teamgenoten in de allerbelangrijkste missie: de wereld voeden. Samen tillen we de landbouwproductie naar het volgende niveau.",
-  "footer_copyright": "© 2025 Biopixel. Alle rechten voorbehouden."
+  "new_page_title": "Biopixel - Duurzame Landbouw",
+  "new_header_logo_text": "Biopixel",
+  "nav_home": "Home",
+  "nav_challenge": "Uitdaging",
+  "nav_mission": "Missie",
+  "nav_approach": "Aanpak",
+  "nav_stay_updated": "Blijf Geïnformeerd",
+  "header_join_button": "Doe Mee met de Transitie",
+
+  "hero1_title": "Vandaag de voeding van morgen verzekeren.",
+  "hero1_subtitle": "Biopixel loopt voorop in duurzame landbouw en ontwikkelt innovatieve oplossingen om aan de groeiende wereldwijde vraag naar voedsel te voldoen.",
+  "hero1_button": "Doe Mee met de Transitie",
+
+  "hero2_title": "De Uitdaging van een Groeiende Bevolking",
+  "hero2_subtitle": "Met een wereldbevolking die naar verwachting bijna 10 miljard zal bedragen in 2050, is de behoefte aan duurzame en efficiënte voedselproductie nog nooit zo groot geweest. Traditionele landbouwmethoden hebben moeite om gelijke tred te houden, wat leidt tot milieuproblemen en voedselonzekerheid.",
+  "hero2_button": "Meer Informatie",
+
+  "hero3_title": "Onze Missie",
+  "hero3_subtitle": "Bij Biopixel is het onze missie om de landbouw te revolutioneren door middel van technologie. We zijn toegewijd aan het ontwikkelen van oplossingen die de gewasopbrengsten verbeteren, de milieu-impact verminderen en een duurzame voedselvoorziening voor toekomstige generaties verzekeren.",
+  "hero3_button": "Ontdek Onze Oplossingen",
+
+  "hero4_title": "Onze Aanpak en Oplossingen",
+  "hero4_subtitle": "We maken gebruik van geavanceerde technologieën, waaronder precisielandbouw, verticale landbouw en data-analyse, om de gewasproductie te optimaliseren. Onze oplossingen richten zich op het maximaliseren van efficiëntie, het minimaliseren van het resourcegebruik en het bevorderen van duurzame praktijken.",
+  "hero4_button": "Neem Contact Op",
+
+  "stay_updated_title": "Blijf Geïnformeerd",
+  "stay_updated_subtitle": "Schrijf u in voor onze nieuwsbrief voor het laatste nieuws en inzichten over duurzame landbouw.",
+  "stay_updated_placeholder_email": "Uw E-mailadres",
+  "stay_updated_sr_email_label": "Uw E-mailadres",
+  "stay_updated_button": "Verzenden",
+
+  "footer_about_us": "Over Ons",
+  "footer_our_solutions": "Onze Oplossingen",
+  "footer_contact": "Contact",
+  "footer_careers": "Carrières",
+  "footer_copyright_new": "© 2023 Biopixel. Alle rechten voorbehouden."
 }
