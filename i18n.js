@@ -27,21 +27,18 @@ function applyTranslations(translations) {
     document.querySelectorAll('[data-i18n]').forEach(element => {
       const key = element.getAttribute('data-i18n');
       if (translations[key]) {
-        // Preserve child elements for elements like the hero button
-        if (element.children.length > 0 && (key === 'hero_button' || key === 'navbar_home' || key === 'navbar_about' || key === 'navbar_contact')) {
-            // For buttons or links, we might only want to change the text node
-            // This is a simple approach; more complex structures might need specific handling
-            let textNode = Array.from(element.childNodes).find(node => node.nodeType === Node.TEXT_NODE);
-            if (textNode) {
-                textNode.textContent = translations[key];
-            } else {
-                element.textContent = translations[key];
-            }
-        } else {
-          element.textContent = translations[key];
-        }
+        element.textContent = translations[key];
       }
     });
+
+    // Handle placeholders specifically
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+      const key = element.getAttribute('data-i18n-placeholder');
+      if (translations[key]) {
+        element.placeholder = translations[key];
+      }
+    });
+
     // Update the lang attribute of the HTML tag
     document.documentElement.lang = currentLanguage; // currentLanguage should be set before this runs
     console.log('[i18n] Translations applied. HTML lang set to:', currentLanguage);
