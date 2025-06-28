@@ -16,20 +16,35 @@
     <script src="i18n.js" defer></script>
     <script src="smooth-scroll.js" defer></script>
     <script src="header-scroll.js" defer></script>
+    <script src="mobile-menu.js" defer></script>
     <style>
-      .header-hidden {
-        transform: translateY(-100%);
+      #page-header { /* Ensure header transition is smooth */
         transition: transform 0.3s ease-in-out;
       }
-      header {
-        transition: transform 0.3s ease-in-out;
+      .header-hidden {
+        transform: translateY(-100%);
+      }
+      #mobile-menu {
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0s linear 0.3s;
+        /* Delay visibility change until transition ends for hiding */
+        top: 48px; /* Adjusted to match mobile header height */
+      }
+      #mobile-menu.menu-open {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+        transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+         /* No delay for visibility when showing */
       }
     </style>
   </head>
   <body>
     <div class="relative flex size-full min-h-screen flex-col bg-[#141221] dark group/design-root overflow-x-hidden" style='font-family: "Space Grotesk", "Noto Sans", sans-serif;'>
-      <div class="layout-container flex h-full grow flex-col pt-[65px]">
-        <header id="page-header" class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#2a2645] px-10 py-3 fixed w-full top-0 z-50 bg-[#141221]">
+      <div class="layout-container flex h-full grow flex-col pt-[48px] md:pt-[64px]">
+        <header id="page-header" class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#2a2645] px-10 py-3 fixed w-full top-0 z-50 bg-[#141221] h-[48px] md:h-[64px]">
           <div class="flex items-center gap-4 text-white">
             <div class="size-4">
               <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -43,7 +58,8 @@
             </div>
             <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]" data-i18n="new_header_logo_text">Biopixel</h2>
           </div>
-          <nav class="flex flex-1 justify-end items-center gap-8">
+          <!-- Desktop Navigation -->
+          <nav class="hidden md:flex flex-1 justify-end items-center gap-8">
             <div class="flex items-center gap-9">
               <a class="text-white text-sm font-medium leading-normal nav-link" href="#home" data-i18n="nav_home">Home</a>
               <a class="text-white text-sm font-medium leading-normal nav-link" href="#challenge" data-i18n="nav_challenge">Challenge</a>
@@ -62,8 +78,36 @@
               <span class="truncate" data-i18n="header_join_button">Join the Transition</span>
             </button>
           </nav>
+          <!-- Mobile Menu Button -->
+          <div class="md:hidden flex items-center">
+            <button id="mobile-menu-button" class="text-white focus:outline-none">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+              </svg>
+            </button>
+          </div>
         </header>
-        <main class="px-40 flex flex-1 justify-center py-5">
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden fixed left-0 w-full bg-[#1e1c2f] z-40 shadow-lg">
+          <nav class="flex flex-col items-center gap-4 py-4">
+            <a class="text-white text-lg font-medium leading-normal nav-link" href="#home" data-i18n="nav_home">Home</a>
+            <a class="text-white text-lg font-medium leading-normal nav-link" href="#challenge" data-i18n="nav_challenge">Challenge</a>
+            <a class="text-white text-lg font-medium leading-normal nav-link" href="#mission" data-i18n="nav_mission">Mission</a>
+            <a class="text-white text-lg font-medium leading-normal nav-link" href="#approach" data-i18n="nav_approach">Approach</a>
+            <a class="text-white text-lg font-medium leading-normal nav-link" href="#stay-updated" data-i18n="nav_stay_updated">Stay Updated</a>
+            <div class="flex items-center gap-4 mt-4">
+              <button onclick="setLanguage('es'); closeMobileMenu();" class="text-white text-sm font-medium leading-normal px-3 py-1.5 bg-[#2a2645] hover:bg-[#341fbe] rounded">ES</button>
+              <button onclick="setLanguage('en'); closeMobileMenu();" class="text-white text-sm font-medium leading-normal px-3 py-1.5 bg-[#2a2645] hover:bg-[#341fbe] rounded">EN</button>
+              <button onclick="setLanguage('nl'); closeMobileMenu();" class="text-white text-sm font-medium leading-normal px-3 py-1.5 bg-[#2a2645] hover:bg-[#341fbe] rounded">NL</button>
+            </div>
+            <button
+              class="mt-4 flex min-w-[120px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded h-10 px-4 bg-[#341fbe] text-white text-sm font-bold leading-normal tracking-[0.015em]"
+            >
+              <span class="truncate" data-i18n="header_join_button">Join the Transition</span>
+            </button>
+          </nav>
+        </div>
+        <main class="px-4 md:px-40 flex flex-1 justify-center py-5">
           <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
             <section id="home" class="@container">
               <div class="@[480px]:p-4">
@@ -71,19 +115,19 @@
                   class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded items-center justify-center p-4"
                   style='background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuAV9TyP25HSU-Kg7j6W2TmsGq0N4GETNv60AWzIdiQeaLHDWiXA92wj-NOYzaE4G5jKSxSNyve9dauTQ3GBdWB81bHSndIM9ZK04lnXV8IIRhd3SJPI6TpT9iAa-PGbToIg_F-HaJusmEFcIN4KHKYRmB_334i0yqYgTibuiU9uwQWlE_2e8EYCI8-b--k326Q1lFR-k4Zj96rwk-CpXvhcV5bw0bgw7bGZH4hte3VnxJdLWMWrWqd0t2g78SwTv_pyZIyXyFzCIw");'
                 >
-                  <div class="flex flex-col gap-2 text-center">
+                  <div class="flex flex-col gap-2 text-center px-4">
                     <h1
-                      class="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]"
+                      class="text-white text-3xl md:text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]"
                       data-i18n="hero1_title"
                     >
                       Securing tomorrow's food, today.
                     </h1>
-                    <h2 class="text-white text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal" data-i18n="hero1_subtitle">
+                    <h2 class="text-white text-sm md:text-base font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal" data-i18n="hero1_subtitle">
                       Biopixel is at the forefront of sustainable agriculture, developing innovative solutions to meet the growing global demand for food.
                     </h2>
                   </div>
                   <button
-                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#341fbe] text-white text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
+                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded h-10 px-4 text-sm @[480px]:h-12 @[480px]:px-5 bg-[#341fbe] text-white md:text-base font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
                   >
                     <span class="truncate" data-i18n="hero1_button">Join the Transition</span>
                   </button>
@@ -96,20 +140,20 @@
                   class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded items-center justify-center p-4"
                   style='background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBdtHGf0AGzE9gBWLt_O4FqAVDCbP5FVVnO9vgV5TfnWOQOEP6wtvYSlkrzL9CYn256x0NmTMLAOfIfLH5U6C-QmEELYDAktTSPMHhIaAL36JLBj6TjP6Z08g4UIMw1iU3iiMEG2mik6ZdzauPTrBIJ_BC8OEw89dv91t9FzvjN8a54tjlW7JRwq737ulQYG4VhZ0hvRxWC0Y318WCFhaIZdu42FVMLi5n4T1TzRx6ALKYV_2SPI77mUM_Dm9qGkwHEgMRCS1JxBg");'
                 >
-                  <div class="flex flex-col gap-2 text-center">
+                  <div class="flex flex-col gap-2 text-center px-4">
                     <h1
-                      class="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]"
+                      class="text-white text-3xl md:text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]"
                       data-i18n="hero2_title"
                     >
                       The Challenge of a Growing Population
                     </h1>
-                    <h2 class="text-white text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal" data-i18n="hero2_subtitle">
+                    <h2 class="text-white text-sm md:text-base font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal" data-i18n="hero2_subtitle">
                       With the global population projected to reach nearly 10 billion by 2050, the need for sustainable and efficient food production has never been greater.
                       Traditional farming methods are struggling to keep pace, leading to environmental concerns and food insecurity.
                     </h2>
                   </div>
                   <button
-                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#341fbe] text-white text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
+                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded h-10 px-4 text-sm @[480px]:h-12 @[480px]:px-5 bg-[#341fbe] text-white md:text-base font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
                   >
                     <span class="truncate" data-i18n="hero2_button">Learn More</span>
                   </button>
@@ -122,20 +166,20 @@
                   class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded items-center justify-center p-4"
                   style='background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDBCr6qMOq-V0P_20zdzgS1GpgMN0Ec7VENltFw8l7L3Kb98tAOlCv1okuVj6W8rVR1dZtjcw1Ga_Nu64_ZITFMYaYnakpQfqh1-6h_F4hYHOE1jYX-o2szK3me5H9WejqkSUvf21qhLEIiIYYhz3NwYXVw4dqOEhX0YBrr7CUxTAeys4JbVk25kNRZYYBKSVZHvYLrH8Cxiz9gFfI_2VcyKWWTpojtCXzSSjNrfZpQ07VNd3__ILPSBGs6osSGMK0iztciC35xEQ");'
                 >
-                  <div class="flex flex-col gap-2 text-center">
+                  <div class="flex flex-col gap-2 text-center px-4">
                     <h1
-                      class="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]"
+                      class="text-white text-3xl md:text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]"
                       data-i18n="hero3_title"
                     >
                       Our Mission
                     </h1>
-                    <h2 class="text-white text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal" data-i18n="hero3_subtitle">
+                    <h2 class="text-white text-sm md:text-base font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal" data-i18n="hero3_subtitle">
                       At Biopixel, our mission is to revolutionize agriculture through technology. We are committed to developing solutions that enhance crop yields, reduce
                       environmental impact, and ensure a sustainable food supply for future generations.
                     </h2>
                   </div>
                   <button
-                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#341fbe] text-white text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
+                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded h-10 px-4 text-sm @[480px]:h-12 @[480px]:px-5 bg-[#341fbe] text-white md:text-base font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
                   >
                     <span class="truncate" data-i18n="hero3_button">Explore Our Solutions</span>
                   </button>
@@ -148,20 +192,20 @@
                   class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded items-center justify-center p-4"
                   style='background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDnf13_yphPMlgncZzhXSaErDmCtOAwK6VvetOOOpbMzM7CNUkjJ1nYoukZ_riIcGfp-vH_XwV7RA1gVPfQ4kOAz31OoUecH64qsviUsNCn39Wvb3PQFwL1gq97PBoxMx-l5Z0GxO7i1gQYjOjVTL-pAI4BuNhLnrLyssHuxyZxr8aizYv6XDvpdBitac_UHtwg6m9OeYm8XJXdF5TCxfTRRDwMvOYdEvGR7_8B7gYkDir30Wk5cuuT28HCsjRFjPjpS1UPbWx90A");'
                 >
-                  <div class="flex flex-col gap-2 text-center">
+                  <div class="flex flex-col gap-2 text-center px-4">
                     <h1
-                      class="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]"
+                      class="text-white text-3xl md:text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]"
                       data-i18n="hero4_title"
                     >
                       Our Approach and Solutions
                     </h1>
-                    <h2 class="text-white text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal" data-i18n="hero4_subtitle">
+                    <h2 class="text-white text-sm md:text-base font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal" data-i18n="hero4_subtitle">
                       We leverage cutting-edge technologies, including precision agriculture, vertical farming, and data analytics, to optimize crop production. Our solutions focus
                       on maximizing efficiency, minimizing resource use, and promoting sustainable practices.
                     </h2>
                   </div>
                   <button
-                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#341fbe] text-white text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
+                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded h-10 px-4 text-sm @[480px]:h-12 @[480px]:px-5 bg-[#341fbe] text-white md:text-base font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
                   >
                     <span class="truncate" data-i18n="hero4_button">Contact Us</span>
                   </button>
@@ -172,27 +216,27 @@
               <div class="flex flex-col justify-end gap-6 px-4 py-10 @[480px]:gap-8 @[480px]:px-10 @[480px]:py-20">
                 <div class="flex flex-col gap-2 text-center">
                   <h1
-                    class="text-white tracking-light text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] max-w-[720px]"
+                    class="text-white tracking-light text-2xl sm:text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] max-w-[720px]"
                     data-i18n="stay_updated_title"
                   >
                     Stay Updated
                   </h1>
-                  <p class="text-white text-base font-normal leading-normal max-w-[720px" data-i18n="stay_updated_subtitle">
+                  <p class="text-white text-sm sm:text-base font-normal leading-normal max-w-[720px" data-i18n="stay_updated_subtitle">
                     Subscribe to our newsletter for the latest news and insights on sustainable agriculture.
                   </p>
                 </div>
                 <div class="flex flex-1 justify-center">
-                  <label class="flex flex-col min-w-40 h-14 max-w-[480px] flex-1 @[480px]:h-16">
+                  <label class="flex flex-col min-w-40 h-14 max-w-[480px] w-full sm:w-auto flex-1 @[480px]:h-16">
                     <span class="sr-only" data-i18n="stay_updated_sr_email_label">Your Email</span>
                     <div class="flex w-full flex-1 items-stretch rounded h-full">
                       <input
                         data-i18n-placeholder="stay_updated_placeholder_email" placeholder="Your Email"
-                        class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded text-white focus:outline-0 focus:ring-0 border-none bg-[#2a2645] focus:border-none h-full placeholder:text-[#9c96c5] px-4 rounded-r-none border-r-0 pr-2 text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal"
+                        class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded text-white focus:outline-0 focus:ring-0 border-none bg-[#2a2645] focus:border-none h-full placeholder:text-[#9c96c5] px-4 rounded-r-none border-r-0 pr-2 text-xs sm:text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal"
                         value=""
                       />
                       <div class="flex items-center justify-center rounded-r border-l-0 border-none bg-[#2a2645] pr-2">
                         <button
-                          class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#341fbe] text-white text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
+                          class="flex min-w-[70px] sm:min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded h-10 px-3 sm:px-4 @[480px]:h-12 @[480px]:px-5 bg-[#341fbe] text-white text-xs sm:text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
                         >
                           <span class="truncate" data-i18n="stay_updated_button">Submit</span>
                         </button>
@@ -203,11 +247,11 @@
               </div>
             </section>
             <footer class="flex flex-col gap-6 px-5 py-10 text-center @container">
-              <div class="flex flex-wrap items-center justify-center gap-6 @[480px]:flex-row @[480px]:justify-around">
-                <a class="text-[#9c96c5] text-base font-normal leading-normal min-w-40" href="#" data-i18n="footer_about_us">About Us</a>
-                <a class="text-[#9c96c5] text-base font-normal leading-normal min-w-40" href="#" data-i18n="footer_our_solutions">Our Solutions</a>
-                <a class="text-[#9c96c5] text-base font-normal leading-normal min-w-40" href="#" data-i18n="footer_contact">Contact</a>
-                <a class="text-[#9c96c5] text-base font-normal leading-normal min-w-40" href="#" data-i18n="footer_careers">Careers</a>
+              <div class="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4 sm:gap-6 @[480px]:flex-row @[480px]:justify-around">
+                <a class="text-[#9c96c5] text-sm sm:text-base font-normal leading-normal min-w-40" href="#" data-i18n="footer_about_us">About Us</a>
+                <a class="text-[#9c96c5] text-sm sm:text-base font-normal leading-normal min-w-40" href="#" data-i18n="footer_our_solutions">Our Solutions</a>
+                <a class="text-[#9c96c5] text-sm sm:text-base font-normal leading-normal min-w-40" href="#" data-i18n="footer_contact">Contact</a>
+                <a class="text-[#9c96c5] text-sm sm:text-base font-normal leading-normal min-w-40" href="#" data-i18n="footer_careers">Careers</a>
               </div>
               <div class="flex flex-wrap justify-center gap-4">
                 <a href="#">
