@@ -6,6 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const scrollThreshold = 5; // Minimum scroll change to trigger action
 
   window.addEventListener('scroll', () => {
+    // Prevent header hiding if mobile menu is active
+    if (document.body.classList.contains('mobile-menu-active-on-body')) {
+      header.classList.remove('header-hidden'); // Ensure header is visible
+      lastScrollTop = window.pageYOffset || document.documentElement.scrollTop; // Update scroll top to prevent jumpiness when menu closes
+      return;
+    }
+
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
     if (Math.abs(scrollTop - lastScrollTop) <= scrollThreshold) {
