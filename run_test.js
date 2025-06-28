@@ -53,33 +53,37 @@ async function testI18n() {
                     console.error('JSDOM UNHANDLED PROMISE REJECTION:', event.reason);
                 });
 
-                // Restore localStorage mock, making it slightly more Storage-like
+                // Restore localStorage mock using Object.defineProperty for robustness
                 const store = {};
-                window.localStorage = {
-                    getItem: function(key) {
-                        return store.hasOwnProperty(key) ? store[key] : null;
-                    },
-                    setItem: function(key, value) {
-                        store[key] = String(value);
-                    },
-                    removeItem: function(key) {
-                        delete store[key];
-                    },
-                    clear: function() {
-                        for (const key in store) {
-                            if (store.hasOwnProperty(key)) {
-                                delete store[key];
+                Object.defineProperty(window, 'localStorage', {
+                    value: {
+                        getItem: function(key) {
+                            return store.hasOwnProperty(key) ? store[key] : null;
+                        },
+                        setItem: function(key, value) {
+                            store[key] = String(value);
+                        },
+                        removeItem: function(key) {
+                            delete store[key];
+                        },
+                        clear: function() {
+                            for (const key in store) {
+                                if (store.hasOwnProperty(key)) {
+                                    delete store[key];
+                                }
                             }
+                        },
+                        get length() {
+                            return Object.keys(store).length;
+                        },
+                        key: function(index) {
+                            const keys = Object.keys(store);
+                            return keys[index] || null;
                         }
                     },
-                    get length() {
-                        return Object.keys(store).length;
-                    },
-                    key: function(index) {
-                        const keys = Object.keys(store);
-                        return keys[index] || null;
-                    }
-                };
+                    writable: true,
+                    configurable: true
+                });
 
                 // Mock fetch to return local JSON files
                 window.fetch = async (url) => {
@@ -87,15 +91,15 @@ async function testI18n() {
                     const fileName = path.basename(url);
                     if (fileName === 'en.json') {
                         // console.log("JSDOM fetch mock: Serving en.json");
-                        return { ok: true, json: async () => JSON.parse(JSON.stringify(enJSON)) }; // Deep clone
+                        return { ok: true, status: 200, json: async () => JSON.parse(JSON.stringify(enJSON)) }; // Deep clone
                     }
                     if (fileName === 'es.json') {
                         // console.log("JSDOM fetch mock: Serving es.json");
-                        return { ok: true, json: async () => JSON.parse(JSON.stringify(esJSON)) }; // Deep clone
+                        return { ok: true, status: 200, json: async () => JSON.parse(JSON.stringify(esJSON)) }; // Deep clone
                     }
                     if (fileName === 'nl.json') {
                         // console.log("JSDOM fetch mock: Serving nl.json");
-                        return { ok: true, json: async () => JSON.parse(JSON.stringify(nlJSON)) }; // Deep clone
+                        return { ok: true, status: 200, json: async () => JSON.parse(JSON.stringify(nlJSON)) }; // Deep clone
                     }
                     console.error(`JSDOM fetch mock: Unknown URL: ${url}`);
                     return { ok: false, status: 404, json: async () => ({ error: 'File not found' }) };
@@ -104,7 +108,7 @@ async function testI18n() {
                 // JSDOM does not execute script tags with src directly in the way a browser does when dynamically created or complex loaded.
                 // We've read i18n.js, so we can directly evaluate it in the window context.
                 // This is simpler than trying to make JSDOM's resource loader work perfectly for this case.
-                // window.eval(i18nScriptContent);
+                window.eval(i18nScriptContent); // Evaluate the script content after mocks are set up.
             }
         });
 
