@@ -11,7 +11,7 @@
           <a class="navbar-brand fw-bold" href="#">Biopixel Test</a>
           <div class="collapse navbar-collapse" id="navMenu">
             <ul class="navbar-nav ms-auto">
-              <li class="nav-item"><a class="nav-link active" href="#home" data-i18n="navbar_home">Inicio</a></li>
+              <li class="nav-item"><a class="nav-link active" href="#home" data-i18n="nav_home">Inicio</a></li>
               <li class="nav-item"><a class="nav-link" href="#quienes-somos" data-i18n="navbar_about">Quiénes Somos</a></li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -28,16 +28,16 @@
     </nav>
 
     <section id="home" class="hero">
-        <h1 data-i18n="hero_title">Título Inicial</h1>
+        <h1 data-i18n="hero1_title">Título Inicial</h1>
         <p data-i18n="hero_subtitle1">Subtítulo inicial.</p>
-        <a href="#quienes-somos" class="btn btn-primary btn-lg mt-4" data-i18n="hero_button">Botón Inicial</a>
+        <a href="#quienes-somos" class="btn btn-primary btn-lg mt-4" data-i18n="hero1_button">Botón Inicial</a>
     </section>
 
     <footer id="contacto">
         <p data-i18n="footer_copyright">© 2025 Biopixel Test. Todos los derechos reservados.</p>
     </footer>
 
-    <script src="i18n.js"></script>
+    <!-- <script src="i18n.js"></script> --> <!-- Removed: i18n.js will be injected by run_test.js -->
     <script>
         async function runTests() {
             console.log('--- Starting i18n tests ---');
@@ -60,17 +60,17 @@
             // Note: i18n.js init logic runs on DOMContentLoaded and might update this before these specific lines run
             // depending on exact timing. The await window.i18nInitialized in the event listener is key.
             console.log('Initial document lang (after i18n init):', document.documentElement.lang);
-            let initialHeroTitle = document.querySelector('[data-i18n="hero_title"]').textContent;
+            let initialHeroTitle = document.querySelector('[data-i18n="hero1_title"]').textContent;
             console.log('Initial Hero title (should be Spanish via initLanguage):', initialHeroTitle);
-            if (initialHeroTitle !== esTranslations.hero_title) {
-                 console.error(`ERROR: Initial hero title mismatch. Expected: "${esTranslations.hero_title}", Got: "${initialHeroTitle}"`);
+            if (initialHeroTitle !== esTranslations.hero1_title) {
+                 console.error(`ERROR: Initial hero title mismatch. Expected: "${esTranslations.hero1_title}", Got: "${initialHeroTitle}"`);
             } else {
                  console.log("SUCCESS: Initial hero title matches Spanish version.");
             }
-            let initialNavHome = document.querySelector('[data-i18n="navbar_home"]').textContent;
+            let initialNavHome = document.querySelector('[data-i18n="nav_home"]').textContent;
              console.log('Initial Navbar Home (should be Spanish):', initialNavHome);
-            if (initialNavHome !== esTranslations.navbar_home) {
-                console.error(`ERROR: Initial navbar_home mismatch. Expected: "${esTranslations.navbar_home}", Got: "${initialNavHome}"`);
+            if (initialNavHome !== esTranslations.nav_home) {
+                console.error(`ERROR: Initial navbar_home mismatch. Expected: "${esTranslations.nav_home}", Got: "${initialNavHome}"`);
             } else {
                 console.log("SUCCESS: Initial navbar_home matches Spanish version.");
             }
@@ -83,26 +83,26 @@
             if (document.documentElement.lang !== 'en') console.error("ERROR: HTML lang attribute not updated to 'en'");
             else console.log("SUCCESS: HTML lang attribute updated to 'en'");
 
-            const heroTitleEn = document.querySelector('[data-i18n="hero_title"]').textContent;
+            const heroTitleEn = document.querySelector('[data-i18n="hero1_title"]').textContent;
             console.log('Hero title in English:', heroTitleEn);
-            if (heroTitleEn !== enTranslations.hero_title) {
-                console.error(`ERROR: English hero_title mismatch. Expected: "${enTranslations.hero_title}", Got: "${heroTitleEn}"`);
+            if (heroTitleEn !== enTranslations.hero1_title) {
+                console.error(`ERROR: English hero_title mismatch. Expected: "${enTranslations.hero1_title}", Got: "${heroTitleEn}"`);
             } else {
                 console.log("SUCCESS: English hero_title matches.");
             }
 
-            const navHomeEn = document.querySelector('[data-i18n="navbar_home"]').textContent;
+            const navHomeEn = document.querySelector('[data-i18n="nav_home"]').textContent;
             console.log('Navbar Home in English:', navHomeEn);
-             if (navHomeEn !== enTranslations.navbar_home) {
-                console.error(`ERROR: English navbar_home mismatch. Expected: "${enTranslations.navbar_home}", Got: "${navHomeEn}"`);
+             if (navHomeEn !== enTranslations.nav_home) {
+                console.error(`ERROR: English navbar_home mismatch. Expected: "${enTranslations.nav_home}", Got: "${navHomeEn}"`);
             } else {
                 console.log("SUCCESS: English navbar_home matches.");
             }
 
-            const heroButtonEn = document.querySelector('[data-i18n="hero_button"]').textContent;
+            const heroButtonEn = document.querySelector('[data-i18n="hero1_button"]').textContent;
             console.log('Hero button in English:', heroButtonEn);
-            if (heroButtonEn !== enTranslations.hero_button) {
-                console.error(`ERROR: English hero_button mismatch. Expected: "${enTranslations.hero_button}", Got: "${heroButtonEn}"`);
+            if (heroButtonEn !== enTranslations.hero1_button) {
+                console.error(`ERROR: English hero_button mismatch. Expected: "${enTranslations.hero1_button}", Got: "${heroButtonEn}"`);
             } else {
                 console.log("SUCCESS: English hero_button matches.");
             }
@@ -114,18 +114,18 @@
             if (document.documentElement.lang !== 'es') console.error("ERROR: HTML lang attribute not updated to 'es'");
             else console.log("SUCCESS: HTML lang attribute updated to 'es'");
 
-            const heroTitleEs = document.querySelector('[data-i18n="hero_title"]').textContent;
+            const heroTitleEs = document.querySelector('[data-i18n="hero1_title"]').textContent;
             console.log('Hero title in Spanish:', heroTitleEs);
-            if (heroTitleEs !== esTranslations.hero_title) {
-                console.error(`ERROR: Spanish hero_title mismatch. Expected: "${esTranslations.hero_title}", Got: "${heroTitleEs}"`);
+            if (heroTitleEs !== esTranslations.hero1_title) {
+                console.error(`ERROR: Spanish hero_title mismatch. Expected: "${esTranslations.hero1_title}", Got: "${heroTitleEs}"`);
             } else {
                 console.log("SUCCESS: Spanish hero_title matches.");
             }
 
-            const navHomeEs = document.querySelector('[data-i18n="navbar_home"]').textContent;
+            const navHomeEs = document.querySelector('[data-i18n="nav_home"]').textContent;
             console.log('Navbar Home in Spanish:', navHomeEs);
-            if (navHomeEs !== esTranslations.navbar_home) {
-                console.error(`ERROR: Spanish navbar_home mismatch. Expected: "${esTranslations.navbar_home}", Got: "${navHomeEs}"`);
+            if (navHomeEs !== esTranslations.nav_home) {
+                console.error(`ERROR: Spanish navbar_home mismatch. Expected: "${esTranslations.nav_home}", Got: "${navHomeEs}"`);
             } else {
                 console.log("SUCCESS: Spanish navbar_home matches.");
             }
@@ -137,18 +137,18 @@
             if (document.documentElement.lang !== 'nl') console.error("ERROR: HTML lang attribute not updated to 'nl'");
             else console.log("SUCCESS: HTML lang attribute updated to 'nl'");
 
-            const heroTitleNl = document.querySelector('[data-i18n="hero_title"]').textContent;
+            const heroTitleNl = document.querySelector('[data-i18n="hero1_title"]').textContent;
             console.log('Hero title in Dutch:', heroTitleNl);
-            if (heroTitleNl !== nlTranslations.hero_title) {
-                console.error(`ERROR: Dutch hero_title mismatch. Expected: "${nlTranslations.hero_title}", Got: "${heroTitleNl}"`);
+            if (heroTitleNl !== nlTranslations.hero1_title) {
+                console.error(`ERROR: Dutch hero_title mismatch. Expected: "${nlTranslations.hero1_title}", Got: "${heroTitleNl}"`);
             } else {
                 console.log("SUCCESS: Dutch hero_title matches.");
             }
 
-            const navHomeNl = document.querySelector('[data-i18n="navbar_home"]').textContent;
+            const navHomeNl = document.querySelector('[data-i18n="nav_home"]').textContent;
             console.log('Navbar Home in Dutch:', navHomeNl);
-            if (navHomeNl !== nlTranslations.navbar_home) {
-                console.error(`ERROR: Dutch navbar_home mismatch. Expected: "${nlTranslations.navbar_home}", Got: "${navHomeNl}"`);
+            if (navHomeNl !== nlTranslations.nav_home) {
+                console.error(`ERROR: Dutch navbar_home mismatch. Expected: "${nlTranslations.nav_home}", Got: "${navHomeNl}"`);
             } else {
                 console.log("SUCCESS: Dutch navbar_home matches.");
             }
