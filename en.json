@@ -2,37 +2,37 @@
   "new_page_title": "Biopixel - Precision Agriculture",
   "new_header_logo_text": "Biopixel",
   "nav_home": "Home",
-  "nav_challenge": "Challenge",
-  "nav_mission": "Mission",
+  "nav_challenge": "The Challenge",
+  "nav_mission": "Our Mission",
   "nav_approach": "Approach",
-  "nav_stay_updated": "Stay Updated",
+  "nav_stay_updated": "Contact",
   "header_join_button": "Join the Transition",
 
   "hero1_title": "Securing tomorrow's food, today.",
-  "hero1_subtitle": "Biopixel is at the forefront of sustainable agriculture, developing innovative solutions to meet the growing global demand for food.",
+  "hero1_subtitle": "Global population growth challenges the future of agriculture. We are here to be your strategic ally in this great transition, ensuring your production not only survives, but thrives.",
   "hero1_button": "Join the Transition",
 
-  "hero2_title": "The Challenge of a Growing Population",
-  "hero2_subtitle": "With the global population projected to reach nearly 10 billion by 2050, the need for sustainable and efficient food production has never been greater. Traditional farming methods are struggling to keep pace, leading to environmental concerns and food insecurity.",
+  "hero2_title": "The Challenge: Leading the Agricultural Evolution",
+  "hero2_subtitle": "We develop and implement cutting-edge technologies, adapting field practices to the reality of each moment. We don't just observe evolution; we lead it alongside our partners to transform agricultural processes for a new era.",
   "hero2_button": "Learn More",
 
-  "hero3_title": "Our Mission",
-  "hero3_subtitle": "At Biopixel, our mission is to revolutionize agriculture through technology. We are committed to developing solutions that enhance crop yields, reduce environmental impact, and ensure a sustainable food supply for future generations.",
+  "hero3_title": "Our Mission: Driving the Next Agricultural Revolution",
+  "hero3_subtitle": "The future of food depends on our ability to evolve. We are a team of passionate engineers, dedicated to helping optimize every resource and every process in the production chain.",
   "hero3_button": "Explore Our Solutions",
 
-  "hero4_title": "Our Approach and Solutions",
-  "hero4_subtitle": "We leverage cutting-edge technologies, including precision agriculture, vertical farming, and data analytics, to optimize crop production. Our solutions focus on maximizing efficiency, minimizing resource use, and promoting sustainable practices.",
+  "hero4_title": "Our Approach and Custom Solutions",
+  "hero4_subtitle": "True innovation isn't about having more sensors, but about making smarter decisions. We integrate and make sense of complex information, from satellites to the tractor, to co-create solutions that fit your needs, not the other way around.",
   "hero4_button": "Contact Us",
 
   "stay_updated_title": "Stay Updated",
-  "stay_updated_subtitle": "Subscribe to our newsletter for the latest news and insights on sustainable agriculture.",
+  "stay_updated_subtitle": "Subscribe to our newsletter to receive the latest news and insights on sustainable agriculture.",
   "stay_updated_placeholder_email": "Your Email",
   "stay_updated_sr_email_label": "Your Email",
   "stay_updated_button": "Submit",
 
-  "footer_about_us": "About Us",
-  "footer_our_solutions": "Our Solutions",
+  "footer_about_us": "Our Mission",
+  "footer_our_solutions": "Approach",
   "footer_contact": "Contact",
   "footer_careers": "Careers",
-  "footer_copyright_new": "© 2023 Biopixel. All rights reserved."
+  "footer_copyright_new": "© 2025 Biopixel. All rights reserved."
 }
