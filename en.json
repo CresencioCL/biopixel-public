@@ -4,24 +4,24 @@
   "nav_home": "Home",
   "nav_challenge": "The Challenge",
   "nav_mission": "Our Mission",
-  "nav_approach": "Approach",
+  "nav_approach": "Our Approach",
   "nav_stay_updated": "Contact",
   "header_join_button": "Join the Transition",
 
   "hero1_title": "Securing tomorrow's food, today.",
-  "hero1_subtitle": "Global population growth challenges the future of agriculture. We are here to be your strategic ally in this great transition, ensuring your production not only survives, but thrives.",
+  "hero1_subtitle": "We transform global challenges into opportunities for profitability and sustainability for your field. Together, we will make your production not only survive, but lead in the new agricultural era.",
   "hero1_button": "Join the Transition",
 
-  "hero2_title": "The Challenge: Leading the Agricultural Evolution",
-  "hero2_subtitle": "We develop and implement cutting-edge technologies, adapting field practices to the reality of each moment. We don't just observe evolution; we lead it alongside our partners to transform agricultural processes for a new era.",
+  "hero2_title": "We Understand the Complexity of Today's Field",
+  "hero2_subtitle": "The pressure to produce more, climate uncertainty, the data avalanche. The path to a tech-driven agriculture can seem overwhelming. You don't have to walk it alone.",
   "hero2_button": "Learn More",
 
-  "hero3_title": "Our Mission: Driving the Next Agricultural Revolution",
+  "hero3_title": "Our Mission: To Guide You in the Next Agricultural Revolution",
   "hero3_subtitle": "The future of food depends on our ability to evolve. We are a team of passionate engineers, dedicated to helping optimize every resource and every process in the production chain.",
   "hero3_button": "Explore Our Solutions",
 
-  "hero4_title": "Our Approach and Custom Solutions",
-  "hero4_subtitle": "True innovation isn't about having more sensors, but about making smarter decisions. We integrate and make sense of complex information, from satellites to the tractor, to co-create solutions that fit your needs, not the other way around.",
+  "hero4_title": "Your Roadmap to an Efficient Agriculture",
+  "hero4_subtitle": "Our guidance is a process, not a product. We analyze your operation, integrate your data, and co-create a customized tech plan. We lead you every step of the way, ensuring that each new tool translates into measurable results for your business.",
   "hero4_button": "Contact Us",
 
   "stay_updated_title": "Stay Updated",
@@ -31,7 +31,7 @@
   "stay_updated_button": "Submit",
 
   "footer_about_us": "Our Mission",
-  "footer_our_solutions": "Approach",
+  "footer_our_solutions": "Our Approach",
   "footer_contact": "Contact",
   "footer_careers": "Careers",
   "footer_copyright_new": "© 2025 Biopixel. All rights reserved."
