@@ -14,7 +14,7 @@
     html { scroll-behavior: smooth; }
     body { background-color: #121221; font-family: "Inter", sans-serif; color: #e8eaed; transition: background-color 0.1s ease-out; line-height: 1.6; margin: 0; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
     h1, h2, h3 { font-family: "Inter", sans-serif; font-weight: 700; }
-    .barra-superior { position: fixed; top: 0; left: 0; width: 100%; padding: 10px 30px; box-sizing: border-box; z-index: 1000; background-color: rgba(18, 18, 33, 0.7); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); display: flex; align-items: center; justify-content: space-between; }
+    .barra-superior { position: fixed; top: 0; left: 0; width: 100%; height: 65px; padding: 10px 30px; box-sizing: border-box; z-index: 1000; background-color: rgba(18, 18, 33, 0.7); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); display: flex; align-items: center; justify-content: space-between; transition: box-shadow 0.3s ease; }
     .logo-contenedor { display: flex; align-items: center; gap: 12px; text-decoration: none; }
     .logo-icono { height: 35px; }
     .logo-texto { font-size: 1.5rem; font-weight: 700; color: #ffffff; }
@@ -23,11 +23,41 @@
     .nav-links a:hover { background-color: rgba(148, 148, 199, 0.2); }
     .lang-switcher button { background: none; border: 1px solid #9494c7; color: #9494c7; cursor: pointer; padding: 3px 8px; border-radius: 4px; margin-left: 5px; transition: background-color 0.2s, color 0.2s; }
     .lang-switcher button:hover, .lang-switcher button.active { background-color: #9494c7; color: #121221; }
-    .hamburger-button { display: none; background: none; border: none; cursor: pointer; padding: 5px; }
-    .mobile-menu { display: none; position: fixed; top: 65px; left: 0; width: 100%; background-color: #1a1a32; z-index: 999; flex-direction: column; align-items: center; padding: 20px 0; gap: 15px; transform: translateY(-100%); opacity: 0; visibility: hidden; transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s 0.3s; }
-    .mobile-menu.open { transform: translateY(0); opacity: 1; visibility: visible; transition-delay: 0s; }
+    .hamburger-button { display: none; background: none; border: none; cursor: pointer; padding: 5px; z-index: 1001; }
+    
+    /* --- ESTILOS CORREGIDOS DEL MENÚ MÓVIL --- */
+    .mobile-menu { 
+        display: none; 
+        position: fixed; 
+        top: 65px; 
+        left: 0; 
+        width: 100%; 
+        background-color: rgba(18, 18, 33, 0.7); /* Misma opacidad y color que el header */
+        backdrop-filter: blur(10px); /* Mismo desenfoque que el header */
+        -webkit-backdrop-filter: blur(10px);
+        z-index: 999; 
+        flex-direction: column; 
+        align-items: center; 
+        padding: 20px 0; 
+        gap: 15px; 
+        transform: translateY(-100%); 
+        opacity: 0; 
+        visibility: hidden; 
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .mobile-menu.open { 
+        transform: translateY(0); 
+        opacity: 1; 
+        visibility: visible; 
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra transferida aquí */
+    }
+    /* Regla para quitar la sombra del header cuando el menú está abierto */
+    .barra-superior.menu-is-open {
+        box-shadow: none;
+    }
     .mobile-menu a { color: #e8eaed; text-decoration: none; font-size: 1.2rem; padding: 10px 20px; }
     .mobile-lang-switcher { margin-top: 15px; }
+
     @media (max-width: 820px) { .nav-desktop { display: none; } .hamburger-button { display: block; } .mobile-menu { display: flex; } }
     .seccion { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; min-height: 100vh; padding: 80px 20px; box-sizing: border-box; position: relative; }
     #inicio { padding-top: 80px; }
@@ -46,29 +76,13 @@
     .tarjeta-servicio:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(26, 26, 50, 0.5); }
     .tarjeta-servicio h3 { color: #ffffff; font-size: 1.2rem; margin-top: 0; margin-bottom: 8px; }
     footer { text-align: center; padding: 20px; font-size: 0.9rem; color: #9494c7; }
-
-    /* --- ESTILOS PARA LA SECCIÓN DE CONTACTO --- */
-    #contacto h2 {
-        text-shadow: 0 0 15px rgba(255, 255, 255, 0.3), 0 0 25px rgba(255, 255, 255, 0.2);
-    }
-    #contacto .boton {
-        background-color: #e53e3e; /* Rojo */
-        color: #ffffff;
-        font-weight: 700;
-        box-shadow: 0 0 20px rgba(229, 62, 62, 0.5);
-        transition: all 0.3s ease;
-    }
-    #contacto .boton:hover {
-        background-color: #48bb78; /* Verde */
-        color: #ffd700; /* Dorado */
-        transform: translateY(-2px) scale(1.05);
-        box-shadow: 0 0 25px rgba(72, 187, 120, 0.6), 0 0 35px rgba(255, 215, 0, 0.4);
-        text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
-    }
+    #contacto h2 { text-shadow: 0 0 15px rgba(255, 255, 255, 0.3), 0 0 25px rgba(255, 255, 255, 0.2); }
+    #contacto .boton { background-color: #e53e3e; color: #ffffff; font-weight: 700; box-shadow: 0 0 20px rgba(229, 62, 62, 0.5); transition: all 0.3s ease; }
+    #contacto .boton:hover { background-color: #48bb78; color: #ffd700; transform: translateY(-2px) scale(1.05); box-shadow: 0 0 25px rgba(72, 187, 120, 0.6), 0 0 35px rgba(255, 215, 0, 0.4); text-shadow: 0 0 8px rgba(255, 215, 0, 0.5); }
     </style>
 </head>
 <body>
-    <header class="barra-superior">
+    <header class="barra-superior" id="page-header">
         <a href="#inicio" class="logo-contenedor">
             <img src="images/logo.png" alt="Icono de Biopixel" class="logo-icono">
             <span class="logo-texto">Biopixel</span>
@@ -151,9 +165,9 @@
         const seccionInicio = document.querySelector('#inicio');
         const seccionNosotros = document.querySelector('#nosotros');
         const seccionServicios = document.querySelector('#servicios');
-        const colorA = { r: 18, g: 18, b: 33 }; // Oscuro base
-        const colorB = { r: 26, g: 26, b: 50 }; // Oscuro intermedio
-        const colorC = { r: 10, g: 10, b: 16 }; // Muy oscuro para el final
+        const colorA = { r: 18, g: 18, b: 33 };
+        const colorB = { r: 26, g: 26, b: 50 };
+        const colorC = { r: 10, g: 10, b: 16 };
         const finAnimacionLogo = seccionInicio.offsetHeight * 0.7;
         let scrollParallaxY_logo = 0;
 
@@ -207,11 +221,20 @@
             }
         }
 
-        // --- Menú Móvil ---
+        // --- LÓGICA CORREGIDA DEL MENÚ MÓVIL ---
+        const pageHeader = document.getElementById('page-header');
         const hamburgerBtn = document.getElementById('hamburger-button');
         const mobileMenu = document.getElementById('mobile-menu');
-        hamburgerBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
-        function closeMobileMenu() { mobileMenu.classList.remove('open'); }
+        
+        hamburgerBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            pageHeader.classList.toggle('menu-is-open'); // Añade/quita la clase del header
+        });
+
+        function closeMobileMenu() { 
+            mobileMenu.classList.remove('open');
+            pageHeader.classList.remove('menu-is-open'); // Asegura quitar la clase del header
+        }
 
         // --- Event Listeners ---
         window.addEventListener('scroll', handleScroll);
