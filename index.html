@@ -1,297 +1,221 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
-    <link
-      rel="stylesheet"
-      as="style"
-      onload="this.rel='stylesheet'"
-      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Space+Grotesk%3Awght%40400%3B500%3B700"
-    />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="new_page_title">Stitch Design</title>
-    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
-
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script src="i18n.js" defer></script>
-    <script src="smooth-scroll.js" defer></script>
-    <script src="header-scroll.js" defer></script>
-    <script src="mobile-menu.js" defer></script>
-    <style>
-      #page-header { /* Ensure header transition is smooth */
-        transition: transform 0.3s ease-in-out;
-      }
-      .header-hidden {
-        transform: translateY(-100%);
-      }
-      #mobile-menu {
-        transform: translateY(-100%);
-        opacity: 0;
-        visibility: hidden;
-        transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0s linear 0.3s;
-        /* Delay visibility change until transition ends for hiding */
-        top: 48px; /* Adjusted to match mobile header height */
-      }
-      #mobile-menu.menu-open {
-        transform: translateY(0);
-        opacity: 1;
-        visibility: visible;
-        transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-         /* No delay for visibility when showing */
-      }
-    </style>
-
-    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "daa67763f94b4ca7ba2632cd27e6c892"}'></script>
+<!doctype html>
+<html lang="es" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title data-i18n="page_title">Biopixel - Agricultura de Precisión</title>
     
-  </head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
+    
+    <script defer src="i18n.js"></script>
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "daa67763f94b4ca7ba2632cd27e6c892"}'></script>
 
-  <body>
-    <div class="relative flex size-full min-h-screen flex-col bg-[#141221] dark group/design-root overflow-x-hidden" style='font-family: "Space Grotesk", "Noto Sans", sans-serif;'>
-      <div class="layout-container flex h-full grow flex-col pt-[48px] md:pt-[64px]">
-        <header id="page-header" class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#2a2645] px-10 py-3 fixed w-full top-0 z-50 bg-[#141221] h-[48px] md:h-[64px]">
-          <div class="flex items-center gap-4 text-white">
-            <div class="size-4">
-              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z"
-                  fill="currentColor"
-                ></path>
-              </svg>
+    <style>
+    html { scroll-behavior: smooth; }
+    body { background-color: #121221; font-family: "Inter", sans-serif; color: #e8eaed; transition: background-color 0.1s ease-out; line-height: 1.6; margin: 0; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    h1, h2, h3 { font-family: "Inter", sans-serif; font-weight: 700; }
+    .barra-superior { position: fixed; top: 0; left: 0; width: 100%; padding: 10px 30px; box-sizing: border-box; z-index: 1000; background-color: rgba(18, 18, 33, 0.7); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); display: flex; align-items: center; justify-content: space-between; }
+    .logo-contenedor { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-icono { height: 35px; }
+    .logo-texto { font-size: 1.5rem; font-weight: 700; color: #ffffff; }
+    .nav-desktop { display: flex; align-items: center; gap: 20px; }
+    .nav-links a { color: #e8eaed; text-decoration: none; padding: 5px 10px; border-radius: 4px; transition: background-color 0.2s; }
+    .nav-links a:hover { background-color: rgba(148, 148, 199, 0.2); }
+    .lang-switcher button { background: none; border: 1px solid #9494c7; color: #9494c7; cursor: pointer; padding: 3px 8px; border-radius: 4px; margin-left: 5px; transition: background-color 0.2s, color 0.2s; }
+    .lang-switcher button:hover, .lang-switcher button.active { background-color: #9494c7; color: #121221; }
+    .hamburger-button { display: none; background: none; border: none; cursor: pointer; padding: 5px; }
+    .mobile-menu { display: none; position: fixed; top: 65px; left: 0; width: 100%; background-color: #1a1a32; z-index: 999; flex-direction: column; align-items: center; padding: 20px 0; gap: 15px; transform: translateY(-100%); opacity: 0; visibility: hidden; transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s 0.3s; }
+    .mobile-menu.open { transform: translateY(0); opacity: 1; visibility: visible; transition-delay: 0s; }
+    .mobile-menu a { color: #e8eaed; text-decoration: none; font-size: 1.2rem; padding: 10px 20px; }
+    .mobile-lang-switcher { margin-top: 15px; }
+    @media (max-width: 820px) { .nav-desktop { display: none; } .hamburger-button { display: block; } .mobile-menu { display: flex; } }
+    .seccion { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; min-height: 100vh; padding: 80px 20px; box-sizing: border-box; position: relative; }
+    #inicio { padding-top: 80px; }
+    .logo-hero, .titulo-contenedor { transition: transform 0.2s ease-out; }
+    .logo-hero { width: 180px; height: auto; position: relative; z-index: 1; margin-bottom: 40px; filter: drop-shadow(0 0 25px rgba(148, 148, 199, 0.2)); }
+    .titulo-contenedor { position: relative; z-index: 2; background: none; }
+    h1 { font-size: clamp(2.5rem, 8vw, 4rem); color: #ffffff; margin-bottom: 16px; }
+    h1 span { color: #9494c7; }
+    h2 { font-size: clamp(2rem, 6vw, 3rem); color: #ffffff; margin-bottom: 20px; }
+    p { font-size: clamp(1rem, 4vw, 1.2rem); max-width: 700px; margin: 0 auto 30px auto; }
+    .texto-secundario { color: #c8c8e0; }
+    .boton { display: inline-block; padding: 12px 28px; background-color: #9494c7; color: #121221; text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 1rem; transition: all 0.3s; border: none; cursor: pointer; }
+    .boton:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(148, 148, 199, 0.3); background-color: #a9a9d4; }
+    .servicios-contenedor { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; width: 100%; max-width: 960px; margin-top: 20px; }
+    .tarjeta-servicio { background-color: #1a1a32; border: 1px solid #353564; border-radius: 8px; padding: 25px; flex: 1; min-width: 280px; max-width: 310px; text-align: left; transition: transform 0.3s, box-shadow 0.3s; }
+    .tarjeta-servicio:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(26, 26, 50, 0.5); }
+    .tarjeta-servicio h3 { color: #ffffff; font-size: 1.2rem; margin-top: 0; margin-bottom: 8px; }
+    footer { text-align: center; padding: 20px; font-size: 0.9rem; color: #9494c7; }
+
+    /* --- ESTILOS PARA LA SECCIÓN DE CONTACTO --- */
+    #contacto h2 {
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.3), 0 0 25px rgba(255, 255, 255, 0.2);
+    }
+    #contacto .boton {
+        background-color: #e53e3e; /* Rojo */
+        color: #ffffff;
+        font-weight: 700;
+        box-shadow: 0 0 20px rgba(229, 62, 62, 0.5);
+        transition: all 0.3s ease;
+    }
+    #contacto .boton:hover {
+        background-color: #48bb78; /* Verde */
+        color: #ffd700; /* Dorado */
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 0 0 25px rgba(72, 187, 120, 0.6), 0 0 35px rgba(255, 215, 0, 0.4);
+        text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+    }
+    </style>
+</head>
+<body>
+    <header class="barra-superior">
+        <a href="#inicio" class="logo-contenedor">
+            <img src="images/logo.png" alt="Icono de Biopixel" class="logo-icono">
+            <span class="logo-texto">Biopixel</span>
+        </a>
+        <nav class="nav-desktop">
+            <div class="nav-links">
+                <a href="#inicio" data-i18n="nav_home">Inicio</a>
+                <a href="#nosotros" data-i18n="nav_about">Nosotros</a>
+                <a href="#servicios" data-i18n="nav_services">Servicios</a>
+                <a href="#contacto" data-i18n="nav_contact">Contacto</a>
             </div>
-            <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]" data-i18n="new_header_logo_text">Biopixel</h2>
-          </div>
-          <!-- Desktop Navigation -->
-          <nav class="hidden md:flex flex-1 justify-end items-center gap-8">
-            <div class="flex items-center gap-9">
-              <a class="text-white text-sm font-medium leading-normal nav-link" href="#home" data-i18n="nav_home">Home</a>
-              <a class="text-white text-sm font-medium leading-normal nav-link" href="#challenge" data-i18n="nav_challenge">Challenge</a>
-              <a class="text-white text-sm font-medium leading-normal nav-link" href="#mission" data-i18n="nav_mission">Mission</a>
-              <a class="text-white text-sm font-medium leading-normal nav-link" href="#approach" data-i18n="nav_approach">Approach</a>
-              <a class="text-white text-sm font-medium leading-normal nav-link" href="#stay-updated" data-i18n="nav_stay_updated">Stay Updated</a>
+            <div class="lang-switcher">
+                <button onclick="setLanguage('es')" id="lang-es">ES</button>
+                <button onclick="setLanguage('en')" id="lang-en">EN</button>
             </div>
-            <div class="flex items-center gap-2">
-              <button onclick="setLanguage('es')" class="text-white text-sm font-medium leading-normal px-2 py-1 hover:bg-[#2a2645] rounded">ES</button>
-              <button onclick="setLanguage('en')" class="text-white text-sm font-medium leading-normal px-2 py-1 hover:bg-[#2a2645] rounded">EN</button>
-              <button onclick="setLanguage('nl')" class="text-white text-sm font-medium leading-normal px-2 py-1 hover:bg-[#2a2645] rounded">NL</button>
-            </div>
-            <button
-              class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded h-10 px-4 bg-[#341fbe] text-white text-sm font-bold leading-normal tracking-[0.015em]"
-            >
-              <span class="truncate" data-i18n="header_join_button">Join the Transition</span>
-            </button>
-          </nav>
-          <!-- Mobile Menu Button -->
-          <div class="md:hidden flex items-center">
-            <button id="mobile-menu-button" class="text-white focus:outline-none">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-              </svg>
-            </button>
-          </div>
-        </header>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden fixed left-0 w-full bg-[#1e1c2f] z-40 shadow-lg">
-          <nav class="flex flex-col items-center gap-4 py-4">
-            <a class="text-white text-lg font-medium leading-normal nav-link" href="#home" data-i18n="nav_home">Home</a>
-            <a class="text-white text-lg font-medium leading-normal nav-link" href="#challenge" data-i18n="nav_challenge">Challenge</a>
-            <a class="text-white text-lg font-medium leading-normal nav-link" href="#mission" data-i18n="nav_mission">Mission</a>
-            <a class="text-white text-lg font-medium leading-normal nav-link" href="#approach" data-i18n="nav_approach">Approach</a>
-            <a class="text-white text-lg font-medium leading-normal nav-link" href="#stay-updated" data-i18n="nav_stay_updated">Stay Updated</a>
-            <div class="flex items-center gap-4 mt-4">
-              <button onclick="setLanguage('es'); closeMobileMenu();" class="text-white text-sm font-medium leading-normal px-3 py-1.5 bg-[#2a2645] hover:bg-[#341fbe] rounded">ES</button>
-              <button onclick="setLanguage('en'); closeMobileMenu();" class="text-white text-sm font-medium leading-normal px-3 py-1.5 bg-[#2a2645] hover:bg-[#341fbe] rounded">EN</button>
-              <button onclick="setLanguage('nl'); closeMobileMenu();" class="text-white text-sm font-medium leading-normal px-3 py-1.5 bg-[#2a2645] hover:bg-[#341fbe] rounded">NL</button>
-            </div>
-            <button
-              class="mt-4 flex min-w-[120px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded h-10 px-4 bg-[#341fbe] text-white text-sm font-bold leading-normal tracking-[0.015em]"
-            >
-              <span class="truncate" data-i18n="header_join_button">Join the Transition</span>
-            </button>
-          </nav>
+        </nav>
+        <button class="hamburger-button" id="hamburger-button">
+            <svg width="28px" style="color: white;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+    </header>
+    
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="#inicio" onclick="closeMobileMenu()" data-i18n="nav_home">Inicio</a>
+        <a href="#nosotros" onclick="closeMobileMenu()" data-i18n="nav_about">Nosotros</a>
+        <a href="#servicios" onclick="closeMobileMenu()" data-i18n="nav_services">Servicios</a>
+        <a href="#contacto" onclick="closeMobileMenu()" data-i18n="nav_contact">Contacto</a>
+        <div class="lang-switcher mobile-lang-switcher">
+            <button onclick="setLanguage('es'); closeMobileMenu();" id="lang-es-mobile">ES</button>
+            <button onclick="setLanguage('en'); closeMobileMenu();" id="lang-en-mobile">EN</button>
         </div>
-        <main class="px-4 md:px-40 flex flex-1 justify-center py-5">
-          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
-            <section id="home" class="@container">
-              <div class="@[480px]:p-4">
-                <div
-                  class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded items-center justify-center p-4"
-                  style='background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuAV9TyP25HSU-Kg7j6W2TmsGq0N4GETNv60AWzIdiQeaLHDWiXA92wj-NOYzaE4G5jKSxSNyve9dauTQ3GBdWB81bHSndIM9ZK04lnXV8IIRhd3SJPI6TpT9iAa-PGbToIg_F-HaJusmEFcIN4KHKYRmB_334i0yqYgTibuiU9uwQWlE_2e8EYCI8-b--k326Q1lFR-k4Zj96rwk-CpXvhcV5bw0bgw7bGZH4hte3VnxJdLWMWrWqd0t2g78SwTv_pyZIyXyFzCIw");'
-                >
-                  <div class="flex flex-col gap-2 text-center px-4">
-                    <h1
-                      class="text-white text-3xl md:text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]"
-                      data-i18n="hero1_title"
-                    >
-                      Securing tomorrow's food, today.
-                    </h1>
-                    <h2 class="text-white text-sm md:text-base font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal" data-i18n="hero1_subtitle">
-                      Biopixel is at the forefront of sustainable agriculture, developing innovative solutions to meet the growing global demand for food.
-                    </h2>
-                  </div>
-                  <button
-                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded h-10 px-4 text-sm @[480px]:h-12 @[480px]:px-5 bg-[#341fbe] text-white md:text-base font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
-                  >
-                    <span class="truncate" data-i18n="hero1_button">Join the Transition</span>
-                  </button>
-                </div>
-              </div>
-            </section>
-            <section id="challenge" class="@container">
-              <div class="@[480px]:p-4">
-                <div
-                  class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded items-center justify-center p-4"
-                  style='background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBdtHGf0AGzE9gBWLt_O4FqAVDCbP5FVVnO9vgV5TfnWOQOEP6wtvYSlkrzL9CYn256x0NmTMLAOfIfLH5U6C-QmEELYDAktTSPMHhIaAL36JLBj6TjP6Z08g4UIMw1iU3iiMEG2mik6ZdzauPTrBIJ_BC8OEw89dv91t9FzvjN8a54tjlW7JRwq737ulQYG4VhZ0hvRxWC0Y318WCFhaIZdu42FVMLi5n4T1TzRx6ALKYV_2SPI77mUM_Dm9qGkwHEgMRCS1JxBg");'
-                >
-                  <div class="flex flex-col gap-2 text-center px-4">
-                    <h1
-                      class="text-white text-3xl md:text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]"
-                      data-i18n="hero2_title"
-                    >
-                      The Challenge of a Growing Population
-                    </h1>
-                    <h2 class="text-white text-sm md:text-base font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal" data-i18n="hero2_subtitle">
-                      With the global population projected to reach nearly 10 billion by 2050, the need for sustainable and efficient food production has never been greater.
-                      Traditional farming methods are struggling to keep pace, leading to environmental concerns and food insecurity.
-                    </h2>
-                  </div>
-                  <button
-                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded h-10 px-4 text-sm @[480px]:h-12 @[480px]:px-5 bg-[#341fbe] text-white md:text-base font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
-                  >
-                    <span class="truncate" data-i18n="hero2_button">Learn More</span>
-                  </button>
-                </div>
-              </div>
-            </section>
-            <section id="mission" class="@container">
-              <div class="@[480px]:p-4">
-                <div
-                  class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded items-center justify-center p-4"
-                  style='background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDBCr6qMOq-V0P_20zdzgS1GpgMN0Ec7VENltFw8l7L3Kb98tAOlCv1okuVj6W8rVR1dZtjcw1Ga_Nu64_ZITFMYaYnakpQfqh1-6h_F4hYHOE1jYX-o2szK3me5H9WejqkSUvf21qhLEIiIYYhz3NwYXVw4dqOEhX0YBrr7CUxTAeys4JbVk25kNRZYYBKSVZHvYLrH8Cxiz9gFfI_2VcyKWWTpojtCXzSSjNrfZpQ07VNd3__ILPSBGs6osSGMK0iztciC35xEQ");'
-                >
-                  <div class="flex flex-col gap-2 text-center px-4">
-                    <h1
-                      class="text-white text-3xl md:text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]"
-                      data-i18n="hero3_title"
-                    >
-                      Our Mission
-                    </h1>
-                    <h2 class="text-white text-sm md:text-base font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal" data-i18n="hero3_subtitle">
-                      At Biopixel, our mission is to revolutionize agriculture through technology. We are committed to developing solutions that enhance crop yields, reduce
-                      environmental impact, and ensure a sustainable food supply for future generations.
-                    </h2>
-                  </div>
-                  <button
-                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded h-10 px-4 text-sm @[480px]:h-12 @[480px]:px-5 bg-[#341fbe] text-white md:text-base font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
-                  >
-                    <span class="truncate" data-i18n="hero3_button">Explore Our Solutions</span>
-                  </button>
-                </div>
-              </div>
-            </section>
-            <section id="approach" class="@container">
-              <div class="@[480px]:p-4">
-                <div
-                  class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded items-center justify-center p-4"
-                  style='background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDnf13_yphPMlgncZzhXSaErDmCtOAwK6VvetOOOpbMzM7CNUkjJ1nYoukZ_riIcGfp-vH_XwV7RA1gVPfQ4kOAz31OoUecH64qsviUsNCn39Wvb3PQFwL1gq97PBoxMx-l5Z0GxO7i1gQYjOjVTL-pAI4BuNhLnrLyssHuxyZxr8aizYv6XDvpdBitac_UHtwg6m9OeYm8XJXdF5TCxfTRRDwMvOYdEvGR7_8B7gYkDir30Wk5cuuT28HCsjRFjPjpS1UPbWx90A");'
-                >
-                  <div class="flex flex-col gap-2 text-center px-4">
-                    <h1
-                      class="text-white text-3xl md:text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]"
-                      data-i18n="hero4_title"
-                    >
-                      Our Approach and Solutions
-                    </h1>
-                    <h2 class="text-white text-sm md:text-base font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal" data-i18n="hero4_subtitle">
-                      We leverage cutting-edge technologies, including precision agriculture, vertical farming, and data analytics, to optimize crop production. Our solutions focus
-                      on maximizing efficiency, minimizing resource use, and promoting sustainable practices.
-                    </h2>
-                  </div>
-                  <button
-                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded h-10 px-4 text-sm @[480px]:h-12 @[480px]:px-5 bg-[#341fbe] text-white md:text-base font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
-                  >
-                    <span class="truncate" data-i18n="hero4_button">Contact Us</span>
-                  </button>
-                </div>
-              </div>
-            </section>
-            <section id="stay-updated" class="@container">
-              <div class="flex flex-col justify-end gap-6 px-4 py-10 @[480px]:gap-8 @[480px]:px-10 @[480px]:py-20">
-                <div class="flex flex-col gap-2 text-center">
-                  <h1
-                    class="text-white tracking-light text-2xl sm:text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] max-w-[720px]"
-                    data-i18n="stay_updated_title"
-                  >
-                    Stay Updated
-                  </h1>
-                  <p class="text-white text-sm sm:text-base font-normal leading-normal max-w-[720px" data-i18n="stay_updated_subtitle">
-                    Subscribe to our newsletter for the latest news and insights on sustainable agriculture.
-                  </p>
-                </div>
-                <div class="flex flex-1 justify-center">
-                  <label class="flex flex-col min-w-40 h-14 max-w-[480px] w-full sm:w-auto flex-1 @[480px]:h-16">
-                    <span class="sr-only" data-i18n="stay_updated_sr_email_label">Your Email</span>
-                    <div class="flex w-full flex-1 items-stretch rounded h-full">
-                      <input
-                        data-i18n-placeholder="stay_updated_placeholder_email" placeholder="Your Email"
-                        class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded text-white focus:outline-0 focus:ring-0 border-none bg-[#2a2645] focus:border-none h-full placeholder:text-[#9c96c5] px-4 rounded-r-none border-r-0 pr-2 text-xs sm:text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal"
-                        value=""
-                      />
-                      <div class="flex items-center justify-center rounded-r border-l-0 border-none bg-[#2a2645] pr-2">
-                        <button
-                          class="flex min-w-[70px] sm:min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded h-10 px-3 sm:px-4 @[480px]:h-12 @[480px]:px-5 bg-[#341fbe] text-white text-xs sm:text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
-                        >
-                          <span class="truncate" data-i18n="stay_updated_button">Submit</span>
-                        </button>
-                      </div>
-                    </div>
-                  </label>
-                </div>
-              </div>
-            </section>
-            <footer class="flex flex-col gap-6 px-5 py-10 text-center @container">
-              <div class="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4 sm:gap-6 @[480px]:flex-row @[480px]:justify-around">
-                <a class="text-[#9c96c5] text-sm sm:text-base font-normal leading-normal min-w-40" href="#" data-i18n="footer_about_us">About Us</a>
-                <a class="text-[#9c96c5] text-sm sm:text-base font-normal leading-normal min-w-40" href="#" data-i18n="footer_our_solutions">Our Solutions</a>
-                <a class="text-[#9c96c5] text-sm sm:text-base font-normal leading-normal min-w-40" href="#" data-i18n="footer_contact">Contact</a>
-                <a class="text-[#9c96c5] text-sm sm:text-base font-normal leading-normal min-w-40" href="#" data-i18n="footer_careers">Careers</a>
-              </div>
-              <div class="flex flex-wrap justify-center gap-4">
-                <a href="#">
-                  <div class="text-[#9c96c5]" data-icon="TwitterLogo" data-size="24px" data-weight="regular">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                      <path
-                        d="M247.39,68.94A8,8,0,0,0,240,64H209.57A48.66,48.66,0,0,0,168.1,40a46.91,46.91,0,0,0-33.75,13.7A47.9,47.9,0,0,0,120,88v6.09C79.74,83.47,46.81,50.72,46.46,50.37a8,8,0,0,0-13.65,4.92c-4.31,47.79,9.57,79.77,22,98.18a110.93,110.93,0,0,0,21.88,24.2c-15.23,17.53-39.21,26.74-39.47,26.84a8,8,0,0,0-3.85,11.93c.75,1.12,3.75,5.05,11.08,8.72C53.51,229.7,65.48,232,80,232c70.67,0,129.72-54.42,135.75-124.44l29.91-29.9A8,8,0,0,0,247.39,68.94Zm-45,29.41a8,8,0,0,0-2.32,5.14C196,166.58,143.28,216,80,216c-10.56,0-18-1.4-23.22-3.08,11.51-6.25,27.56-17,37.88-32.48A8,8,0,0,0,92,169.08c-.47-.27-43.91-26.34-44-96,16,13,45.25,33.17,78.67,38.79A8,8,0,0,0,136,104V88a32,32,0,0,1,9.6-22.92A30.94,30.94,0,0,1,167.9,56c12.66.16,24.49,7.88,29.44,19.21A8,8,0,0,0,204.67,80h16Z"
-                      ></path>
-                    </svg>
-                  </div>
-                </a>
-                <a href="#">
-                  <div class="text-[#9c96c5]" data-icon="FacebookLogo" data-size="24px" data-weight="regular">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                      <path
-                        d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm8,191.63V152h24a8,8,0,0,0,0-16H136V112a16,16,0,0,1,16-16h16a8,8,0,0,0,0-16H152a32,32,0,0,0-32,32v24H96a8,8,0,0,0,0,16h24v63.63a88,88,0,1,1,16,0Z"
-                      ></path>
-                    </svg>
-                  </div>
-                </a>
-                <a href="#">
-                  <div class="text-[#9c96c5]" data-icon="InstagramLogo" data-size="24px" data-weight="regular">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                      <path
-                        d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160ZM176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24Zm40,152a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V80A40,40,0,0,1,80,40h96a40,40,0,0,1,40,40ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"
-                      ></path>
-                    </svg>
-                  </div>
-                </a>
-              </div>
-              <p class="text-[#9c96c5] text-base font-normal leading-normal" data-i18n="footer_copyright_new">© 2023 Biopixel. All rights reserved.</p>
-            </footer>
-          </main>
-        </div>
-      </div>
     </div>
-  </body>
+
+    <section class="seccion" id="inicio">
+        <img src="images/logo.png" alt="Logo principal de Biopixel" class="logo-hero">
+        <div class="titulo-contenedor">
+            <h1>Biopixel<br><span data-i18n="hero_supertitle">Agricultura de Precisión</span></h1>
+            <p class="texto-secundario" data-i18n="hero_subtitle">Analizamos datos de ecosistemas naturales y artificiales para potenciar la industria agrícola global.</p>
+            <a href="#nosotros" class="boton" data-i18n="hero_button">Conoce Más</a>
+        </div>
+    </section>
+
+    <section class="seccion" id="nosotros">
+        <h2 data-i18n="about_title">Nuestro Compromiso</h2>
+        <p class="texto-secundario" data-i18n="about_text">La optimización de los recursos no solo es conveniente económicamente, es necesario para la subsistencia y evolución ordenada del rubro.</p>
+        <a href="#servicios" class="boton" data-i18n="about_button">Nuestros Servicios</a>
+    </section>
+
+    <section class="seccion" id="servicios">
+        <h2 data-i18n="services_title">Servicios</h2>
+        <p class="texto-secundario" data-i18n="services_subtitle">Ofrecemos un conjunto de soluciones de agricultura de precisión adaptadas a tus necesidades.</p>
+        <div class="servicios-contenedor">
+            <div class="tarjeta-servicio">
+                <h3 data-i18n="service1_title">Crop Monitoring</h3>
+                <p class="texto-secundario" data-i18n="service1_text">Información en tiempo real sobre la salud y las etapas de crecimiento de los cultivos.</p>
+            </div>
+            <div class="tarjeta-servicio">
+                <h3 data-i18n="service2_title">Field Mapping</h3>
+                <p class="texto-secundario" data-i18n="service2_text">Mapeo detallado de las condiciones y variaciones del terreno.</p>
+            </div>
+            <div class="tarjeta-servicio">
+                <h3 data-i18n="service3_title">Yield Optimization</h3>
+                <p class="texto-secundario" data-i18n="service3_text">Estrategias basadas en datos para maximizar la producción de la cosecha.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="seccion" id="contacto">
+        <h2 data-i18n="contact_title">Mejora tu rendimiento</h2>
+        <a href="contacto.html" class="boton" data-i18n="form_button">Contáctanos</a>
+    </section>
+
+    <footer>
+        <p data-i18n="footer_text">© 2025 Biopixel. Todos los derechos reservados.</p>
+    </footer>
+    
+    <script>
+        // --- Animaciones de Scroll y Mouse ---
+        const logoHero = document.querySelector('.logo-hero');
+        const tituloContenedor = document.querySelector('.titulo-contenedor');
+        const seccionInicio = document.querySelector('#inicio');
+        const seccionNosotros = document.querySelector('#nosotros');
+        const seccionServicios = document.querySelector('#servicios');
+        const colorA = { r: 18, g: 18, b: 33 }; // Oscuro base
+        const colorB = { r: 26, g: 26, b: 50 }; // Oscuro intermedio
+        const colorC = { r: 10, g: 10, b: 16 }; // Muy oscuro para el final
+        const finAnimacionLogo = seccionInicio.offsetHeight * 0.7;
+        let scrollParallaxY_logo = 0;
+
+        function handleScroll() {
+            const scrollActual = window.scrollY;
+            handleBackgroundColorScroll(scrollActual);
+            handleScrollAnimations(scrollActual);
+        }
+
+        function handleBackgroundColorScroll(scrollActual) {
+            const inicioNosotros = seccionNosotros.offsetTop;
+            const inicioServicios = seccionServicios.offsetTop;
+            const inicioContacto = document.querySelector('#contacto').offsetTop;
+            let r, g, b;
+
+            if (scrollActual < inicioNosotros) {
+                const p = Math.min(scrollActual / inicioNosotros, 1);
+                r = Math.round(colorA.r + (colorB.r - colorA.r) * p);
+                g = Math.round(colorA.g + (colorB.g - colorA.g) * p);
+                b = Math.round(colorA.b + (colorB.b - colorA.b) * p);
+            } else if (scrollActual < inicioServicios) {
+                const p = Math.min((scrollActual - inicioNosotros) / (inicioServicios - inicioNosotros), 1);
+                r = Math.round(colorB.r + (colorA.r - colorB.r) * p);
+                g = Math.round(colorB.g + (colorA.g - colorB.g) * p);
+                b = Math.round(colorB.b + (colorA.b - colorB.b) * p);
+            } else if (scrollActual < inicioContacto) {
+                const p = Math.min((scrollActual - inicioServicios) / (inicioContacto - inicioServicios), 1);
+                r = Math.round(colorA.r + (colorC.r - colorA.r) * p);
+                g = Math.round(colorA.g + (colorC.g - colorA.g) * p);
+                b = Math.round(colorA.b + (colorC.b - colorA.b) * p);
+            } else {
+                r = colorC.r; g = colorC.g; b = colorC.b;
+            }
+            document.body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+        }
+
+        function handleScrollAnimations(scrollActual) {
+            scrollParallaxY_logo = scrollActual * 0.5;
+            const progresoAnimacion = Math.min(scrollActual / finAnimacionLogo, 1);
+            logoHero.style.opacity = 1 - progresoAnimacion;
+            logoHero.style.filter = `drop-shadow(0 0 25px rgba(148, 148, 199, 0.2)) blur(${progresoAnimacion * 20}px)`;
+            logoHero.style.transform = `translateY(${scrollParallaxY_logo}px)`;
+        }
+
+        function handleMouseMove(e) {
+            const { clientX, clientY } = e, { innerWidth, innerHeight } = window;
+            const x = (clientX - innerWidth / 2), y = (clientY - innerHeight / 2);
+            tituloContenedor.style.transform = `translate(${x / 50}px, ${y / 50}px)`;
+            if (window.scrollY < finAnimacionLogo) {
+                logoHero.style.transform = `translate(${x / 80}px, ${y / 80 + scrollParallaxY_logo}px)`;
+            }
+        }
+
+        // --- Menú Móvil ---
+        const hamburgerBtn = document.getElementById('hamburger-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        hamburgerBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+        function closeMobileMenu() { mobileMenu.classList.remove('open'); }
+
+        // --- Event Listeners ---
+        window.addEventListener('scroll', handleScroll);
+        seccionInicio.addEventListener('mousemove', handleMouseMove);
+    </script>
+</body>
 </html>
