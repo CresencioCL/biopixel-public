@@ -1,145 +1,85 @@
-// Function to fetch translation files
-async function fetchTranslations(lang) {
-  console.log(`[i18n] Attempting to fetch ${lang}.json`); // Loguear intento
-  try {
-    const response = await fetch(`${lang}.json`);
-    console.log(`[i18n] Response status for ${lang}.json: ${response.status}`); // Loguear status
-    if (!response.ok) {
-      const errorText = await response.text(); // Intentar leer el texto del error
-      console.error(`[i18n] Failed to load ${lang}.json. Status: ${response.status}. Body: ${errorText}`);
-      alert(`Error: Could not load translation file for ${lang}. Server returned ${response.status}.`); // Alerta visible
-      throw new Error(`Failed to load ${lang}.json. Status: ${response.status}`);
-    }
-    const data = await response.json();
-    console.log(`[i18n] Successfully fetched and parsed ${lang}.json`); // Loguear éxito
-    return data;
-  } catch (error) {
-    console.error(`[i18n] Critical error fetching or parsing ${lang}.json:`, error);
-    alert(`Critical Error: Could not process translation file for ${lang}. See console for details.`); // Alerta visible
-    throw error; // Re-lanzar para que setLanguage falle
+// Objeto que contiene todas las traducciones
+const translations = {
+  en: {
+    page_title: "Biopixel - Precision Agriculture",
+    nav_home: "Home",
+    nav_about: "About Us",
+    nav_services: "Services",
+    nav_contact: "Contact",
+    hero_supertitle: "Precision Agriculture",
+    hero_subtitle: "We analyze data from natural and artificial ecosystems to empower the global agricultural industry.",
+    hero_button: "Learn More",
+    about_title: "Our Commitment",
+    about_text: "Resource optimization is not only economically convenient, but necessary for the subsistence and orderly evolution of the sector.",
+    about_button: "Our Services",
+    services_title: "Services",
+    services_subtitle: "We offer a suite of precision agriculture solutions tailored to your needs.",
+    service1_title: "Crop Monitoring",
+    service1_text: "Real-time information on crop health and growth stages.",
+    service2_title: "Field Mapping",
+    service2_text: "Detailed mapping of terrain conditions and variations.",
+    service3_title: "Yield Optimization",
+    service3_text: "Data-driven strategies to maximize harvest output.",
+    contact_title: "Improve your performance",
+    form_button: "Contact Us",
+    footer_text: "© 2025 Biopixel. All rights reserved."
+  },
+  es: {
+    page_title: "Biopixel - Agricultura de Precisión",
+    nav_home: "Inicio",
+    nav_about: "Nosotros",
+    nav_services: "Servicios",
+    nav_contact: "Contacto",
+    hero_supertitle: "Agricultura de Precisión",
+    hero_subtitle: "Analizamos datos de ecosistemas naturales y artificiales para potenciar la industria agrícola global.",
+    hero_button: "Conoce Más",
+    about_title: "Nuestro Compromiso",
+    about_text: "La optimización de los recursos no solo es conveniente económicamente, es necesario para la subsistencia y evolución ordenada del rubro.",
+    about_button: "Nuestros Servicios",
+    services_title: "Servicios",
+    services_subtitle: "Ofrecemos un conjunto de soluciones de agricultura de precisión adaptadas a tus necesidades.",
+    service1_title: "Monitoreo de Cultivos",
+    service1_text: "Información en tiempo real sobre la salud y las etapas de crecimiento de los cultivos.",
+    service2_title: "Mapeo de Campo",
+    service2_text: "Mapeo detallado de las condiciones y variaciones del terreno.",
+    service3_title: "Optimización de Rendimiento",
+    service3_text: "Estrategias basadas en datos para maximizar la producción de la cosecha.",
+    contact_title: "Mejora tu rendimiento",
+    form_button: "Contáctanos",
+    footer_text: "© 2025 Biopixel. Todos los derechos reservados."
   }
-}
+};
 
-// Function to apply translations to the page
-function applyTranslations(translations) {
-  console.log('[i18n] Applying translations...');
-  try {
-    document.querySelectorAll('[data-i18n]').forEach(element => {
-      const key = element.getAttribute('data-i18n');
-      if (translations[key]) {
-        element.textContent = translations[key];
-      }
+function updateActiveButton(lang) {
+    ['es', 'en'].forEach(id => {
+        document.getElementById(`lang-${id}`)?.classList.remove('active');
+        document.getElementById(`lang-${id}-mobile`)?.classList.remove('active');
     });
+    document.getElementById(`lang-${lang}`)?.classList.add('active');
+    document.getElementById(`lang-${lang}-mobile`)?.classList.add('active');
+}
 
-    // Handle placeholders specifically
-    document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
-      const key = element.getAttribute('data-i18n-placeholder');
-      if (translations[key]) {
-        element.placeholder = translations[key];
+function translatePage() {
+  const lang = localStorage.getItem('language') || 'es';
+  
+  document.querySelectorAll('[data-i18n]').forEach(element => {
+    const key = element.getAttribute('data-i18n');
+    const translation = translations[lang][key];
+    
+    if (translation) {
+      if (element.placeholder !== undefined) {
+        element.placeholder = translation;
+      } else {
+        element.textContent = translation;
       }
-    });
-
-    // Update the lang attribute of the HTML tag
-    document.documentElement.lang = currentLanguage; // currentLanguage should be set before this runs
-    console.log('[i18n] Translations applied. HTML lang set to:', currentLanguage);
-  } catch (e) {
-    console.error('[i18n] Error in applyTranslations:', e);
-    alert(`Error applying translations. Some text may not be updated. See console.`); // Alerta visible
-    throw e;
-  }
-}
-
-// Function to set the language
-async function setLanguage(lang) {
-  console.log(`[i18n] setLanguage called for: ${lang}`);
-  if (!['en', 'es', 'nl'].includes(lang)) {
-    console.warn(`[i18n] Language ${lang} not supported. Defaulting to 'es'.`);
-    lang = 'es';
-  }
-
-  // Guardar en localStorage
-  try {
-    localStorage.setItem('language', lang);
-    console.log(`[i18n] Language ${lang} saved to localStorage.`);
-  } catch (e) {
-    console.error('[i18n] Error during localStorage.setItem (continuing anyway):', e);
-  }
-
-  currentLanguage = lang;
-  document.documentElement.lang = currentLanguage; // Actualizar lang HTML inmediatamente
-  console.log(`[i18n] currentLanguage set to: ${currentLanguage}. HTML lang attribute updated.`);
-
-  try {
-    console.log(`[i18n] Attempting to load translations for ${lang}...`);
-    const translations = await fetchTranslations(lang);
-    if (translations) { // Solo aplicar si fetchTranslations tuvo éxito
-        console.log(`[i18n] Translations successfully loaded for ${lang}. Applying...`);
-        applyTranslations(translations); // applyTranslations ya tiene sus propios logs y try/catch
-        console.log(`[i18n] Translations applied for ${lang}.`);
-    } else {
-        // Esto no debería ocurrir si fetchTranslations lanza error en caso de fallo.
-        console.error(`[i18n] Translations object for ${lang} is null or undefined after fetch. Cannot apply.`);
-        alert(`Error: Translation data for ${lang} could not be loaded. Check console.`);
-    }
-  } catch (error) {
-    // Si fetchTranslations falla y lanza un error, se atrapará aquí.
-    // La alerta ya se habrá mostrado en fetchTranslations.
-    console.error(`[i18n] Failed to set language ${lang} due to error in fetching/applying translations:`, error);
-    // Opcionalmente, revertir al idioma anterior o a uno por defecto si falla la carga.
-  }
-}
-
-// Function to initialize language settings
-async function initLanguage() {
-  console.log('[i18n] Initializing language...');
-  let preferredLanguage = 'es'; // Default
-  try {
-    preferredLanguage = localStorage.getItem('language') || 'es';
-    console.log('[i18n] Preferred language from localStorage:', preferredLanguage);
-  } catch (e) {
-    console.error('[i18n] Error reading from localStorage (continuing with default "es"):', e);
-    // preferredLanguage remains 'es'
-  }
-
-  // Check if the HTML lang attribute is set and different, and if so, use it.
-  try {
-    const htmlLang = document.documentElement.lang;
-    console.log('[i18n] HTML lang attribute:', htmlLang);
-    if (htmlLang && ['en', 'es', 'nl'].includes(htmlLang) && htmlLang !== preferredLanguage) { // Also update here for consistency
-      preferredLanguage = htmlLang;
-      console.log('[i18n] Using HTML lang attribute as preferred language:', preferredLanguage);
-    }
-  } catch (e) {
-    console.error('[i18n] Error reading document.documentElement.lang (continuing with preferredLanguage):', e);
-  }
-
-  currentLanguage = preferredLanguage; // Set global current language
-  console.log('[i18n] Current language before setLanguage call:', currentLanguage);
-  try {
-    await setLanguage(preferredLanguage);
-    console.log('[i18n] initLanguage: setLanguage completed for', preferredLanguage);
-  } catch (error) {
-    console.error('[i18n] initLanguage: Error calling setLanguage:', error);
-    throw error; // Re-throw to be caught by the i18nInitialized promise
-  }
-}
-
-// Global variable for current language
-let currentLanguage = 'es';
-
-// Initialize language settings when the script loads
-// Expose a promise that resolves when initLanguage is done
-window.i18nInitialized = new Promise((resolve, reject) => {
-  document.addEventListener('DOMContentLoaded', async () => {
-    try {
-      await initLanguage();
-      resolve();
-    } catch (error) {
-      console.error("Error during i18n initialization:", error);
-      reject(error);
     }
   });
-});
+  updateActiveButton(lang);
+}
 
-// Make setLanguage globally accessible for the onclick handlers in HTML
-window.setLanguage = setLanguage;
+function setLanguage(lang) {
+  localStorage.setItem('language', lang);
+  translatePage();
+}
+
+document.addEventListener('DOMContentLoaded', translatePage);
