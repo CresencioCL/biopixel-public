@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="optimizacion_detail_title">Biopixel - Optimización de Rendimiento</title>
+    <link rel="icon" href="images/logo-48x48.png" type="image/png">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&display=swap">
+    <link rel="stylesheet" href="global.css?v=1.1">
+    <script defer src="i18n.js?v=1.1"></script>
+    <style>
+        .service-page-hero {
+            padding-top: 180px;
+            padding-bottom: 60px;
+            text-align: left;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(3rem, 8vw, 4rem);
+            margin-bottom: 24px;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+        }
+
+        h1 span {
+            color: var(--primary);
+            display: block;
+            filter: drop-shadow(0 0 15px rgba(148, 148, 199, 0.3));
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--text-muted);
+            margin-bottom: 60px;
+            font-weight: 300;
+            line-height: 1.4;
+            border-left: 1px solid var(--primary);
+            padding-left: 32px;
+        }
+
+        .detail-content {
+            max-width: 800px;
+            margin: 0 auto 120px auto;
+        }
+
+        .detail-content p {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            margin-bottom: 32px;
+            line-height: 1.8;
+            font-weight: 300;
+            letter-spacing: 0.01em;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding-bottom: 120px;
+        }
+    </style>
+</head>
+
+<body class="i18n-loading">
+    <header class="barra-superior glass" id="page-header">
+        <a href="index.html" class="logo-contenedor">
+            <img src="images/logo.png" alt="Icono de Biopixel" class="logo-icono">
+            <span class="logo-texto">Biopixel</span>
+        </a>
+        <nav class="nav-desktop">
+            <div class="nav-links">
+                <a href="index.html#inicio" data-i18n="nav_home">Inicio</a>
+                <a href="about.html" data-i18n="nav_about">Nosotros</a>
+                <a href="index.html#servicios" class="active" data-i18n="nav_services">Servicios</a>
+                <a href="contacto.html" data-i18n="nav_contact">Contacto</a>
+            </div>
+            <div class="lang-switcher">
+                <button onclick="setLanguage('es')" id="lang-es">ES</button>
+                <button onclick="setLanguage('en')" id="lang-en">EN</button>
+            </div>
+        </nav>
+        <button class="hamburger-button" id="hamburger-button">
+            <svg width="24px" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16m-7 6h7">
+                </path>
+            </svg>
+        </button>
+    </header>
+
+    <div class="mobile-menu glass" id="mobile-menu">
+        <a href="index.html#inicio" onclick="closeMobileMenu()" data-i18n="nav_home">Inicio</a>
+        <a href="about.html" onclick="closeMobileMenu()" data-i18n="nav_about">Nosotros</a>
+        <a href="index.html#servicios" onclick="closeMobileMenu()" data-i18n="nav_services">Servicios</a>
+        <a href="contacto.html" onclick="closeMobileMenu()" data-i18n="nav_contact">Contacto</a>
+    </div>
+
+    <main class="container">
+        <div class="service-page-hero">
+            <h1 data-i18n="optimizacion_detail_title">Optimización de Rendimiento</h1>
+            <p class="hero-subtitle" data-i18n="optimizacion_detail_subtitle">Maximizando el potencial de cada metro
+                cuadrado.</p>
+        </div>
+
+        <div class="detail-content">
+            <p data-i18n="optimizacion_detail_text">Correlacionando datos históricos con variables ambientales,
+                proporcionamos información accionable para impulsar su producción final. Nuestros algoritmos analizan
+                múltiples capas de información para recomendar las mejores estrategias de siembra, fertilización y
+                cosecha, asegurando el mayor retorno de inversión.</p>
+        </div>
+
+        <div class="cta-section">
+            <a href="contacto.html" class="boton" data-i18n="form_button">Contáctanos</a>
+        </div>
+    </main>
+
+    <footer id="page-footer">
+        <p data-i18n="footer_text">© 2025 Biopixel. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        const hamburgerBtn = document.getElementById('hamburger-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const pageHeader = document.getElementById('page-header');
+
+        hamburgerBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            pageHeader.classList.toggle('menu-is-open');
+        });
+
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('open');
+            pageHeader.classList.remove('menu-is-open');
+        }
+    </script>
+</body>
+
+</html>

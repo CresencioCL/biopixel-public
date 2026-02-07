@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const originalButtonText = submitButton.textContent;
         submitButton.disabled = true;
         submitButton.textContent = 'Enviando...';
-        
+
         responseMessage.style.display = 'none';
         responseMessage.className = '';
 
