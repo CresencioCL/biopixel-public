@@ -2,138 +2,172 @@
 <html lang="es" dir="ltr">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title data-i18n="page_title">Biopixel - Nosotros</title>
-  <link rel="icon" href="images/logo-48x48.png" type="image/png">
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;600&display=swap">
-  <link rel="stylesheet" href="global.css?v=1.1">
-  <script defer src="i18n.js?v=1.1"></script>
-  <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
-    data-cf-beacon='{"token": "daa67763f94b4ca7ba2632cd27e6c892"}'></script>
-  <style>
-    .about-hero {
-      padding-top: 180px;
-      padding-bottom: 100px;
-      text-align: left;
-      max-width: 900px;
-      margin: 0 auto;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page_title">Biopixel - Nosotros</title>
+    <meta name="description" content="Conoce la misión de Biopixel — transformar la agricultura a gran escala con datos de precisión.">
+    <link rel="icon" href="images/logo-48x48.png" type="image/png">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="global.css?v=3.0">
+    <script defer src="i18n.js?v=1.1"></script>
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+        data-cf-beacon='{"token": "daa67763f94b4ca7ba2632cd27e6c892"}'></script>
+    <style>
+        .about-wrap {
+            padding-top: 180px;
+            padding-bottom: 160px;
+            max-width: 960px;
+            margin: 0 auto;
+            padding-left: 64px;
+            padding-right: 64px;
+        }
 
-    h1 {
-      font-family: 'Outfit', sans-serif;
-      font-size: 4rem;
-      margin-bottom: 48px;
-      font-weight: 500;
-      letter-spacing: -0.01em;
-    }
+        .about-eyebrow {
+            display: block;
+            font-size: 0.58rem;
+            letter-spacing: 0.35em;
+            color: var(--primary);
+            text-transform: uppercase;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            margin-bottom: 32px;
+        }
 
-    h1 span {
-      color: var(--primary);
-    }
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 300;
+            letter-spacing: -0.04em;
+            line-height: 0.9;
+            margin-bottom: 80px;
+            color: var(--text-main);
+        }
 
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      margin-top: 40px;
-    }
+        h1 span {
+            color: var(--primary);
+        }
 
-    .about-text p {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      margin-bottom: 32px;
-      line-height: 1.8;
-      font-weight: 300;
-    }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 72px;
+        }
 
-    @media (max-width: 768px) {
-      .about-grid {
-        grid-template-columns: 1fr;
-      }
+        .about-text p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            line-height: 2;
+            font-weight: 300;
+            letter-spacing: 0.01em;
+        }
 
-      h1 {
-        font-size: 3rem;
-      }
-    }
-  </style>
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .about-wrap {
+                padding-left: 24px;
+                padding-right: 24px;
+                padding-top: 140px;
+            }
+        }
+    </style>
 </head>
 
 <body class="i18n-loading">
-  <header class="barra-superior glass" id="page-header">
-    <a href="index.html" class="logo-contenedor">
-      <img src="images/logo.png" alt="Icono de Biopixel" class="logo-icono">
-      <span class="logo-texto">Biopixel</span>
-    </a>
-    <nav class="nav-desktop">
-      <div class="nav-links">
-        <a href="index.html#inicio" data-i18n="nav_home">Inicio</a>
-        <a href="about.html" class="active" data-i18n="nav_about">Nosotros</a>
-        <a href="index.html#servicios" data-i18n="nav_services">Servicios</a>
-        <a href="contacto.html" data-i18n="nav_contact">Contacto</a>
-      </div>
-      <div class="lang-switcher">
-        <button onclick="setLanguage('es')" id="lang-es">ES</button>
-        <button onclick="setLanguage('en')" id="lang-en">EN</button>
-      </div>
-    </nav>
-    <button class="hamburger-button" id="hamburger-button">
-      <svg width="24px" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16m-7 6h7"></path>
-      </svg>
-    </button>
-  </header>
+    <header class="barra-superior glass" id="page-header">
+        <a href="index.html" class="logo-contenedor">
+            <img src="images/logo.png" alt="Icono de Biopixel" class="logo-icono">
+            <span class="logo-texto">Biopixel</span>
+        </a>
+        <nav class="nav-desktop">
+            <div class="nav-links">
+                <a href="index.html#inicio" data-i18n="nav_home">Inicio</a>
+                <a href="about.html" class="active" data-i18n="nav_about">Nosotros</a>
+                <a href="index.html#servicios" data-i18n="nav_services">Servicios</a>
+                <a href="contacto.html" data-i18n="nav_contact">Contacto</a>
+            </div>
+            <div class="lang-switcher">
+                <button onclick="setLanguage('es')" id="lang-es">ES</button>
+                <button onclick="setLanguage('en')" id="lang-en">EN</button>
+            </div>
+        </nav>
+        <button class="hamburger-button" id="hamburger-button">
+            <svg width="24px" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+        </button>
+    </header>
 
-  <div class="mobile-menu glass" id="mobile-menu">
-    <a href="index.html#inicio" onclick="closeMobileMenu()" data-i18n="nav_home">Inicio</a>
-    <a href="about.html" onclick="closeMobileMenu()" data-i18n="nav_about">Nosotros</a>
-    <a href="index.html#servicios" onclick="closeMobileMenu()" data-i18n="nav_services">Servicios</a>
-    <a href="contacto.html" onclick="closeMobileMenu()" data-i18n="nav_contact">Contacto</a>
-  </div>
-
-  <main class="container">
-    <div class="about-hero">
-      <h1 data-i18n="about_title">Nuestro Compromiso</h1>
-      <div class="about-grid">
-        <div class="about-text">
-          <p data-i18n="about_p1">Biopixel es una empresa enfocada en transformar la forma en que se planifica y
-            gestiona la agricultura a gran escala. Buscamos integrar datos de diversas fuentes en un solo sistema capaz
-            de ofrecer modelos, simulaciones y herramientas de apoyo para la toma de decisiones en el terreno.</p>
-          <p data-i18n="about_p2">Nos fundamos con la convicción de que el valor reside en comprender el espacio y el
-            tiempo de manera coordinada, y que la productividad agrícola puede optimizarse con información confiable,
-            accesible y accionable.</p>
-        </div>
-        <div class="about-text">
-          <p data-i18n="about_p3">Nuestro enfoque combina conocimiento técnico, visión operativa y experiencia en la
-            gestión de datos espaciales. Queremos acercar soluciones de agricultura de precisión, permitiendo una mayor
-            eficiencia, la anticipación de problemas y un ordenamiento fundamental de los procesos.</p>
-          <p data-i18n="about_p4">Biopixel no solo entrega tecnología: propone una nueva forma de entender el campo, con
-            una perspectiva estratégica conectada con la realidad de quienes lo trabajan.</p>
-        </div>
-      </div>
+    <div class="mobile-menu glass" id="mobile-menu">
+        <a href="index.html#inicio" onclick="closeMobileMenu()" data-i18n="nav_home">Inicio</a>
+        <a href="about.html" onclick="closeMobileMenu()" data-i18n="nav_about">Nosotros</a>
+        <a href="index.html#servicios" onclick="closeMobileMenu()" data-i18n="nav_services">Servicios</a>
+        <a href="contacto.html" onclick="closeMobileMenu()" data-i18n="nav_contact">Contacto</a>
     </div>
-  </main>
 
-  <footer id="page-footer">
-    <p data-i18n="footer_text">© 2025 Biopixel. Todos los derechos reservados.</p>
-  </footer>
+    <main>
+        <div class="about-wrap">
+            <span class="about-eyebrow reveal">Nosotros</span>
+            <h1 class="reveal reveal-delay-1" data-i18n="about_title">Nuestro<br><span>Compromiso</span></h1>
+            <div class="line-h reveal reveal-delay-2" style="max-width: 80px; margin: 0 0 72px 0;"></div>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p class="reveal reveal-delay-2" data-i18n="about_p1">Biopixel es una empresa enfocada en transformar la forma en que se planifica y
+                        gestiona la agricultura a gran escala. Buscamos integrar datos de diversas fuentes en un solo sistema capaz
+                        de ofrecer modelos, simulaciones y herramientas de apoyo para la toma de decisiones en el terreno.</p>
+                    <p class="reveal reveal-delay-3" data-i18n="about_p2">Nos fundamos con la convicción de que el valor reside en comprender el espacio y el
+                        tiempo de manera coordinada, y que la productividad agrícola puede optimizarse con información confiable,
+                        accesible y accionable.</p>
+                </div>
+                <div class="about-text">
+                    <p class="reveal reveal-delay-2" data-i18n="about_p3">Nuestro enfoque combina conocimiento técnico, visión operativa y experiencia en la
+                        gestión de datos espaciales. Queremos acercar soluciones de agricultura de precisión, permitiendo una mayor
+                        eficiencia, la anticipación de problemas y un ordenamiento fundamental de los procesos.</p>
+                    <p class="reveal reveal-delay-3" data-i18n="about_p4">Biopixel no solo entrega tecnología: propone una nueva forma de entender el campo, con
+                        una perspectiva estratégica conectada con la realidad de quienes lo trabajan.</p>
+                </div>
+            </div>
+        </div>
+    </main>
 
-  <script>
-    const hamburgerBtn = document.getElementById('hamburger-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const pageHeader = document.getElementById('page-header');
+    <footer id="page-footer">
+        <p data-i18n="footer_text">© 2025 Biopixel. Todos los derechos reservados.</p>
+    </footer>
 
-    hamburgerBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('open');
-      pageHeader.classList.toggle('menu-is-open');
-    });
+    <script>
+        const pageHeader = document.getElementById('page-header');
+        const hamburgerBtn = document.getElementById('hamburger-button');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-    function closeMobileMenu() {
-      mobileMenu.classList.remove('open');
-      pageHeader.classList.remove('menu-is-open');
-    }
-  </script>
+        hamburgerBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            pageHeader.classList.toggle('menu-is-open');
+        });
+
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('open');
+            pageHeader.classList.remove('menu-is-open');
+        }
+
+        // Header scroll
+        window.addEventListener('scroll', () => {
+            pageHeader.classList.toggle('scrolled', window.scrollY > 60);
+        }, { passive: true });
+
+        // Scroll reveal
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+        document.querySelectorAll('.reveal, .line-h').forEach(el => revealObserver.observe(el));
+    </script>
 </body>
 
 </html>
