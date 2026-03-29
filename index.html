@@ -20,7 +20,8 @@
     <style>
         /* ─── Hero ─────────────────────────────────────────── */
         #inicio {
-            padding-top: 72px;
+            padding-top: 80px;
+            padding-bottom: 80px;
             position: relative;
             overflow: hidden;
         }
@@ -47,15 +48,29 @@
             text-align: left;
         }
 
+        /* Logo + h1 en fila, eyebrow debajo alineado al texto */
+        .hero-brand {
+            display: flex;
+            align-items: center;
+            gap: clamp(12px, 1.5vw, 24px);
+            margin-bottom: 14px;
+        }
+
+        .logo-hero {
+            height: clamp(3.4rem, 10.2vw, 6.8rem); /* 0.85 × h1 line-height */
+            width: auto;
+            flex-shrink: 0;
+        }
+
         .hero-eyebrow {
             display: block;
             font-size: 0.58rem;
-            letter-spacing: 0.35em;
+            letter-spacing: 0.25em;
             color: var(--primary);
             text-transform: uppercase;
             font-family: 'Inter', sans-serif;
             font-weight: 500;
-            margin-bottom: 32px;
+            text-align: center;
         }
 
         h1 {
@@ -329,8 +344,8 @@
         }
 
         /* ─── Estado inicial — controlado por Anime.js ─────── */
+        .hero-brand,
         .hero-eyebrow,
-        #inicio h1,
         .hero-right .texto-secundario,
         .hero-cta-wrap,
         .hero-meta-item,
@@ -425,8 +440,11 @@
 
         <div class="hero-layout">
             <div class="hero-left">
+                <div class="hero-brand">
+                    <img src="images/logo.png" alt="Logo Biopixel" class="logo-hero">
+                    <h1>Biopixel</h1>
+                </div>
                 <span class="hero-eyebrow" data-i18n="hero_supertitle">Agricultura de Precisión</span>
-                <h1>Biopixel</h1>
             </div>
             <div class="hero-right">
                 <p class="texto-secundario" data-i18n="hero_subtitle">Analizamos datos de ecosistemas naturales y
@@ -616,16 +634,16 @@
 
             // ─── Hero: timeline de entrada orquestado ────────────────
             createTimeline({ defaults: { ease: 'outExpo' } })
+                .add('.hero-brand', {
+                    opacity: [0, 1],
+                    translateY: [40, 0],
+                    duration: 900
+                })
                 .add('.hero-eyebrow', {
                     opacity: [0, 1],
-                    translateY: [16, 0],
+                    translateY: [10, 0],
                     duration: 600
-                })
-                .add('#inicio h1', {
-                    opacity: [0, 1],
-                    translateY: [48, 0],
-                    duration: 1000
-                }, '-=300')
+                }, '-=400')
                 .add('.hero-right .texto-secundario', {
                     opacity: [0, 1],
                     translateY: [20, 0],
