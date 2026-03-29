@@ -271,6 +271,78 @@
             font-weight: 300;
         }
 
+        /* ─── Orbs flotantes ───────────────────────────────── */
+        .orb-layer {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            will-change: transform;
+        }
+
+        .orb-cyan {
+            width: 75vw;
+            height: 75vw;
+            background: radial-gradient(circle at center,
+                rgba(6, 238, 254, 0.11) 0%,
+                rgba(0, 188, 212, 0.05) 50%,
+                transparent 70%);
+            top: -25vw;
+            left: -15vw;
+        }
+
+        .orb-purple {
+            width: 65vw;
+            height: 65vw;
+            background: radial-gradient(circle at center,
+                rgba(118, 66, 193, 0.13) 0%,
+                rgba(90, 40, 160, 0.06) 50%,
+                transparent 70%);
+            bottom: -20vw;
+            right: -20vw;
+        }
+
+        .orb-blue {
+            width: 55vw;
+            height: 55vw;
+            background: radial-gradient(circle at center,
+                rgba(33, 150, 243, 0.09) 0%,
+                rgba(0, 120, 200, 0.04) 50%,
+                transparent 70%);
+            top: 45%;
+            left: 25%;
+        }
+
+        /* Asegura que el contenido quede sobre los orbs */
+        .barra-superior,
+        .mobile-menu,
+        .seccion,
+        footer {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ─── Tarjetas de servicios — glassmorphism ─────────── */
+        .servicio-minimal,
+        .servicio-minimal:nth-child(2),
+        .servicio-minimal:nth-child(3) {
+            background: rgba(8, 8, 20, 0.35) !important;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(148, 148, 199, 0.09);
+        }
+
+        .servicio-minimal:hover {
+            background: rgba(8, 8, 20, 0.5) !important;
+        }
+
         /* ─── Estado inicial — controlado por Anime.js ─────── */
         .hero-eyebrow,
         #inicio h1,
@@ -320,6 +392,14 @@
 </head>
 
 <body class="i18n-loading">
+
+    <!-- ═══ ORBS — capa de fondo flotante ══════════════════ -->
+    <div class="orb-layer" aria-hidden="true">
+        <div class="orb orb-cyan"></div>
+        <div class="orb orb-purple"></div>
+        <div class="orb orb-blue"></div>
+    </div>
+
     <header class="barra-superior glass" id="page-header">
         <a href="#inicio" class="logo-contenedor">
             <img src="images/logo.png" alt="Icono de Biopixel" class="logo-icono">
@@ -536,6 +616,34 @@
 
     <script type="module">
         import { animate, createTimeline, stagger } from 'https://cdn.jsdelivr.net/npm/animejs@4/lib/anime.esm.min.js';
+
+        // ─── Orbs: movimiento fluido e infinito ──────────────────────
+        animate('.orb-cyan', {
+            translateX: ['0vw', '8vw'],
+            translateY: ['0vw', '10vw'],
+            duration: 16000,
+            ease: 'inOutSine',
+            loop: true,
+            alternate: true,
+        });
+
+        animate('.orb-purple', {
+            translateX: ['0vw', '-10vw'],
+            translateY: ['0vw', '-7vw'],
+            duration: 20000,
+            ease: 'inOutSine',
+            loop: true,
+            alternate: true,
+        });
+
+        animate('.orb-blue', {
+            translateX: ['-6vw', '6vw'],
+            translateY: ['0vw', '9vw'],
+            duration: 25000,
+            ease: 'inOutSine',
+            loop: true,
+            alternate: true,
+        });
 
         window.addEventListener('load', () => {
 
