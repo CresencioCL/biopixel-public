@@ -44,27 +44,19 @@
             z-index: 1;
         }
 
-        /* Grid: col1=logo, col2=h1+eyebrow → eyebrow ocupa el ancho exacto de h1 */
         .hero-left {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            grid-template-rows: auto auto;
+            display: flex;
             align-items: center;
-            column-gap: clamp(12px, 1.5vw, 22px);
-            row-gap: 12px;
+            gap: clamp(12px, 1.5vw, 22px);
         }
 
         .logo-hero {
-            grid-column: 1;
-            grid-row: 1 / 3;
             height: clamp(3.4rem, 10.2vw, 6.8rem);
             width: auto;
-            align-self: center;
+            flex-shrink: 0;
         }
 
         h1 {
-            grid-column: 2;
-            grid-row: 1;
             font-family: 'Outfit', sans-serif;
             font-size: clamp(4rem, 12vw, 8rem);
             color: var(--text-main);
@@ -75,16 +67,14 @@
         }
 
         .hero-eyebrow {
-            grid-column: 2;
-            grid-row: 2;
-            font-size: 0.72rem;
+            display: block;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
             color: var(--primary);
             text-transform: uppercase;
             font-family: 'Inter', sans-serif;
             font-weight: 500;
-            text-align: center;
-            /* letter-spacing calculado para que visualmente llene el ancho de h1 */
-            letter-spacing: clamp(0.3em, 1.8vw, 0.7em);
+            margin-bottom: 20px;
         }
 
         .hero-right {
@@ -350,8 +340,8 @@
         /* ─── Estado inicial — controlado por Anime.js ─────── */
         .logo-hero,
         #inicio h1,
-        .hero-eyebrow,
         .hero-right .texto-secundario,
+        .hero-eyebrow,
         .hero-cta-wrap,
         .hero-meta-item,
         .servicio-minimal {
@@ -447,11 +437,11 @@
             <div class="hero-left">
                 <img src="images/logo.png" alt="Logo Biopixel" class="logo-hero">
                 <h1>Biopixel</h1>
-                <span class="hero-eyebrow" data-i18n="hero_supertitle">Agricultura de Precisión</span>
             </div>
             <div class="hero-right">
                 <p class="texto-secundario" data-i18n="hero_subtitle">Analizamos datos de ecosistemas naturales y
                     artificiales para potenciar la industria agrícola global.</p>
+                <span class="hero-eyebrow" data-i18n="hero_supertitle">Agricultura de Precisión</span>
                 <span class="hero-cta-wrap">
                     <a href="#nosotros" class="boton" data-i18n="hero_button">Explorar</a>
                 </span>
@@ -647,16 +637,16 @@
                     translateY: [40, 0],
                     duration: 900
                 }, '-=500')
-                .add('.hero-eyebrow', {
-                    opacity: [0, 1],
-                    translateY: [8, 0],
-                    duration: 600
-                }, '-=400')
                 .add('.hero-right .texto-secundario', {
                     opacity: [0, 1],
                     translateY: [20, 0],
                     duration: 700
                 }, '-=600')
+                .add('.hero-eyebrow', {
+                    opacity: [0, 1],
+                    translateY: [8, 0],
+                    duration: 500
+                }, '-=300')
                 .add('.hero-cta-wrap', {
                     opacity: [0, 1],
                     translateY: [12, 0],
