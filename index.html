@@ -296,6 +296,17 @@
             display: block;
         }
 
+        /* Overlay de color dinámico sobre la escena Spline */
+        .spline-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            mix-blend-mode: overlay;
+            opacity: 0;
+            transition: background-color 0.6s ease, opacity 0.6s ease;
+        }
+
         /* Contenido del hero por encima de Spline */
         .hero-grid,
         .hero-layout,
@@ -414,6 +425,7 @@
         <!-- Fondo 3D Spline -->
         <div class="spline-bg" aria-hidden="true">
             <iframe src='https://my.spline.design/retrofuturismbydesigngaborcopycopy-aVxR3H1xYdEmbYynpMnxBQI8/' frameborder='0' width='100%' height='100%'></iframe>
+            <div class="spline-overlay" id="spline-overlay"></div>
         </div>
 
         <div class="hero-grid">
@@ -586,11 +598,27 @@
             pageHeader.classList.remove('menu-is-open');
         }
 
+        // --- Spline overlay: tinte de color con scroll ---
+        const splineOverlay = document.getElementById('spline-overlay');
+        const heroSection = document.getElementById('inicio');
+
+        function handleSplineOverlay() {
+            const heroHeight = heroSection.offsetHeight;
+            const p = Math.min(window.scrollY / (heroHeight * 0.6), 1);
+            // De transparente (top) a tinte púrpura-azul (al scrollear)
+            const r = Math.round(8  + (30  - 8)  * p);
+            const g = Math.round(8  + (20  - 8)  * p);
+            const b = Math.round(16 + (60  - 16) * p);
+            splineOverlay.style.backgroundColor = `rgb(${r},${g},${b})`;
+            splineOverlay.style.opacity = (p * 0.55).toString();
+        }
+
         // --- Scroll handler ---
         function handleScroll() {
             if (mobileMenu.classList.contains('open')) closeMobileMenu();
             handleHeaderScroll();
             handleBackgroundColorScroll();
+            handleSplineOverlay();
         }
 
         // --- Event Listeners ---
