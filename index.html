@@ -77,15 +77,14 @@
         .hero-eyebrow {
             grid-column: 2;
             grid-row: 2;
-            font-size: 0.68rem;
-            letter-spacing: 0;
+            font-size: 0.72rem;
             color: var(--primary);
             text-transform: uppercase;
             font-family: 'Inter', sans-serif;
             font-weight: 500;
-            /* Estira el texto para llenar exactamente el ancho de h1 */
-            text-align: justify;
-            text-align-last: justify;
+            text-align: center;
+            /* letter-spacing calculado para que visualmente llene el ancho de h1 */
+            letter-spacing: clamp(0.3em, 1.8vw, 0.7em);
         }
 
         .hero-right {
