@@ -289,32 +289,24 @@
             will-change: transform;
         }
 
+        /* Dos orbs enormes — solo asoman por los bordes */
         .orb-cyan {
-            width: 50vw;
-            height: 50vw;
-            background: radial-gradient(circle, rgba(6, 238, 254, 0.18) 0%, transparent 60%);
-            top: -10vw;
-            left: -8vw;
+            width: 120vw;
+            height: 120vw;
+            background: radial-gradient(circle, rgba(6, 238, 254, 0.28) 0%, transparent 52%);
+            top: -75vw;
+            left: -25vw;
         }
 
         .orb-purple {
-            width: 44vw;
-            height: 44vw;
-            background: radial-gradient(circle, rgba(118, 66, 193, 0.22) 0%, transparent 60%);
-            bottom: -10vw;
-            right: -10vw;
-        }
-
-        .orb-blue {
-            width: 36vw;
-            height: 36vw;
-            background: radial-gradient(circle, rgba(33, 150, 243, 0.16) 0%, transparent 60%);
-            top: 40%;
-            left: 30%;
+            width: 110vw;
+            height: 110vw;
+            background: radial-gradient(circle, rgba(118, 66, 193, 0.30) 0%, transparent 52%);
+            bottom: -70vw;
+            right: -20vw;
         }
 
         /* Asegura que el contenido quede sobre los orbs */
-        .barra-superior,
         .mobile-menu,
         .seccion,
         footer {
@@ -390,7 +382,6 @@
     <div class="orb-layer" aria-hidden="true">
         <div class="orb orb-cyan"></div>
         <div class="orb orb-purple"></div>
-        <div class="orb orb-blue"></div>
     </div>
 
     <header class="barra-superior glass" id="page-header">
@@ -526,6 +517,8 @@
         const pageHeader = document.getElementById('page-header');
         const hamburgerBtn = document.getElementById('hamburger-button');
         const mobileMenu = document.getElementById('mobile-menu');
+        const orbCyan   = document.querySelector('.orb-cyan');
+        const orbPurple = document.querySelector('.orb-purple');
 
         // --- Header scroll effect ---
         function handleHeaderScroll() {
@@ -596,11 +589,19 @@
             pageHeader.classList.remove('menu-is-open');
         }
 
+        // --- Orbs parallax ---
+        function handleOrbsParallax() {
+            const y = window.scrollY;
+            orbCyan.style.transform   = `translateY(${y * 0.22}px)`;
+            orbPurple.style.transform = `translateY(${-y * 0.18}px)`;
+        }
+
         // --- Scroll handler ---
         function handleScroll() {
             if (mobileMenu.classList.contains('open')) closeMobileMenu();
             handleHeaderScroll();
             handleBackgroundColorScroll();
+            handleOrbsParallax();
         }
 
         // --- Event Listeners ---
@@ -610,52 +611,6 @@
     <script type="module">
         import { animate, createTimeline, stagger } from 'https://cdn.jsdelivr.net/npm/animejs@4/lib/anime.esm.min.js';
 
-        // ─── Orbs: movimiento orbital sutil ──────────────────────────
-        // X e Y con duraciones distintas → trayectoria elíptica no lineal
-        animate('.orb-cyan', {
-            translateX: ['0vw', '4vw'],
-            duration: 18000,
-            ease: 'inOutSine',
-            loop: true,
-            alternate: true,
-        });
-        animate('.orb-cyan', {
-            translateY: ['0vw', '5vw'],
-            duration: 24000,
-            ease: 'inOutSine',
-            loop: true,
-            alternate: true,
-        });
-
-        animate('.orb-purple', {
-            translateX: ['0vw', '-5vw'],
-            duration: 22000,
-            ease: 'inOutSine',
-            loop: true,
-            alternate: true,
-        });
-        animate('.orb-purple', {
-            translateY: ['0vw', '-4vw'],
-            duration: 17000,
-            ease: 'inOutSine',
-            loop: true,
-            alternate: true,
-        });
-
-        animate('.orb-blue', {
-            translateX: ['-3vw', '3vw'],
-            duration: 28000,
-            ease: 'inOutSine',
-            loop: true,
-            alternate: true,
-        });
-        animate('.orb-blue', {
-            translateY: ['0vw', '4vw'],
-            duration: 20000,
-            ease: 'inOutSine',
-            loop: true,
-            alternate: true,
-        });
 
         window.addEventListener('load', () => {
 
