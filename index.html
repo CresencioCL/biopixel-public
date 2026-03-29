@@ -44,36 +44,27 @@
             z-index: 1;
         }
 
+        /* Grid: col1=logo, col2=h1+eyebrow → eyebrow ocupa el ancho exacto de h1 */
         .hero-left {
-            text-align: left;
-        }
-
-        /* Logo + h1 en fila, eyebrow debajo alineado al texto */
-        .hero-brand {
-            display: flex;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            grid-template-rows: auto auto;
             align-items: center;
-            gap: clamp(12px, 1.5vw, 24px);
-            margin-bottom: 14px;
+            column-gap: clamp(12px, 1.5vw, 22px);
+            row-gap: 12px;
         }
 
         .logo-hero {
-            height: clamp(3.4rem, 10.2vw, 6.8rem); /* 0.85 × h1 line-height */
+            grid-column: 1;
+            grid-row: 1 / 3;
+            height: clamp(3.4rem, 10.2vw, 6.8rem);
             width: auto;
-            flex-shrink: 0;
-        }
-
-        .hero-eyebrow {
-            display: block;
-            font-size: 0.58rem;
-            letter-spacing: 0.25em;
-            color: var(--primary);
-            text-transform: uppercase;
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            text-align: center;
+            align-self: center;
         }
 
         h1 {
+            grid-column: 2;
+            grid-row: 1;
             font-family: 'Outfit', sans-serif;
             font-size: clamp(4rem, 12vw, 8rem);
             color: var(--text-main);
@@ -81,6 +72,20 @@
             line-height: 0.85;
             letter-spacing: -0.04em;
             font-weight: 300;
+        }
+
+        .hero-eyebrow {
+            grid-column: 2;
+            grid-row: 2;
+            font-size: 0.68rem;
+            letter-spacing: 0;
+            color: var(--primary);
+            text-transform: uppercase;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            /* Estira el texto para llenar exactamente el ancho de h1 */
+            text-align: justify;
+            text-align-last: justify;
         }
 
         .hero-right {
@@ -344,7 +349,8 @@
         }
 
         /* ─── Estado inicial — controlado por Anime.js ─────── */
-        .hero-brand,
+        .logo-hero,
+        #inicio h1,
         .hero-eyebrow,
         .hero-right .texto-secundario,
         .hero-cta-wrap,
@@ -440,10 +446,8 @@
 
         <div class="hero-layout">
             <div class="hero-left">
-                <div class="hero-brand">
-                    <img src="images/logo.png" alt="Logo Biopixel" class="logo-hero">
-                    <h1>Biopixel</h1>
-                </div>
+                <img src="images/logo.png" alt="Logo Biopixel" class="logo-hero">
+                <h1>Biopixel</h1>
                 <span class="hero-eyebrow" data-i18n="hero_supertitle">Agricultura de Precisión</span>
             </div>
             <div class="hero-right">
@@ -634,14 +638,19 @@
 
             // ─── Hero: timeline de entrada orquestado ────────────────
             createTimeline({ defaults: { ease: 'outExpo' } })
-                .add('.hero-brand', {
+                .add('.logo-hero', {
+                    opacity: [0, 1],
+                    translateY: [30, 0],
+                    duration: 700
+                })
+                .add('#inicio h1', {
                     opacity: [0, 1],
                     translateY: [40, 0],
                     duration: 900
-                })
+                }, '-=500')
                 .add('.hero-eyebrow', {
                     opacity: [0, 1],
-                    translateY: [10, 0],
+                    translateY: [8, 0],
                     duration: 600
                 }, '-=400')
                 .add('.hero-right .texto-secundario', {
