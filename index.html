@@ -280,43 +280,44 @@
             font-weight: 300;
         }
 
-        /* ─── Spline 3D background ──────────────────────────── */
-        .spline-bg {
-            position: absolute;
+        /* ─── Orbs flotantes ───────────────────────────────── */
+        .orb-layer {
+            position: fixed;
             inset: 0;
-            z-index: 0;
             pointer-events: none;
+            z-index: 0;
             overflow: hidden;
         }
 
-        .spline-bg iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            display: block;
-        }
-
-        /* Overlay de color dinámico sobre la escena Spline */
-        .spline-overlay {
+        .orb {
             position: absolute;
-            inset: 0;
-            z-index: 1;
-            pointer-events: none;
-            mix-blend-mode: overlay;
-            opacity: 0;
-            transition: background-color 0.6s ease, opacity 0.6s ease;
+            border-radius: 50%;
+            /* Sin blur propio — nítidos en el fondo.
+               El difuminado ocurre solo a través del backdrop-filter
+               del header y las tarjetas. */
+            will-change: transform;
         }
 
-        /* Contenido del hero por encima de Spline */
-        .hero-grid,
-        .hero-layout,
-        .hero-meta {
-            position: relative;
-            z-index: 1;
+        /* Dos orbs enormes — solo asoman por los bordes */
+        .orb-cyan {
+            width: 120vw;
+            height: 120vw;
+            background: radial-gradient(circle, rgba(6, 238, 254, 0.28) 0%, transparent 52%);
+            top: -75vw;
+            left: -25vw;
         }
 
-        /* Resto de secciones */
+        .orb-purple {
+            width: 110vw;
+            height: 110vw;
+            background: radial-gradient(circle, rgba(118, 66, 193, 0.30) 0%, transparent 52%);
+            bottom: -70vw;
+            right: -20vw;
+        }
+
+        /* Asegura que el contenido quede sobre los orbs */
         .mobile-menu,
+        .seccion,
         footer {
             position: relative;
             z-index: 1;
@@ -387,6 +388,11 @@
 
 <body class="i18n-loading">
 
+    <!-- ═══ ORBS — capa de fondo flotante ══════════════════ -->
+    <div class="orb-layer" aria-hidden="true">
+        <div class="orb orb-cyan"></div>
+        <div class="orb orb-purple"></div>
+    </div>
 
     <header class="barra-superior glass" id="page-header">
         <a href="#inicio" class="logo-contenedor">
@@ -422,12 +428,6 @@
 
     <!-- ═══ HERO ═══════════════════════════════════════════ -->
     <section class="seccion" id="inicio">
-        <!-- Fondo 3D Spline -->
-        <div class="spline-bg" aria-hidden="true">
-            <iframe src='https://my.spline.design/retrofuturismbydesigngaborcopycopy-aVxR3H1xYdEmbYynpMnxBQI8/' frameborder='0' width='100%' height='100%'></iframe>
-            <div class="spline-overlay" id="spline-overlay"></div>
-        </div>
-
         <div class="hero-grid">
             <div class="scan-line" style="top: 35%"></div>
             <div class="scan-line" style="top: 65%; animation-delay: 4s;"></div>
@@ -528,6 +528,8 @@
         const pageHeader = document.getElementById('page-header');
         const hamburgerBtn = document.getElementById('hamburger-button');
         const mobileMenu = document.getElementById('mobile-menu');
+        const orbCyan   = document.querySelector('.orb-cyan');
+        const orbPurple = document.querySelector('.orb-purple');
 
         // --- Header scroll effect ---
         function handleHeaderScroll() {
@@ -598,19 +600,11 @@
             pageHeader.classList.remove('menu-is-open');
         }
 
-        // --- Spline overlay: tinte de color con scroll ---
-        const splineOverlay = document.getElementById('spline-overlay');
-        const heroSection = document.getElementById('inicio');
-
-        function handleSplineOverlay() {
-            const heroHeight = heroSection.offsetHeight;
-            const p = Math.min(window.scrollY / (heroHeight * 0.6), 1);
-            // De transparente (top) a tinte púrpura-azul (al scrollear)
-            const r = Math.round(8  + (30  - 8)  * p);
-            const g = Math.round(8  + (20  - 8)  * p);
-            const b = Math.round(16 + (60  - 16) * p);
-            splineOverlay.style.backgroundColor = `rgb(${r},${g},${b})`;
-            splineOverlay.style.opacity = (p * 0.55).toString();
+        // --- Orbs parallax ---
+        function handleOrbsParallax() {
+            const y = window.scrollY;
+            orbCyan.style.transform   = `translateY(${y * 0.22}px)`;
+            orbPurple.style.transform = `translateY(${-y * 0.18}px)`;
         }
 
         // --- Scroll handler ---
@@ -618,7 +612,7 @@
             if (mobileMenu.classList.contains('open')) closeMobileMenu();
             handleHeaderScroll();
             handleBackgroundColorScroll();
-            handleSplineOverlay();
+            handleOrbsParallax();
         }
 
         // --- Event Listeners ---
