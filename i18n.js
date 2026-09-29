@@ -64,6 +64,9 @@ const translations = {
 
         /* Contact form */
         contact_heading: "Let's talk<span>.</span>",
+        contact_intro: "Tell us about your operation and we'll get back to you shortly.",
+        contact_founder: "Founder",
+        contact_topics: "We can help you with",
         form_name: "Name",
         form_email: "Email",
         form_message: "Message",
@@ -139,6 +142,9 @@ const translations = {
 
         /* Contact form */
         contact_heading: "Hablemos<span>.</span>",
+        contact_intro: "Cuéntanos sobre tu operación y te responderemos a la brevedad.",
+        contact_founder: "Fundador",
+        contact_topics: "Podemos ayudarte con",
         form_name: "Nombre",
         form_email: "Email",
         form_message: "Mensaje",
