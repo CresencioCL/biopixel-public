@@ -5,12 +5,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitButton = document.getElementById('submitButton');
     const responseMessage = document.getElementById('responseMessage');
 
+    // t() viene de i18n.js; si no cargó, se usa el texto en español
+    const tr = (key, fallback) => (typeof t === 'function' ? t(key) : fallback);
+
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
 
         const originalButtonText = submitButton.textContent;
         submitButton.disabled = true;
-        submitButton.textContent = 'Enviando...';
+        submitButton.textContent = tr('form_sending', 'Enviando…');
 
         responseMessage.style.display = 'none';
         responseMessage.className = '';
@@ -26,16 +29,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 responseMessage.className = 'success';
-                responseMessage.textContent = '¡Enviado con éxito! Gracias por contactarnos.';
+                responseMessage.textContent = tr('form_success', '¡Enviado con éxito! Gracias por contactarnos.');
                 form.reset();
             } else {
                 const resultText = await response.text();
+                console.error('Form error:', response.status, resultText);
                 responseMessage.className = 'error';
-                responseMessage.textContent = `Error: ${resultText || 'No se pudo enviar el formulario.'}`;
+                responseMessage.textContent = tr('form_error', 'No se pudo enviar el formulario.');
             }
         } catch (error) {
+            console.error('Form network error:', error);
             responseMessage.className = 'error';
-            responseMessage.textContent = `Error de red: ${error.message}`;
+            responseMessage.textContent = tr('form_network_error', 'Error de red. Inténtalo de nuevo.');
         } finally {
             responseMessage.style.display = 'block';
             submitButton.disabled = false;

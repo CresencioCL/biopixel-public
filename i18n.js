@@ -37,6 +37,42 @@ const translations = {
         footer_text: "© 2025 Biopixel. All rights reserved.",
         skip_link: "Skip to content",
 
+        /* Page titles */
+        title_about: "Biopixel - About Us",
+        title_contact: "Contact - Biopixel",
+        title_monitoreo: "Biopixel - Crop Monitoring",
+        title_mapeo: "Biopixel - Field Mapping",
+        title_optimizacion: "Biopixel - Yield Optimization",
+
+        /* Home */
+        hero_meta_monitoring: "Monitoring",
+        hero_meta_data: "Data Points",
+        about_label: "02 — Mission",
+        about_heading: "Our <span>Commitment</span>",
+        service_details: "Details →",
+        contact_label: "04 — Contact",
+        contact_sub: "Let's talk about your operation.",
+
+        /* About page */
+        about_page_heading: "Our<br><span>Commitment</span>",
+
+        /* Service pages */
+        service_label_1: "Service 01",
+        service_label_2: "Service 02",
+        service_label_3: "Service 03",
+        service_back: "← Back to services",
+
+        /* Contact form */
+        contact_heading: "Let's talk<span>.</span>",
+        form_name: "Name",
+        form_email: "Email",
+        form_message: "Message",
+        form_submit: "Send",
+        form_sending: "Sending…",
+        form_success: "Sent successfully! Thank you for contacting us.",
+        form_error: "The form could not be sent.",
+        form_network_error: "Network error. Please try again.",
+
         /* About Page Detail */
         about_p1: "Biopixel is a company focused on transforming how large-scale agriculture is planned and managed. We seek to integrate data from various sources into a single system capable of offering models, simulations, and decision-making tools on the ground.",
         about_p2: "We were founded with the conviction that value lies in understanding space and time in a coordinated way, and that agricultural productivity can be optimized with reliable, accessible, and actionable information.",
@@ -75,6 +111,42 @@ const translations = {
         form_button: "Contáctanos",
         footer_text: "© 2025 Biopixel. Todos los derechos reservados.",
         skip_link: "Saltar al contenido",
+
+        /* Page titles */
+        title_about: "Biopixel - Nosotros",
+        title_contact: "Contacto - Biopixel",
+        title_monitoreo: "Biopixel - Monitoreo de Cultivos",
+        title_mapeo: "Biopixel - Mapeo de Campo",
+        title_optimizacion: "Biopixel - Optimización de Rendimiento",
+
+        /* Home */
+        hero_meta_monitoring: "Monitoreo",
+        hero_meta_data: "Puntos de datos",
+        about_label: "02 — Misión",
+        about_heading: "Nuestro <span>Compromiso</span>",
+        service_details: "Detalles →",
+        contact_label: "04 — Contacto",
+        contact_sub: "Hablemos de tu operación.",
+
+        /* About page */
+        about_page_heading: "Nuestro<br><span>Compromiso</span>",
+
+        /* Service pages */
+        service_label_1: "Servicio 01",
+        service_label_2: "Servicio 02",
+        service_label_3: "Servicio 03",
+        service_back: "← Volver a servicios",
+
+        /* Contact form */
+        contact_heading: "Hablemos<span>.</span>",
+        form_name: "Nombre",
+        form_email: "Email",
+        form_message: "Mensaje",
+        form_submit: "Enviar",
+        form_sending: "Enviando…",
+        form_success: "¡Enviado con éxito! Gracias por contactarnos.",
+        form_error: "No se pudo enviar el formulario.",
+        form_network_error: "Error de red. Inténtalo de nuevo.",
 
         /* About Page Detail */
         about_p1: "Biopixel es una empresa enfocada en transformar la forma en que se planifica y gestiona la agricultura a gran escala. Buscamos integrar datos de diversas fuentes en un solo sistema capaz de ofrecer modelos, simulaciones y herramientas de apoyo para la toma de decisiones en el terreno.",
@@ -173,7 +245,9 @@ function translatePage() {
             const key = element.getAttribute('data-i18n');
             const translation = translations[lang][key];
             if (translation) {
-                if (element.placeholder !== undefined) element.placeholder = translation;
+                // data-i18n-html: la traducción trae marcado propio (<span>, <br>) definido en este archivo
+                if (element.hasAttribute('data-i18n-html')) element.innerHTML = translation;
+                else if (element.placeholder !== undefined) element.placeholder = translation;
                 else element.textContent = translation;
             }
         } catch (e) { console.error('i18n error:', e); }
@@ -182,6 +256,12 @@ function translatePage() {
     updateActiveButton(lang);
     syncLinks(lang); // Propagation to other pages
     revealBody();
+}
+
+// Traducción puntual para textos generados por JS (p. ej. form-handler.js)
+function t(key) {
+    const lang = getLang();
+    return (translations[lang] && translations[lang][key]) || translations.es[key] || key;
 }
 
 function setLanguage(lang) {

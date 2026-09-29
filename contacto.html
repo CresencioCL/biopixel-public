@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title data-i18n="nav_contact">Contacto - Biopixel</title>
+    <title data-i18n="title_contact">Contacto - Biopixel</title>
     <meta name="description" content="Contacta a Biopixel para soluciones de agricultura de precisión.">
     <link rel="icon" href="images/logo-48x48.png" type="image/png">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@300;400;500;600&display=swap">
     <link rel="stylesheet" href="global.css?v=3.2">
-    <script defer src="form-handler.js?v=1.1"></script>
-    <script defer src="i18n.js?v=1.2"></script>
+    <script defer src="form-handler.js?v=1.2"></script>
+    <script defer src="i18n.js?v=1.3"></script>
     <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
         data-cf-beacon='{"token": "daa67763f94b4ca7ba2632cd27e6c892"}'></script>
     <style>
@@ -156,23 +156,23 @@
 
     <main class="form-section" id="contenido">
         <div class="form-container">
-            <span class="eyebrow reveal">Contacto</span>
-            <h1 class="reveal reveal-delay-1" data-i18n="nav_contact">Hablemos<span>.</span></h1>
+            <span class="eyebrow reveal" data-i18n="nav_contact">Contacto</span>
+            <h1 class="reveal reveal-delay-1" data-i18n="contact_heading" data-i18n-html>Hablemos<span>.</span></h1>
             <form id="contactForm">
                 <div class="form-group reveal reveal-delay-2">
-                    <label for="nombre">Nombre</label>
+                    <label for="nombre" data-i18n="form_name">Nombre</label>
                     <input type="text" id="nombre" name="nombre" autocomplete="name" required>
                 </div>
                 <div class="form-group reveal reveal-delay-2">
-                    <label for="email">Email</label>
+                    <label for="email" data-i18n="form_email">Email</label>
                     <input type="email" id="email" name="email" autocomplete="email" required>
                 </div>
                 <div class="form-group reveal reveal-delay-3">
-                    <label for="mensaje">Mensaje</label>
+                    <label for="mensaje" data-i18n="form_message">Mensaje</label>
                     <textarea id="mensaje" name="mensaje" required></textarea>
                 </div>
                 <div class="form-actions reveal reveal-delay-3">
-                    <button type="submit" class="boton boton--block" id="submitButton" data-i18n="form_button">Enviar</button>
+                    <button type="submit" class="boton boton--block" id="submitButton" data-i18n="form_submit">Enviar</button>
                 </div>
             </form>
             <div id="responseMessage" role="status" aria-live="polite"></div>

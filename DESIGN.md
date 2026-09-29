@@ -268,6 +268,9 @@ Reglas:
 - Cada página tiene un `<main id="contenido">` y un solo `h1`.
 - Áreas táctiles de 44 × 44 px como mínimo.
 - `lang` de `<html>` actualizado según el idioma activo (lo hace `i18n.js`).
+- Todo texto visible pasa por `i18n.js` (`data-i18n`). Si la traducción lleva marcado
+  propio (`<span>` de acento, `<br>`), el elemento usa además `data-i18n-html`. Los textos
+  generados por JavaScript usan `t('clave')`.
 - Imágenes con `alt` descriptivo; elementos decorativos con `aria-hidden="true"`.
 
 ---
@@ -275,9 +278,6 @@ Reglas:
 ## 10. Pendientes
 
 - [ ] Alojar las fuentes en el sitio (ver §0).
-- [ ] Traducir textos fijos que no pasan por i18n: "Monitoring", "Data Points",
-      "Detalles →", "Servicio 01", "← Volver a servicios", etiquetas del formulario y
-      mensajes de `form-handler.js`.
 - [ ] Componentizar header, menú y pie, hoy duplicados en 6 archivos HTML.
 - [ ] Sin JavaScript el sitio no se muestra (`body.i18n-loading` lo oculta); evaluar
       una alternativa.
