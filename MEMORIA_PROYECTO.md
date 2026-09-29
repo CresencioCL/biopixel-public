@@ -49,7 +49,6 @@ Biopixel-claude/
 │
 ├── es.json                 ← Traducciones ES (versión alternativa/nueva)
 ├── en.json                 ← Traducciones EN (versión alternativa/nueva)
-├── nl.json                 ← Traducciones NL (holandés)
 │
 ├── images/
 │   ├── logo.png            ← Logo principal
@@ -103,7 +102,7 @@ Biopixel-claude/
 
 ### 5.1 Arquitectura
 
-El motor i18n está en `i18n.js` (V6 — "URL Propagation"). Soporta **español (ES)** e **inglés (EN)** de forma activa en la UI (botones ES/EN en el header). Existe también un archivo `nl.json` para holandés.
+El motor i18n está en `i18n.js` (V6 — "URL Propagation"). Soporta **español (ES)** e **inglés (EN)** (botones ES/EN en el header y en el menú móvil). El soporte para holandés se eliminó en septiembre de 2026.
 
 ### 5.2 Cómo Funciona
 
@@ -116,7 +115,7 @@ El motor i18n está en `i18n.js` (V6 — "URL Propagation"). Soporta **español 
 ### 5.3 Traducciones Inline vs Archivos JSON
 
 - **`i18n.js`** contiene las traducciones activas (ES y EN) como objeto `translations`
-- Los archivos **`es.json`**, **`en.json`**, **`nl.json`** contienen traducciones para una versión/diseño alternativo (claves diferentes como `hero1_title`, `hero2_title`, etc.)
+- Los archivos **`es.json`** y **`en.json`** contienen traducciones para una versión/diseño alternativo (claves diferentes como `hero1_title`, `hero2_title`, etc.)
 
 > ⚠️ **Nota importante:** Los archivos JSON y el objeto inline en `i18n.js` usan **claves diferentes**. Los JSON parecen pertenecer a un diseño previo o alternativo de la landing page con estructura multi-hero.
 
@@ -180,11 +179,10 @@ index.html ─────┬── about.html
 ## 10. Deuda Técnica y Mejoras Pendientes
 
 - [ ] **Componentización del header/footer:** actualmente duplicado en 6 archivos HTML
-- [ ] **Consolidar traducciones:** los archivos JSON externos (`es.json`, `en.json`, `nl.json`) usan claves diferentes a las del `i18n.js` inline — requiere unificación
+- [ ] **Consolidar traducciones:** los archivos JSON externos (`es.json`, `en.json`) usan claves diferentes a las del `i18n.js` inline — requiere unificación
 - [ ] **SEO:** falta `meta description` y Open Graph tags en todas las páginas
 - [ ] **Accesibilidad:** revisar contraste, aria-labels, y navegación por teclado
 - [ ] **Responsive:** probar y ajustar en dispositivos móviles variados
-- [ ] **Soporte holandés (NL):** existe `nl.json` pero no hay botón NL en la UI
 
 ---
 

@@ -43,14 +43,12 @@
             console.log('--- Starting i18n tests ---');
 
             // Fetch expected values for comparison
-            let enTranslations, esTranslations, nlTranslations; // Added nlTranslations
+            let enTranslations, esTranslations;
             try {
                 const enResponse = await fetch('en.json');
                 enTranslations = await enResponse.json();
                 const esResponse = await fetch('es.json');
                 esTranslations = await esResponse.json();
-                const nlResponse = await fetch('nl.json'); // Fetch nl.json
-                nlTranslations = await nlResponse.json();   // Parse nl.json
             } catch (error) {
                 console.error('Failed to load translation files for testing:', error);
                 return;
@@ -128,29 +126,6 @@
                 console.error(`ERROR: Spanish navbar_home mismatch. Expected: "${esTranslations.nav_home}", Got: "${navHomeEs}"`);
             } else {
                 console.log("SUCCESS: Spanish navbar_home matches.");
-            }
-
-            // Test setting to Dutch
-            console.log('\n--- Setting language to Dutch ---');
-            await window.setLanguage('nl');
-            console.log('Document lang after setLanguage("nl"):', document.documentElement.lang);
-            if (document.documentElement.lang !== 'nl') console.error("ERROR: HTML lang attribute not updated to 'nl'");
-            else console.log("SUCCESS: HTML lang attribute updated to 'nl'");
-
-            const heroTitleNl = document.querySelector('[data-i18n="hero1_title"]').textContent;
-            console.log('Hero title in Dutch:', heroTitleNl);
-            if (heroTitleNl !== nlTranslations.hero1_title) {
-                console.error(`ERROR: Dutch hero_title mismatch. Expected: "${nlTranslations.hero1_title}", Got: "${heroTitleNl}"`);
-            } else {
-                console.log("SUCCESS: Dutch hero_title matches.");
-            }
-
-            const navHomeNl = document.querySelector('[data-i18n="nav_home"]').textContent;
-            console.log('Navbar Home in Dutch:', navHomeNl);
-            if (navHomeNl !== nlTranslations.nav_home) {
-                console.error(`ERROR: Dutch navbar_home mismatch. Expected: "${nlTranslations.nav_home}", Got: "${navHomeNl}"`);
-            } else {
-                console.log("SUCCESS: Dutch navbar_home matches.");
             }
 
             console.log('\n--- i18n tests finished ---');

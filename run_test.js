@@ -26,11 +26,10 @@ async function testI18n() {
     }
 
     // Fetch translation files for mocking
-    let enJSON, esJSON, nlJSON;
+    let enJSON, esJSON;
     try {
         enJSON = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'en.json'), 'utf-8'));
         esJSON = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'es.json'), 'utf-8'));
-        nlJSON = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'nl.json'), 'utf-8'));
     } catch (e) {
         console.error(`Failed to read JSON translation files: ${e.message}`);
         return;
@@ -96,10 +95,6 @@ async function testI18n() {
                     if (fileName === 'es.json') {
                         // console.log("JSDOM fetch mock: Serving es.json");
                         return { ok: true, status: 200, json: async () => JSON.parse(JSON.stringify(esJSON)) }; // Deep clone
-                    }
-                    if (fileName === 'nl.json') {
-                        // console.log("JSDOM fetch mock: Serving nl.json");
-                        return { ok: true, status: 200, json: async () => JSON.parse(JSON.stringify(nlJSON)) }; // Deep clone
                     }
                     console.error(`JSDOM fetch mock: Unknown URL: ${url}`);
                     return { ok: false, status: 404, json: async () => ({ error: 'File not found' }) };

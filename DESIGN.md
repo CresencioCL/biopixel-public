@@ -31,8 +31,7 @@ licencia documentada. Íconos futuros: propios o de bibliotecas MIT / ISC / CC0
 Todo recurso de terceros que se agregue se anota en esta tabla con su licencia.
 
 **Pendiente:** alojar Inter y Outfit en el propio sitio (`/fonts/` + `OFL.txt`) en lugar
-de cargarlas desde Google Fonts, para no enviar la IP de los visitantes a terceros
-(relevante bajo el RGPD europeo).
+de cargarlas desde Google Fonts, para no enviar la IP de los visitantes a terceros.
 
 ---
 
@@ -144,8 +143,8 @@ Ambas con respaldo `system-ui, sans-serif`.
   etiquetas; 0.3 em en eyebrows.
 - **Ancho de lectura:** máximo `--container-text` (65ch).
 - **Campos de formulario:** 16 px como mínimo, para evitar el zoom automático de iOS.
-- **Traducciones (es/en/nl):** el neerlandés suele ser un 20–30 % más largo. Ningún
-  título ni botón puede depender de un ancho fijo.
+- **Traducciones (es/en):** el español suele ser un 15–25 % más largo que el inglés.
+  Ningún título ni botón puede depender de un ancho fijo.
 
 ---
 
@@ -279,7 +278,6 @@ Reglas:
 - [ ] Traducir textos fijos que no pasan por i18n: "Monitoring", "Data Points",
       "Detalles →", "Servicio 01", "← Volver a servicios", etiquetas del formulario y
       mensajes de `form-handler.js`.
-- [ ] Botón NL en la interfaz (existe `nl.json`, pero no está conectado).
 - [ ] Componentizar header, menú y pie, hoy duplicados en 6 archivos HTML.
 - [ ] Sin JavaScript el sitio no se muestra (`body.i18n-loading` lo oculta); evaluar
       una alternativa.
