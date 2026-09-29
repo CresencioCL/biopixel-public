@@ -8,137 +8,107 @@
     <meta name="description" content="Optimización de rendimiento agrícola con análisis de datos avanzados y algoritmos de precisión.">
     <link rel="icon" href="images/logo-48x48.png" type="image/png">
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap">
-    <link rel="stylesheet" href="global.css?v=3.0">
-    <script defer src="i18n.js?v=1.1"></script>
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@300;400;500;600&display=swap">
+    <link rel="stylesheet" href="global.css?v=3.2">
+    <script defer src="i18n.js?v=1.2"></script>
     <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
         data-cf-beacon='{"token": "daa67763f94b4ca7ba2632cd27e6c892"}'></script>
     <style>
-        .service-detail {
-            padding-top: 180px;
-            padding-bottom: 160px;
-            max-width: 800px;
-            margin: 0 auto;
-            padding-left: 64px;
-            padding-right: 64px;
-        }
-
-        .service-eyebrow {
-            display: block;
-            font-size: 0.58rem;
-            letter-spacing: 0.35em;
-            color: var(--primary);
-            text-transform: uppercase;
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            margin-bottom: 32px;
-        }
-
         .service-num-big {
-            font-family: 'Outfit', sans-serif;
+            font-family: var(--font-display);
             font-size: clamp(4rem, 10vw, 7rem);
             font-weight: 300;
             color: var(--primary-dim);
             line-height: 0.8;
-            margin-bottom: 32px;
+            margin-bottom: var(--space-6);
             letter-spacing: -0.04em;
         }
 
         h1 {
-            font-family: 'Outfit', sans-serif;
-            font-size: clamp(2.4rem, 6vw, 4rem);
-            font-weight: 300;
+            font-size: clamp(2.5rem, 6vw, 4rem);
             letter-spacing: -0.03em;
-            line-height: 1;
-            margin-bottom: 20px;
+            line-height: 1.05;
+            margin-bottom: var(--space-5);
             color: var(--text-main);
         }
 
         .service-subtitle {
             color: var(--primary);
-            font-size: 0.85rem;
-            letter-spacing: 0.04em;
-            font-weight: 300;
-            margin-bottom: 72px;
+            font-size: var(--text-title-3);
             font-style: italic;
+            margin-bottom: var(--space-8);
         }
 
-        .service-body {
-            color: var(--text-secondary);
-            font-size: 0.92rem;
-            line-height: 2;
-            font-weight: 300;
-            letter-spacing: 0.01em;
-            margin-bottom: 64px;
+        .service-detail .text-body {
+            margin-bottom: var(--space-8);
         }
 
         .service-back {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            color: var(--text-muted);
-            font-size: 0.62rem;
-            letter-spacing: 0.2em;
+            gap: var(--space-3);
+            min-height: var(--touch-target);
+            color: var(--text-tertiary);
+            font-size: var(--text-label);
+            font-weight: 500;
+            letter-spacing: var(--tracking-label);
             text-transform: uppercase;
-            transition: var(--transition-fast);
-            text-decoration: none;
+            transition: color var(--duration-base) var(--ease-out),
+                        transform var(--duration-base) var(--ease-out);
         }
 
         .service-back:hover {
             color: var(--primary);
             transform: translateX(-4px);
         }
-
-        @media (max-width: 768px) {
-            .service-detail {
-                padding-left: 24px;
-                padding-right: 24px;
-                padding-top: 140px;
-            }
-        }
     </style>
 </head>
 
 <body class="i18n-loading">
+    <a href="#contenido" class="skip-link" data-i18n="skip_link">Saltar al contenido</a>
     <header class="barra-superior glass" id="page-header">
         <a href="index.html" class="logo-contenedor">
             <img src="images/logo.png" alt="Icono de Biopixel" class="logo-icono">
             <span class="logo-texto">Biopixel</span>
         </a>
-        <nav class="nav-desktop">
+        <nav class="nav-desktop" aria-label="Principal">
             <div class="nav-links">
                 <a href="index.html#inicio" data-i18n="nav_home">Inicio</a>
                 <a href="about.html" data-i18n="nav_about">Nosotros</a>
                 <a href="index.html#servicios" class="active" data-i18n="nav_services">Servicios</a>
                 <a href="contacto.html" data-i18n="nav_contact">Contacto</a>
             </div>
-            <div class="lang-switcher">
-                <button onclick="setLanguage('es')" id="lang-es">ES</button>
-                <button onclick="setLanguage('en')" id="lang-en">EN</button>
+            <div class="lang-switcher" role="group" aria-label="Idioma">
+                <button type="button" onclick="setLanguage(\'es\')" id="lang-es" aria-pressed="false">ES</button>
+                <button type="button" onclick="setLanguage(\'en\')" id="lang-en" aria-pressed="false">EN</button>
             </div>
         </nav>
-        <button class="hamburger-button" id="hamburger-button">
-            <svg width="24px" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <button type="button" class="hamburger-button" id="hamburger-button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+            <svg width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16m-7 6h7"></path>
             </svg>
         </button>
     </header>
 
-    <div class="mobile-menu glass" id="mobile-menu">
+    <nav class="mobile-menu glass" id="mobile-menu" aria-label="Menú móvil">
         <a href="index.html#inicio" onclick="closeMobileMenu()" data-i18n="nav_home">Inicio</a>
         <a href="about.html" onclick="closeMobileMenu()" data-i18n="nav_about">Nosotros</a>
         <a href="index.html#servicios" onclick="closeMobileMenu()" data-i18n="nav_services">Servicios</a>
         <a href="contacto.html" onclick="closeMobileMenu()" data-i18n="nav_contact">Contacto</a>
-    </div>
+        <div class="mobile-lang" role="group" aria-label="Idioma">
+            <button type="button" onclick="setLanguage('es')" id="lang-es-mobile" aria-pressed="false">ES</button>
+            <button type="button" onclick="setLanguage('en')" id="lang-en-mobile" aria-pressed="false">EN</button>
+        </div>
+    </nav>
 
-    <main>
-        <div class="service-detail">
-            <span class="service-eyebrow reveal">Servicio 03</span>
-            <div class="service-num-big reveal reveal-delay-1">03</div>
+    <main id="contenido">
+        <div class="service-detail page-wrap page-wrap--narrow">
+            <span class="eyebrow reveal">Servicio 03</span>
+            <div class="service-num-big reveal reveal-delay-1" aria-hidden="true">03</div>
             <h1 class="reveal reveal-delay-1" data-i18n="optimizacion_detail_title">Optimización de Rendimiento</h1>
             <p class="service-subtitle reveal reveal-delay-2" data-i18n="optimizacion_detail_subtitle">Maximizando el potencial de cada metro cuadrado.</p>
-            <div class="line-h reveal reveal-delay-2" style="max-width: 80px; margin: 0 0 72px 0;"></div>
-            <p class="service-body reveal reveal-delay-3" data-i18n="optimizacion_detail_text">Correlacionando datos históricos con variables ambientales, proporcionamos información accionable para impulsar su producción final. Nuestros algoritmos analizan múltiples capas de información para recomendar las mejores estrategias de siembra, fertilización y cosecha, asegurando el mayor retorno de inversión.</p>
+            <div class="line-h line-h--short reveal reveal-delay-2" aria-hidden="true"></div>
+            <p class="text-body reveal reveal-delay-3" data-i18n="optimizacion_detail_text">Correlacionando datos históricos con variables ambientales, proporcionamos información accionable para impulsar su producción final. Nuestros algoritmos analizan múltiples capas de información para recomendar las mejores estrategias de siembra, fertilización y cosecha, asegurando el mayor retorno de inversión.</p>
             <a href="index.html#servicios" class="service-back reveal reveal-delay-4">← Volver a servicios</a>
         </div>
     </main>
@@ -153,13 +123,15 @@
         const mobileMenu = document.getElementById('mobile-menu');
 
         hamburgerBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('open');
-            pageHeader.classList.toggle('menu-is-open');
+            const isOpen = mobileMenu.classList.toggle('open');
+            pageHeader.classList.toggle('menu-is-open', isOpen);
+            hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
         });
 
         function closeMobileMenu() {
             mobileMenu.classList.remove('open');
             pageHeader.classList.remove('menu-is-open');
+            hamburgerBtn.setAttribute('aria-expanded', 'false');
         }
 
         window.addEventListener('scroll', () => {

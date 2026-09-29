@@ -10,10 +10,10 @@
     <link rel="apple-touch-icon" href="images/logo-192x192.png">
 
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap">
-    <link rel="stylesheet" href="global.css?v=3.0">
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@300;400;500;600&display=swap">
+    <link rel="stylesheet" href="global.css?v=3.2">
 
-    <script defer src="i18n.js?v=1.1"></script>
+    <script defer src="i18n.js?v=1.2"></script>
     <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
         data-cf-beacon='{"token": "daa67763f94b4ca7ba2632cd27e6c892"}'></script>
 
@@ -57,24 +57,10 @@
         }
 
         h1 {
-            font-family: 'Outfit', sans-serif;
             font-size: clamp(4rem, 12vw, 8rem);
             color: var(--text-main);
-            margin-bottom: 0;
             line-height: 0.85;
             letter-spacing: -0.04em;
-            font-weight: 300;
-        }
-
-        .hero-eyebrow {
-            display: block;
-            font-size: 0.6rem;
-            letter-spacing: 0.3em;
-            color: var(--primary);
-            text-transform: uppercase;
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            margin-bottom: 20px;
         }
 
         .hero-right {
@@ -84,30 +70,32 @@
 
         .hero-right .texto-secundario {
             color: var(--text-secondary);
-            font-size: 0.9rem;
-            max-width: 360px;
-            font-weight: 300;
-            letter-spacing: 0.02em;
-            line-height: 1.9;
-            margin-bottom: 48px;
+            font-size: var(--text-body);
+            max-width: 380px;
+            line-height: 1.8;
+            margin-bottom: var(--space-7);
+        }
+
+        .hero-eyebrow {
+            margin-bottom: var(--space-5);
         }
 
         .hero-meta {
             display: flex;
-            gap: 48px;
-            margin-top: 56px;
-            padding-top: 32px;
+            gap: var(--space-7);
+            margin-top: var(--space-8);
+            padding-top: var(--space-6);
             border-top: 1px solid var(--ghost-border);
         }
 
         .hero-meta-item {
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: var(--space-2);
         }
 
         .hero-meta-num {
-            font-family: 'Outfit', sans-serif;
+            font-family: var(--font-display);
             font-size: 1.8rem;
             font-weight: 300;
             color: var(--primary-bright);
@@ -115,17 +103,13 @@
         }
 
         .hero-meta-label {
-            font-size: 0.58rem;
-            letter-spacing: 0.2em;
-            color: var(--text-muted);
+            font-size: var(--text-label);
+            letter-spacing: var(--tracking-label);
+            color: var(--text-tertiary);
             text-transform: uppercase;
         }
 
         /* ─── Nosotros ──────────────────────────────────────── */
-        #nosotros {
-            position: relative;
-        }
-
         #nosotros .container {
             max-width: 800px;
             text-align: left;
@@ -133,9 +117,7 @@
 
         #nosotros h2 {
             font-size: clamp(2.2rem, 5vw, 3.4rem);
-            font-weight: 300;
-            letter-spacing: -0.02em;
-            margin-bottom: 40px;
+            margin-bottom: var(--space-6);
             line-height: 1.05;
         }
 
@@ -143,24 +125,17 @@
             color: var(--primary);
         }
 
-        #nosotros p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 2;
-            font-weight: 300;
-            margin-bottom: 56px;
-            letter-spacing: 0.01em;
+        #nosotros .line-h--short {
+            margin-bottom: var(--space-7);
+        }
+
+        #nosotros .text-body {
+            margin-bottom: var(--space-8);
         }
 
         /* ─── Servicios ─────────────────────────────────────── */
-        #servicios h2 {
-            font-size: 0.6rem;
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            letter-spacing: 0.3em;
-            color: var(--primary);
-            text-transform: uppercase;
-            margin-bottom: 72px;
+        #servicios h2.eyebrow {
+            margin-bottom: var(--space-8);
         }
 
         .servicios-grid {
@@ -168,27 +143,21 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 0;
             width: 100%;
-            max-width: 1100px;
+            max-width: var(--container-max);
         }
 
         .servicio-minimal {
             padding: 56px 40px;
             text-align: left;
-            border: none;
-            text-decoration: none;
             display: block;
-            background: var(--surface-container-low);
-            transition: var(--transition);
             position: relative;
             overflow: hidden;
-        }
-
-        .servicio-minimal:nth-child(2) {
-            background: var(--surface-container);
-        }
-
-        .servicio-minimal:nth-child(3) {
-            background: var(--surface-container-high);
+            background: rgba(8, 8, 20, 0.40);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border: 1px solid rgba(148, 148, 199, 0.09);
+            transition: transform var(--duration-slow) var(--ease-out),
+                        background-color var(--duration-slow) var(--ease-out);
         }
 
         .servicio-minimal::before {
@@ -199,85 +168,86 @@
             width: 2px;
             height: 0;
             background: var(--primary);
-            transition: height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: height 0.6s var(--ease-out);
         }
 
-        .servicio-minimal:hover {
+        .servicio-minimal:hover,
+        .servicio-minimal:focus-visible {
             transform: translateY(-4px);
+            background: rgba(8, 8, 20, 0.55);
         }
 
-        .servicio-minimal:hover::before {
+        .servicio-minimal:hover::before,
+        .servicio-minimal:focus-visible::before {
             height: 100%;
         }
 
         .service-num {
             display: block;
-            font-family: 'Outfit', sans-serif;
+            font-family: var(--font-display);
             font-size: 2.4rem;
             font-weight: 300;
             color: var(--primary-dim);
-            margin-bottom: 32px;
+            margin-bottom: var(--space-6);
             letter-spacing: -0.02em;
-            transition: var(--transition-fast);
+            transition: color var(--duration-base) var(--ease-out);
         }
 
-        .servicio-minimal:hover .service-num {
+        .servicio-minimal:hover .service-num,
+        .servicio-minimal:focus-visible .service-num {
             color: var(--primary);
         }
 
         .servicio-minimal h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1rem;
+            font-size: var(--text-title-3);
             color: var(--text-main);
-            margin-bottom: 16px;
+            margin-bottom: var(--space-4);
             letter-spacing: 0.04em;
             font-weight: 500;
             text-transform: uppercase;
         }
 
         .servicio-minimal p {
-            font-size: 0.82rem;
+            font-size: var(--text-callout);
             color: var(--text-secondary);
-            line-height: 1.8;
-            font-weight: 300;
+            line-height: 1.7;
         }
 
         .service-arrow {
             display: inline-block;
-            margin-top: 28px;
-            font-size: 0.62rem;
-            letter-spacing: 0.2em;
+            margin-top: var(--space-5);
+            font-size: var(--text-label);
+            font-weight: 500;
+            letter-spacing: var(--tracking-label);
             text-transform: uppercase;
-            color: var(--text-muted);
-            transition: var(--transition-fast);
+            color: var(--text-tertiary);
+            transition: color var(--duration-base) var(--ease-out),
+                        transform var(--duration-base) var(--ease-out);
         }
 
-        .servicio-minimal:hover .service-arrow {
+        .servicio-minimal:hover .service-arrow,
+        .servicio-minimal:focus-visible .service-arrow {
             color: var(--primary);
             transform: translateX(4px);
         }
 
         /* ─── Contacto CTA ──────────────────────────────────── */
         #contacto {
-            padding: 200px 64px;
-            position: relative;
+            padding: 200px var(--gutter);
         }
 
         #contacto h2 {
             font-size: clamp(2.8rem, 7vw, 5rem);
-            font-weight: 300;
             letter-spacing: -0.03em;
-            margin-bottom: 20px;
+            margin-bottom: var(--space-5);
             line-height: 0.95;
             color: var(--text-main);
         }
 
         #contacto .sub {
             color: var(--text-secondary);
-            font-size: 0.8rem;
-            letter-spacing: 0.1em;
-            margin-bottom: 56px;
-            font-weight: 300;
+            font-size: var(--text-body);
+            margin-bottom: var(--space-8);
         }
 
         /* ─── Orbs flotantes ───────────────────────────────── */
@@ -323,28 +293,15 @@
             z-index: 1;
         }
 
-        /* ─── Tarjetas de servicios — glassmorphism ─────────── */
-        .servicio-minimal,
-        .servicio-minimal:nth-child(2),
-        .servicio-minimal:nth-child(3) {
-            background: rgba(8, 8, 20, 0.40) !important;
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-            border: 1px solid rgba(148, 148, 199, 0.09);
-        }
-
-        .servicio-minimal:hover {
-            background: rgba(8, 8, 20, 0.55) !important;
-        }
-
         /* ─── Estado inicial — controlado por Anime.js ─────── */
-        .logo-hero,
-        #inicio h1,
-        .hero-right .texto-secundario,
-        .hero-eyebrow,
-        .hero-cta-wrap,
-        .hero-meta-item,
-        .servicio-minimal {
+        /* Solo se ocultan si la animación va a correr (clase puesta por JS) */
+        .anim-ready .logo-hero,
+        .anim-ready #inicio h1,
+        .anim-ready .hero-right .texto-secundario,
+        .anim-ready .hero-eyebrow,
+        .anim-ready .hero-cta-wrap,
+        .anim-ready .hero-meta-item,
+        .anim-ready .servicio-minimal {
             opacity: 0;
         }
 
@@ -368,7 +325,7 @@
             }
 
             .hero-left {
-                text-align: center;
+                justify-content: center;
             }
 
             .hero-right {
@@ -384,20 +341,26 @@
 
             .hero-meta {
                 justify-content: center;
+                gap: var(--space-6);
             }
 
             .servicios-grid {
                 grid-template-columns: 1fr;
             }
 
+            .servicio-minimal {
+                padding: var(--space-7) var(--space-6);
+            }
+
             #contacto {
-                padding: 120px 24px;
+                padding: 120px var(--gutter);
             }
         }
     </style>
 </head>
 
 <body class="i18n-loading">
+    <a href="#contenido" class="skip-link" data-i18n="skip_link">Saltar al contenido</a>
 
     <!-- ═══ FILM GRAIN ══════════════════════════════════════ -->
     <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
@@ -430,36 +393,42 @@
             <img src="images/logo.png" alt="Icono de Biopixel" class="logo-icono">
             <span class="logo-texto">Biopixel</span>
         </a>
-        <nav class="nav-desktop">
+        <nav class="nav-desktop" aria-label="Principal">
             <div class="nav-links">
                 <a href="#inicio" data-i18n="nav_home">Inicio</a>
                 <a href="about.html" data-i18n="nav_about">Nosotros</a>
                 <a href="#servicios" data-i18n="nav_services">Servicios</a>
                 <a href="contacto.html" data-i18n="nav_contact">Contacto</a>
             </div>
-            <div class="lang-switcher">
-                <button onclick="setLanguage('es')" id="lang-es">ES</button>
-                <button onclick="setLanguage('en')" id="lang-en">EN</button>
+            <div class="lang-switcher" role="group" aria-label="Idioma">
+                <button type="button" onclick="setLanguage(\'es\')" id="lang-es" aria-pressed="false">ES</button>
+                <button type="button" onclick="setLanguage(\'en\')" id="lang-en" aria-pressed="false">EN</button>
             </div>
         </nav>
-        <button class="hamburger-button" id="hamburger-button">
-            <svg width="24px" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <button type="button" class="hamburger-button" id="hamburger-button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+            <svg width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16m-7 6h7">
                 </path>
             </svg>
         </button>
     </header>
 
-    <div class="mobile-menu glass" id="mobile-menu">
+    <nav class="mobile-menu glass" id="mobile-menu" aria-label="Menú móvil">
         <a href="#inicio" onclick="closeMobileMenu()" data-i18n="nav_home">Inicio</a>
         <a href="about.html" onclick="closeMobileMenu()" data-i18n="nav_about">Nosotros</a>
         <a href="#servicios" onclick="closeMobileMenu()" data-i18n="nav_services">Servicios</a>
         <a href="contacto.html" onclick="closeMobileMenu()" data-i18n="nav_contact">Contacto</a>
-    </div>
+        <div class="mobile-lang" role="group" aria-label="Idioma">
+            <button type="button" onclick="setLanguage('es')" id="lang-es-mobile" aria-pressed="false">ES</button>
+            <button type="button" onclick="setLanguage('en')" id="lang-en-mobile" aria-pressed="false">EN</button>
+        </div>
+    </nav>
+
+    <main id="contenido">
 
     <!-- ═══ HERO ═══════════════════════════════════════════ -->
     <section class="seccion" id="inicio">
-        <div class="hero-grid">
+        <div class="hero-grid" aria-hidden="true">
             <div class="scan-line" style="top: 35%"></div>
             <div class="scan-line" style="top: 65%; animation-delay: 4s;"></div>
         </div>
@@ -472,7 +441,7 @@
             <div class="hero-right">
                 <p class="texto-secundario" data-i18n="hero_subtitle">Analizamos datos de ecosistemas naturales y
                     artificiales para potenciar la industria agrícola global.</p>
-                <span class="hero-eyebrow" data-i18n="hero_supertitle">Agricultura de Precisión</span>
+                <span class="eyebrow hero-eyebrow" data-i18n="hero_supertitle">Agricultura de Precisión</span>
                 <span class="hero-cta-wrap">
                     <a href="#nosotros" class="boton" data-i18n="hero_button">Explorar</a>
                 </span>
@@ -489,7 +458,7 @@
                 <span class="hero-meta-label">Monitoring</span>
             </div>
             <div class="hero-meta-item">
-                <span class="hero-meta-num">∞</span>
+                <span class="hero-meta-num" aria-hidden="true">∞</span>
                 <span class="hero-meta-label">Data Points</span>
             </div>
         </div>
@@ -500,8 +469,8 @@
         <div class="container">
             <span class="section-label reveal">02 — Misión</span>
             <h2 class="reveal reveal-delay-1" data-i18n="about_title">Nuestro <span>Compromiso</span></h2>
-            <div class="line-h reveal reveal-delay-2" style="max-width: 120px; margin: 0 0 48px 0;"></div>
-            <p class="reveal reveal-delay-2" data-i18n="about_text">La optimización de los recursos no solo es conveniente
+            <div class="line-h line-h--short reveal reveal-delay-2" aria-hidden="true"></div>
+            <p class="text-body reveal reveal-delay-2" data-i18n="about_text">La optimización de los recursos no solo es conveniente
                 económicamente, es necesario para la subsistencia y evolución ordenada del rubro.</p>
             <span class="reveal reveal-delay-3">
                 <a href="#servicios" class="boton" data-i18n="about_button">Servicios</a>
@@ -512,23 +481,23 @@
     <!-- ═══ SERVICIOS ══════════════════════════════════════ -->
     <section class="seccion" id="servicios">
         <div class="container">
-            <h2 class="reveal" data-i18n="services_title">Servicios</h2>
+            <h2 class="eyebrow reveal" data-i18n="services_title">Servicios</h2>
             <div class="servicios-grid">
                 <a href="monitoreo.html" class="servicio-minimal">
-                    <span class="service-num">01</span>
+                    <span class="service-num" aria-hidden="true">01</span>
                     <h3 data-i18n="service1_title">Monitoreo de Cultivos</h3>
                     <p data-i18n="service1_text">Información en tiempo real sobre la salud y las etapas de crecimiento
                         de los cultivos.</p>
                     <span class="service-arrow">Detalles →</span>
                 </a>
                 <a href="mapeo.html" class="servicio-minimal">
-                    <span class="service-num">02</span>
+                    <span class="service-num" aria-hidden="true">02</span>
                     <h3 data-i18n="service2_title">Mapeo de Campo</h3>
                     <p data-i18n="service2_text">Mapeo detallado de las condiciones y variaciones del terreno.</p>
                     <span class="service-arrow">Detalles →</span>
                 </a>
                 <a href="optimizacion.html" class="servicio-minimal">
-                    <span class="service-num">03</span>
+                    <span class="service-num" aria-hidden="true">03</span>
                     <h3 data-i18n="service3_title">Optimización de Rendimiento</h3>
                     <p data-i18n="service3_text">Estrategias basadas en datos para maximizar la producción de la
                         cosecha.</p>
@@ -550,11 +519,15 @@
         </div>
     </section>
 
+    </main>
+
     <footer id="page-footer">
         <p data-i18n="footer_text">© 2025 Biopixel. Todos los derechos reservados.</p>
     </footer>
 
     <script>
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
         // --- References ---
         const pageHeader = document.getElementById('page-header');
         const hamburgerBtn = document.getElementById('hamburger-button');
@@ -622,17 +595,20 @@
 
         // --- Mobile menu ---
         hamburgerBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('open');
-            pageHeader.classList.toggle('menu-is-open');
+            const isOpen = mobileMenu.classList.toggle('open');
+            pageHeader.classList.toggle('menu-is-open', isOpen);
+            hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
         });
 
         function closeMobileMenu() {
             mobileMenu.classList.remove('open');
             pageHeader.classList.remove('menu-is-open');
+            hamburgerBtn.setAttribute('aria-expanded', 'false');
         }
 
         // --- Orbs parallax ---
         function handleOrbsParallax() {
+            if (reduceMotion) return;
             const y = window.scrollY;
             orbCyan.style.transform   = `translateY(${y * 0.22}px)`;
             orbPurple.style.transform = `translateY(${-y * 0.18}px)`;
@@ -652,7 +628,7 @@
         // --- Film grain: cambia el seed cada 2 frames (~30fps) ---
         const grainTurbulence = document.getElementById('grain-turbulence');
         let grainTick = 0;
-        (function animateGrain() {
+        if (!reduceMotion) (function animateGrain() {
             if (++grainTick % 2 === 0) {
                 grainTurbulence.setAttribute('seed', (Math.random() * 999) | 0);
             }
@@ -663,8 +639,12 @@
     <script type="module">
         import { animate, createTimeline, stagger } from 'https://cdn.jsdelivr.net/npm/animejs@4/lib/anime.esm.min.js';
 
+        // Si anime.js no carga o el usuario pidió menos movimiento, el contenido queda visible sin animar
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!reduceMotion) document.documentElement.classList.add('anim-ready');
 
-        window.addEventListener('load', () => {
+
+        if (!reduceMotion) window.addEventListener('load', () => {
 
             // ─── Hero: timeline de entrada orquestado ────────────────
             createTimeline({ defaults: { ease: 'outExpo' } })

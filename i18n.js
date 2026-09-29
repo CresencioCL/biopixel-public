@@ -35,6 +35,7 @@ const translations = {
         contact_title: "Improve your performance",
         form_button: "Contact Us",
         footer_text: "© 2025 Biopixel. All rights reserved.",
+        skip_link: "Skip to content",
 
         /* About Page Detail */
         about_p1: "Biopixel is a company focused on transforming how large-scale agriculture is planned and managed. We seek to integrate data from various sources into a single system capable of offering models, simulations, and decision-making tools on the ground.",
@@ -73,6 +74,7 @@ const translations = {
         contact_title: "Mejora tu rendimiento",
         form_button: "Contáctanos",
         footer_text: "© 2025 Biopixel. Todos los derechos reservados.",
+        skip_link: "Saltar al contenido",
 
         /* About Page Detail */
         about_p1: "Biopixel es una empresa enfocada en transformar la forma en que se planifica y gestiona la agricultura a gran escala. Buscamos integrar datos de diversas fuentes en un solo sistema capaz de ofrecer modelos, simulaciones y herramientas de apoyo para la toma de decisiones en el terreno.",
@@ -148,8 +150,11 @@ function updateActiveButton(lang) {
     ['es', 'en'].forEach(id => {
         const btn = document.getElementById(`lang-${id}`);
         const mBtn = document.getElementById(`lang-${id}-mobile`);
-        if (btn) btn.classList.toggle('active', id === lang);
-        if (mBtn) mBtn.classList.toggle('active', id === lang);
+        [btn, mBtn].forEach(b => {
+            if (!b) return;
+            b.classList.toggle('active', id === lang);
+            b.setAttribute('aria-pressed', String(id === lang));
+        });
     });
 }
 
